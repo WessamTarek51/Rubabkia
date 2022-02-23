@@ -17,6 +17,6 @@ export class ProductDetailsComponent implements OnInit {
  btnClick() {
         this.router.navigateByUrl('/chat');
 };
-    
+
 
 }
