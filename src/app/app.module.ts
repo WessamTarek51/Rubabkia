@@ -11,6 +11,7 @@ import { ProductListingComponent } from './content/product-listing/product-listi
 import { HomeComponent } from './home/home/home.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ProductListingComponent,
     HomeComponent,
     ProductDetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatUserComponent
   ],
   imports: [
     BrowserModule,

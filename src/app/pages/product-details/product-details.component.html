@@ -17,7 +17,9 @@
     <h4 class="font-weight-bold">
     <h4>Price: $3,444</h4> <br>
     <div >
-    <button class="bb btn">Message</button>
+    <!-- <button class="bb btn" [routerLink]="'chat'">Message</button> -->
+    <button type="button" class="bb btn" (click)="btnClick();"> Message</button>    
+
     <button class="btn btn-light wishlist">
     <i class="fa fa-heart"></i>
     </button> </div>
