@@ -9,6 +9,7 @@ import { CarouselComponent } from './content/carousel/carousel.component';
 import { CaregoryListingComponent } from './content/caregory-listing/caregory-listing.component';
 import { ProductListingComponent } from './content/product-listing/product-listing.component';
 import { HomeComponent } from './home/home/home.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home/home.component';
     CarouselComponent,
     CaregoryListingComponent,
     ProductListingComponent,
-    HomeComponent
+    HomeComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
