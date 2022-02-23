@@ -91,3 +91,9 @@
 .pagination li a{
     color: #3f4b26;
 }
+.small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}

@@ -89,3 +89,21 @@ nav{
     color: #fff;
     
 }
+.wishlist {
+    background-color: #fff;
+    border-color: #ff7676
+}
+
+.wishlist:hover {
+    background-color: #e86464;
+    border-color: #e86464;
+    color: #fff
+}
+
+ .wishlist:hover i {
+    color: #fff
+}
+
+.wishlist i {
+    color: #ff7676
+}
