@@ -10,6 +10,7 @@ import { CaregoryListingComponent } from './content/caregory-listing/caregory-li
 import { ProductListingComponent } from './content/product-listing/product-listing.component';
 import { HomeComponent } from './home/home/home.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     CaregoryListingComponent,
     ProductListingComponent,
     HomeComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
