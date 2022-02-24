@@ -15,4 +15,8 @@ export class ProfileComponent implements OnInit {
   btnClick() {
     this.router.navigateByUrl('/add');
 };
+btnClickFav(){
+  this.router.navigateByUrl('/fav');
+
+};
 }

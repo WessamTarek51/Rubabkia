@@ -11,8 +11,11 @@ const routes: Routes = [
   {path:'show',component:ProductDetailsComponent},
   {path:'profile',component:ProfileComponent},
   {path:'chat',component:ChatUserComponent},
+ 
+  {path:'profile',children:[
   {path:'add',component:AddEditComponent},
   {path:'edit',component:AddEditComponent},
+]}
 
 
 
