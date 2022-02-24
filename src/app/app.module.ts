@@ -13,6 +13,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { AddEditComponent } from './pages/add-edit/add-edit.component';
+import { FavProductsComponent } from './pages/fav-products/fav-products.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,15 @@ import { AddEditComponent } from './pages/add-edit/add-edit.component';
     ProductDetailsComponent,
     ProfileComponent,
     ChatUserComponent,
-    AddEditComponent
+    AddEditComponent,
+    FavProductsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    NgxPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { FavProductsComponent } from './pages/fav-products/fav-products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
@@ -8,10 +9,12 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'show',component:ProductDetailsComponent},
+  {path:'show/:id',component:ProductDetailsComponent},
   {path:'profile',component:ProfileComponent},
   {path:'chat',component:ChatUserComponent},
- 
+  {path:'fav',component:FavProductsComponent},
+
+
   {path:'profile',children:[
   {path:'add',component:AddEditComponent},
   {path:'edit',component:AddEditComponent},

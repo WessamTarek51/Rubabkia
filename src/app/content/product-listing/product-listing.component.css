@@ -2,6 +2,10 @@
 /* .products{
     position: relative;
 } */
+.show-for-sr{
+
+background-color: #474F2F !important;}
+
 
 
 .col-md-3{
@@ -10,7 +14,7 @@
     margin-bottom: 50px;
     padding: 10px;
     transition: transform 0.5s;
-    
+
 
 }
 .col-md-3 img{
@@ -38,7 +42,7 @@
 }
 .pri-ic{
     display: flex;
-    
+
 }
 .overlay-icons button{
     width: 35%;
@@ -64,7 +68,7 @@
 .products{
     color: #474F2F;
 }
-/* 
+/*
 .overlay-icons{
     position: absolute;
     top: 0;
@@ -86,7 +90,7 @@
     margin: 1rem;
     transform: translateY(-15rem);
 } */
-/*  
+/*
 .overlay a:hover{
     color: var(--blue);
 } */

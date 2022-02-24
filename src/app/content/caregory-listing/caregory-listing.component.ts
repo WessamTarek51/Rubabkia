@@ -1,3 +1,5 @@
+import { Category } from './../../_models/category.models';
+import { CategoryServiceService } from './../../services/category-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./caregory-listing.component.css']
 })
 export class CaregoryListingComponent implements OnInit {
+category!:Category[];
+dropDownOpen=false;
+totalLength:any;
+page:number=1;
 
-  constructor() { }
+
+  constructor(private service:CategoryServiceService) { }
 
   ngOnInit(): void {
+this.category=this.service.categories;
   }
 
 }
