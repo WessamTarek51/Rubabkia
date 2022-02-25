@@ -78,6 +78,9 @@ export class ProductServiceService {
   }
 }
   }
+  getAllProducts():Product[] {
+    return this.products;
+  }
 
 }
 
