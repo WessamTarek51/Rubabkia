@@ -11,4 +11,8 @@ export interface Product{
     description:string;
     category:Category;
     user:User;
+    isFav:boolean;
 }
+
+
+

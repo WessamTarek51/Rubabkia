@@ -3,15 +3,15 @@
     <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
     <div class="main main-raised">
         <div class="profile-content">
-            <div class="container">
+            <div class="container" *ngIf="user">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" >
                        <div class="profile">
                             <div class="avatar">
-            <img src="../../../assets/img/y.jpeg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+            <img src="{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">ahmed mohamed</h3>
+                                <h3 class="title">{{user.name}}</h3>
                                 <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
@@ -20,7 +20,7 @@
                                           <br>
                                 <button type="button" class="colorButton"> <i class="bi bi-pencil-fill icon-padding" ></i>Edit Profile</button>
 
-                                <button type="button" class="colorButton" (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add Product</button>
+                                <button type="button" class="colorButton"  (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add Product</button>
                                 <button type="button" class="colorButton" (click)="btnClickFav();"> <i class="fa fa-heart-o icon-padding" ></i>Fav Product</button>
 
                                 <br>
@@ -31,11 +31,6 @@
                             </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -45,69 +40,21 @@
         <br>
          <br>
           <div class="row">
-            <div class="col-md-3 col-sm-6">
-              <img src="https://source.unsplash.com/random/200x200?sig=1" />
-              <h4>Teshirrt</h4>
+            <div class="col-md-3 col-sm-6" *ngFor="let product of user.product"  >
+            <img src="{{product.image}}" />
+              <h4>{{product.name}}</h4>
               <div class="pri-ic">
-                
-                <p>$50.00</p>
+
+                <p>{{product.price}}</p>
                 <div class="overlay-iconss">
-                  <a routerLink="show" style="--i:1"><i class="bi bi-trash-fill"></i></a> 
+                  <a (click)="deleteProduct(product)" style="--i:1"><i class="bi bi-trash-fill"></i></a>
                    <a routerLink="edit" style="--i:3"><i class="bi bi-pencil-fill"></i></a>
-                   <a  routerLink="add" style="--i:3"><i class="bi bi-plus-lg"></i></a>
 
                </div>
               </div>
-              
+
             </div>
-            <div class="col-md-3 col-sm-6">
-                <img src="https://source.unsplash.com/random/200x200?sig=1" />
-                <h4>Teshirrt</h4>
-                <div class="pri-ic">
-                  
-                  <p>$50.00</p>
-                  <div class="overlay-iconss">
-                    <a  style="--i:1"><i class="bi bi-trash-fill"></i></a> 
-                     <a routerLink="edit" style="--i:2"><i class="bi bi-pencil-fill"></i></a>
-                     <a routerLink="add" style="--i:3"><i class="bi bi-plus-lg"></i></a>
 
-      
-                 </div>
-                </div>
-                
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <img src="https://source.unsplash.com/random/200x200?sig=1" />
-                <h4>Teshirrt</h4>
-                <div class="pri-ic">
-                  
-                  <p>$50.00</p>
-                  <div class="overlay-iconss">
-                    <a  style="--i:1"><i class="bi bi-trash-fill"></i></a> 
-                     <a routerLink="edit"  style="--i:3"><i class="bi bi-pencil-fill"></i></a>
-                     <a routerLink="add"  style="--i:3"><i class="bi bi-plus-lg"></i></a>
-
-      
-                 </div>
-                </div>
-                
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <img src="https://source.unsplash.com/random/200x200?sig=1" />
-                <h4>Teshirrt</h4>
-                <div class="pri-ic">
-                  
-                  <p>$50.00</p>
-                  <div class="overlay-iconss">
-                    <a style="--i:1"><i class="bi bi-trash-fill"></i></a> 
-                    <a [routerLink]="['/profile','edit']" style="--i:3"> <i class="bi bi-pencil-fill"></i></a>
-                    <a routerLink="add" style="--i:3"><i class="bi bi-plus-lg"></i></a>
-
-      
-                 </div>
-                </div>
-                
-              </div>
         </div>
 
 
