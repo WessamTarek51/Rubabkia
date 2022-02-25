@@ -33,4 +33,10 @@ export class UserServicesService {
   deleteProductOfUser(product:Product){
     this.user.product?.splice(this.user.product.indexOf(product),1);
   }
+  addedprudect(product:Product){
+    console.log(product.name);
+    this.user.product?.push(product);
+    
+  
+  }
 }
