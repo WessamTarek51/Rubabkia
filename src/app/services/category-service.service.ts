@@ -15,5 +15,7 @@ export class CategoryServiceService {
     {id:5,name:"toys",image:"https://source.unsplash.com/random/200x200?sig=5"},
     {id:6,name:"home",image:"https://source.unsplash.com/random/200x200?sig=6"},
   ]
-
+  getAllcategories():Category[] {
+    return this.categories;
+  }
 }
