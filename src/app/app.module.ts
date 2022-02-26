@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChatUserComponent,
     AddEditComponent,
     FavProductsComponent,
+    ProductsofcategoryComponent,
 
   ],
   imports: [
