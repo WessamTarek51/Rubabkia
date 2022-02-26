@@ -4,6 +4,7 @@ import { CategoryServiceService } from './../../services/category-service.servic
 import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit',
@@ -15,7 +16,7 @@ export class AddEditComponent implements OnInit {
   categoryArray!: Category[];
 
   constructor(private CategoryService:CategoryServiceService ,
-    private productService:ProductServiceService) { }
+    private productService:ProductServiceService ,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -28,7 +29,9 @@ export class AddEditComponent implements OnInit {
   getAllProducts() {
     this.productArray = this.productService.getAllProducts();
   }
-
+  btnClick() {
+    this.router.navigateByUrl('/profile');
+};
   form=new FormControl({
     productName:new FormControl(),
     productDescription:new FormControl(),
