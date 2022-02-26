@@ -2,46 +2,44 @@
 
     <div class="container" >
 
-      <form class="form"  >
+      <form class="form"   #productform="ngForm">
           <div class="form-group">
           <div class="form-group">
-                       <label for="">title</label>
-                       <input class="form-control" type="text" name="title" id="">
+            <label for="">  name</label>
+            <input required ngModel class="form-control" type="text" name="name" #name="ngModel" minlength="5"  [ngClass]="{'invalid': name.invalid && name.touched}">
+            <p class="imgerr" *ngIf="name.invalid && name.touched && name.errors?.['required']  ">name is required</p>
+            <p class="imgerr" *ngIf="name.invalid && name.touched && name.errors?.['minlength']">name Should be more than 5 character</p>
 
-                       <label for="">Description</label>
-                       <textarea class="form-control" name="Description" id="" cols="30" rows="4"></textarea>
-                      </div>
+            <label for="">Description</label>
+            <textarea required ngModel class="form-control" name="Description"  #Description="ngModel" id="" cols="30" rows="4"  minlength="15"></textarea>
+            <p class="imgerr" *ngIf="Description.invalid && Description.touched && Description.errors?.['minlength']">Description Should be more than 15 character</p>
+            <p class="imgerr" *ngIf="Description.invalid && Description.touched && Description.errors?.['required'] ">Description is required</p>
+            </div>
              <div class="form-group">
       <label for="">Price</label>
-      <input class="form-control" type="text" name="Price" id="">
-
+       <input required  class="form-control" ngModel  type="number"  #price="ngModel" name="price"  [min]="5"  [ngClass]="{'invalid': name.invalid && name.touched}" >
+       <p class="imgerr" *ngIf="price.invalid && price.touched && price.errors?.['required']">price  is required</p>
+       <p class="imgerr" *ngIf="price.invalid && price.touched && price.errors?.['min']">price Should be more than 5$</p>
 
       <label for="">Category</label>
-      <select class="form-control" name="" id="">
-          <option value="">Arts & Crafts</option>
-          <option value="">Automotive</option>
-          <option value="">Baby</option>
-          <option value="">Books</option>
-          <option value="">Eletronics</option>
-          <option value="">Women's Fashion</option>
-          <option value="">Men's Fashion</option>
-          <option value="">Health & Household</option>
-          <option value="">Home & Kitchen</option>
-          <option value="">Military Accessories</option>
-          <option value="">Movies & Television</option>
-          <option value="">Sports & Outdoors</option>
-          <option value="">Tools & Home Improvement</option>
-          <option value="">Toys & Games</option>
+      <select required  ngModel #category="ngModel"  class="form-control" name="category"  [ngClass]="{'invalid': category.invalid && category.touched}" >
+        <option *ngFor="let category of categoryArray" [value]="category.id"> {{ category.name }} </option>
+
       </select>
+      <div class="imgerr" *ngIf="category.invalid && category.touched &&category.errors?.['required']"> category is required.</div>
           </div>
-          <div class="form-group">
-        <button class="btnimges" onclick="document.getElementById('getFile').click()">
+
+
+         <div class="form-group">
+         <button   class="btnimges"  #btnimages  onclick="document.getElementById('getFile').click() ">
            select images </button>
-        <input type='file' id="getFile" style="display:none">
-          </div>
+           <input class="imageInput"  required  ngModel #images="ngModel" name="images" type='file' id="getFile" style="display:none" [ngClass]="{'invalid': images.invalid && images.touched}">
+          <!-- <div class="imgerr" *ngIf="btnimages.onclick && images.invalid &&images.errors?.['required']"> images is required.</div> -->
+        </div>
+
           <div class="form-group btns" >
-                        <button href="#" class="btnCancel">Cancel</button>
-                        <button href="#" class="btnAdd">Add</button>
+                        <button href="#" class="btnCancel" routerLink="">Cancel</button>
+                        <button (click)="addProduct(productform)" type="button" routerLink="profile" class="btnAdd" [disabled]="!productform.valid" >Add</button>
           </div>
           </div>
       </form>
