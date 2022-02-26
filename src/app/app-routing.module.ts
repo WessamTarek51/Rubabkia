@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'add',component:AddEditComponent},
   {path:'category/:id',component:ProductsofcategoryComponent},
   {path:'profile',children:[
-  {path:'edit',component:AddEditComponent},
+  {path:'edit/:id',component:AddEditComponent},
 ]}
 
 

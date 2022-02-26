@@ -91,6 +91,10 @@ export class ProductServiceService {
   getAllProducts():Product[] {
     return this.products;
   }
+  getProductById(id:number){
+    // return this.products.find(product => product.id===id)
+return this.products.find(Product=>Product.id===id)
+  }
 
 }
 

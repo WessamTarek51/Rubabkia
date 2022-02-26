@@ -5,7 +5,7 @@ import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,12 +16,25 @@ import { Router } from '@angular/router';
 export class AddEditComponent implements OnInit {
   productArray!:Product[];
   categoryArray!: Category[];
+  editMode=false;
+  product={} as Product;
+
+
 
   constructor(private CategoryService:CategoryServiceService ,
-    private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router) 
+    private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
     { }
 
   ngOnInit(): void {
+    console.log(this.activatedRoute.snapshot.params)
+    console.log(this.activatedRoute.snapshot.url[0].path)
+    if(this.activatedRoute.snapshot.url[0].path=='edit'){
+      this.editMode=true
+    }
+    if(this.editMode){
+      this.getProductById();
+    }
+
     this.getAllCategories();
  this.getAllProducts();
 
@@ -47,4 +60,9 @@ export class AddEditComponent implements OnInit {
     this.router.navigateByUrl('profile');
 
   }
+  getProductById(){
+    const id = +this.activatedRoute.snapshot.params['id'];
+    this.product = this.productService.getProductById(id)!;
+    console.log(this.product)
+    }
 }
