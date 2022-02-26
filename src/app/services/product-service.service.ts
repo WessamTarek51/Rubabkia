@@ -1,4 +1,4 @@
-import { Product } from './../_models/product.models';
+import { Product } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 
 
@@ -12,7 +12,7 @@ export class ProductServiceService {
     price:20,
     image:"https://source.unsplash.com/random/200x200?sig=1",
     description:"hhh jgugugb jhugui",
-    category:{id:1,name:"clothes",image:"https://source.unsplash.com/random/200x200?sig=2"},
+    category:{id:1,name:"food",image:"https://source.unsplash.com/random/200x200?sig=2"},
     user:{id:1,name:"basma",image:"https://source.unsplash.com/random/200x200?sig=3"},
     isFav:false,
   },
@@ -21,7 +21,7 @@ export class ProductServiceService {
     price:30,
     image:"https://source.unsplash.com/random/200x200?sig=3",
     description:"hhh jgugugb jhugui",
-    category:{id:1,name:"clothes",image:"https://source.unsplash.com/random/200x200?sig=4"},
+    category:{id:2,name:"clothing",image:"https://source.unsplash.com/random/200x200?sig=4"},
     user:{id:1,name:"hemmat",image:"https://source.unsplash.com/random/200x200?sig=3"},
     isFav:false,
 
@@ -31,7 +31,7 @@ export class ProductServiceService {
     price:40,
     image:"https://source.unsplash.com/random/200x200?sig=5",
     description:"hhh jgugugb jhugui",
-    category:{id:1,name:"clothes",image:"https://source.unsplash.com/random/200x200?sig=6"},
+    category:{id:3,name:"electric",image:"https://source.unsplash.com/random/200x200?sig=6"},
     user:{id:1,name:"menna"},
     isFav:false,
 
@@ -41,7 +41,7 @@ export class ProductServiceService {
     price:50,
     image:"https://source.unsplash.com/random/200x200?sig=7",
     description:"hhh jgugugb jhugui",
-    category:{id:1,name:"clothes",image:"https://source.unsplash.com/random/200x200?sig=8"},
+    category:{id:1,name:"food",image:"https://source.unsplash.com/random/200x200?sig=8"},
     user:{id:1,name:"shimaaa"},
     isFav:false,
 
@@ -51,7 +51,7 @@ export class ProductServiceService {
     price:50,
     image:"https://source.unsplash.com/random/200x200?sig=7",
     description:"hhh jgugugb jhugui",
-    category:{id:1,name:"clothes",image:"https://source.unsplash.com/random/200x200?sig=8"},
+    category:{id:2,name:"clothing",image:"https://source.unsplash.com/random/200x200?sig=8"},
     user:{id:1,name:"shimaaa"},
     isFav:false,
 
@@ -87,6 +87,13 @@ export class ProductServiceService {
 
   }
 }
+  }
+  getAllProducts():Product[] {
+    return this.products;
+  }
+  getProductById(id:number){
+    // return this.products.find(product => product.id===id)
+return this.products.find(Product=>Product.id===id)
   }
 
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -15,7 +14,10 @@ import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { AddEditComponent } from './pages/add-edit/add-edit.component';
 import { FavProductsComponent } from './pages/fav-products/fav-products.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,14 +31,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProfileComponent,
     ChatUserComponent,
     AddEditComponent,
-    FavProductsComponent
+    FavProductsComponent,
+    ProductsofcategoryComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    FormsModule,
+    CustomFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

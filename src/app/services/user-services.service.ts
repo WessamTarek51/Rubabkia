@@ -1,6 +1,8 @@
-import { Product } from './../_models/product.models';
+// import { Product } from './../_models/product.models';
+
 import { User } from './../_models/user.models';
 import { Injectable } from '@angular/core';
+import { Product } from '../_models/product.models';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,11 @@ export class UserServicesService {
   constructor() { }
   deleteProductOfUser(product:Product){
     this.user.product?.splice(this.user.product.indexOf(product),1);
+  }
+  addedprudect(product:Product){
+    console.log(product.name);
+    this.user.product?.push(product);
+    
+  
   }
 }

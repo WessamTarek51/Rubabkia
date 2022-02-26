@@ -20,4 +20,8 @@ page:number=1;
 this.category=this.service.categories;
   }
 
+  // $('.categories .btn').click(function(){
+  //   console.log('done');
+  // });
+
 }

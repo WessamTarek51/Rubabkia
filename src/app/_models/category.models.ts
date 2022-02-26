@@ -3,6 +3,6 @@
 
 export interface Category{
     id?: number;
-    image: string;
+    image?: string;
     name:string;
 }
