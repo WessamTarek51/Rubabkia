@@ -11,12 +11,15 @@ import { ProductsofcategoryComponent } from './pages/productsofcategory/products
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'profile/1',component:ProfileComponent},
   {path:'chat',component:ChatUserComponent},
   {path:'fav',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
-  {path:'category/:id',component:ProductsofcategoryComponent},
-  {path:'profile',children:[
+  {path:'category/:id',component:ProductsofcategoryComponent,children:[
+    {path:'show/:id',component:ProductDetailsComponent},
+
+  ]},
+  {path:'profile/',children:[
   {path:'edit/:id',component:AddEditComponent},
 ]}
 

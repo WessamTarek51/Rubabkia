@@ -18,6 +18,12 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
+import { RouterModule,Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+const appRoutes: Routes=[
+  {path:'',component:ProfileComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +48,9 @@ import { ProductsofcategoryComponent } from './pages/productsofcategory/products
     NgxPaginationModule,
     FormsModule,
     CustomFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

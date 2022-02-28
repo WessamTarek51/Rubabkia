@@ -5,13 +5,10 @@ import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
-<<<<<<< HEAD
 import { Router, ActivatedRoute } from '@angular/router';
-=======
-import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.models';
 
->>>>>>> 15b94f46a94fe6ce66e7c76364bf3711742b0579
+
 
 
 @Component({
@@ -22,15 +19,9 @@ import { User } from 'src/app/_models/user.models';
 export class AddEditComponent implements OnInit {
   productArray!:Product[];
   categoryArray!: Category[];
-<<<<<<< HEAD
   editMode=false;
   product={} as Product;
-
-
-=======
-  product!: Product;
   productuser!: User;
->>>>>>> 15b94f46a94fe6ce66e7c76364bf3711742b0579
 
   constructor(private CategoryService:CategoryServiceService ,
     private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
@@ -58,12 +49,12 @@ export class AddEditComponent implements OnInit {
   }
 
 
- 
+
 
   addProduct(productform:NgForm){
     const product:Product=productform.value;
     console.log(productform.value)
-    this.userServer.addedprudect(product);
+    // this.userServer.addedprudect(product);
     this.router.navigateByUrl('profile');
 
   }
