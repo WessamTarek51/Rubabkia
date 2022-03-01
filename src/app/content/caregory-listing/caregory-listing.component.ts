@@ -17,7 +17,19 @@ page:number=1;
   constructor(private service:CategoryServiceService) { }
 
   ngOnInit(): void {
-this.category=this.service.categories;
+// this.category=this.service.categories;
+
+this.service.getAllcategories().subscribe(
+  (res:any)=>{
+    this.category = res.data
+  },
+  // (err)=>{},
+  // ()=>{},
+
+  
+
+)
+
   }
 
   // $('.categories .btn').click(function(){
