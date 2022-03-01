@@ -34,15 +34,13 @@ export class UserServicesService {
   // };
 
   constructor(private HttpClient:HttpClient) { }
-  // deleteProductOfUser(product:Product){
-  //   this.user.product?.splice(this.user.product.indexOf(product),1);
-  // }
-  // addedprudect(product:Product){
-  //   console.log(product.name);
-  //   this.user.product?.push(product);
-
-
-  // }
+  deleteProductOfUser(product:Product){
+    return this.HttpClient.delete('http://127.0.0.1:8000/api/products/'+product.id);
+  }
+//  addedprudect(product:Product){
+//     console.log(product.name);
+//    this.user.product?.push(product);
+// }
   getData(){
     return this.HttpClient.get<UserData>('http://127.0.0.1:8000/api/oo/1');
   }

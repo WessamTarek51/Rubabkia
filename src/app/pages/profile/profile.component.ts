@@ -31,6 +31,11 @@ btnClickFav(){
 }
 deleteProduct(product:Product){
   // this.service.deleteProductOfUser(product);
+  // console.log(this.user.products?.length);
+  this.service.deleteProductOfUser(product).subscribe(res=>{
+this.getuser();
+  });
+
 }
 getuser(){
   this.service.getData().subscribe(res=>{
