@@ -1,3 +1,4 @@
+import { Purchase } from './purchase.models';
 import { Product } from "./product.models";
 
 export interface User{
@@ -9,5 +10,6 @@ export interface User{
     address:string;
     password:string;
     products?:Product[];
+    purchases?:Purchase[];
 }
 
