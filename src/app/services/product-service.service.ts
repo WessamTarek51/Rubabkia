@@ -1,5 +1,7 @@
 import { Product } from '../_models/product.models';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -60,7 +62,7 @@ export class ProductServiceService {
   ];
   // cartHasBeenChanged: EventEmitter<Product[]>= new EventEmitter<Product[]>();
 
-  constructor() { }
+  constructor(private HttpClient:HttpClient) { }
 
   // addProductToCart(product:Product){
   //   console.log(product);
@@ -95,7 +97,11 @@ export class ProductServiceService {
     // return this.products.find(product => product.id===id)
 return this.products.find(Product=>Product.id===id)
   }
+  storeData(data:any):Observable<Product[]>{
+    console.log(data);
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data);
 
+  }
 }
 
 
