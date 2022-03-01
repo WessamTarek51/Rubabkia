@@ -1,4 +1,4 @@
-import { Product } from './../../_models/product.models';
+import { Product,getAllProductsData } from './../../_models/product.models';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
@@ -19,7 +19,16 @@ page:number=1;
   constructor(public service:ProductServiceService) { }
 
   ngOnInit(): void {
-   this.productData=this.service.products;
+    this.service.getAllProducts().subscribe(
+      (res)=>{
+        this.productData = res.data;
+      },
+
+    )
+
+  //  this.productData=this.service.products;
+
+    // this.getproduct();
 
   }
   // onItemAdded(){
@@ -28,6 +37,17 @@ page:number=1;
   // }
   onFav(product:Product){
    this.service.favProduct(product);
+  }
+  getproduct(){
+    this.service.getData().subscribe(res=>{
+      //let profile=JSON.parse(res.toString())
+  
+        //  console.log(profile);
+        console.log(res);
+  
+        //  this.product=res.data;
+         console.log(this.product);
+    });
   }
 
 

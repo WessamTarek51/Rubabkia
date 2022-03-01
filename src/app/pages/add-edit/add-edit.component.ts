@@ -42,10 +42,10 @@ export class AddEditComponent implements OnInit {
 
   }
   getAllCategories() {
-    this.categoryArray = this.CategoryService.getAllcategories();
+    // this.categoryArray = this.CategoryService.getAllcategories();
   }
   getAllProducts() {
-    this.productArray = this.productService.getAllProducts();
+    // this.productArray = this.productService.getAllProducts();
   }
 
 
