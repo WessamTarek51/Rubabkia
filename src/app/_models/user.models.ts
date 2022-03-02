@@ -5,7 +5,7 @@ export interface User{
     name:string;
      image?: string;
     // email:string;
-    // phoneNumber:number;
+    // phone_number:number;
     // address:string;
     // password:string;
     product?:Product[];

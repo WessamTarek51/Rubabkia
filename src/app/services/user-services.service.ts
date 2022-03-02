@@ -3,6 +3,10 @@
 import { User } from './../_models/user.models';
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
+import { environment } from 'src/environments/environment';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +35,34 @@ export class UserServicesService {
       isFav:false,}]
   };
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
   deleteProductOfUser(product:Product){
     this.user.product?.splice(this.user.product.indexOf(product),1);
   }
   addedprudect(product:Product){
     console.log(product.name);
     this.user.product?.push(product);
-    
-  
-  }
+    }
+
+    registeruser(data:any){
+    const headers=new HttpHeaders()
+  return this.http.post(environment.apiUrl+'/api/register',data,{
+    headers:headers
+     }
+  );
+    }
+    loginuser(data:any){
+      return this.http.post(environment.apiUrl+'/api/login',data)
+        }
+    forgetpass(email:string){
+      return this.http.post(environment.apiUrl+'/api/forget',{email:email})
+    }
+    resetpass(token:any,password:string,confirmpass:string){
+      const data={
+        token:token,
+        password:password,
+        confirmpassword:confirmpass
+      }
+      return this.http.post(environment.apiUrl+'/api/reset',data)
+    }
 }

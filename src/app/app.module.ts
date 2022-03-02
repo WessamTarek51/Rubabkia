@@ -18,6 +18,13 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +40,10 @@ import { ProductsofcategoryComponent } from './pages/productsofcategory/products
     AddEditComponent,
     FavProductsComponent,
     ProductsofcategoryComponent,
+    RegisterComponent,
+    LoginComponent,
+    ForgetpasswordComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [
@@ -42,7 +53,11 @@ import { ProductsofcategoryComponent } from './pages/productsofcategory/products
     NgxPaginationModule,
     FormsModule,
     CustomFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule ,
+    ToastrModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
