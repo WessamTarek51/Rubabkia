@@ -51,7 +51,15 @@ export class AddEditComponent implements OnInit {
   )
   }
 
+  btnClick() {
+    this.router.navigateByUrl('/profile');
+};
+  form=new FormControl({
+    productName:new FormControl(),
+    productDescription:new FormControl(),
+    productprice:new FormControl(),
 
+  })
 
 
 
