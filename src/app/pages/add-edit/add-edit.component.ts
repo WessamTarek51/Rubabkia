@@ -47,7 +47,7 @@ this.Product_id=this.activatedRoute.snapshot.params['id'];
 
 this.productService.geteditData(this.Product_id).subscribe(
   (res:any)=>{
-    console.log('gggggggggggg');
+      console.log(res.data);
      this.product=res.data;
 
 
@@ -66,11 +66,6 @@ this.productService.geteditData(this.Product_id).subscribe(
 
 
 
-  btnClick() {
-    this.router.navigateByUrl('/profile/product.id');
-};
-
-
 
 
   ///////////////// (onSubmit) add/update product in DB   //////////////////////
@@ -79,11 +74,14 @@ this.productService.geteditData(this.Product_id).subscribe(
 
         this.productService.storeData(form.value).subscribe(res=>{
             // console.log(form.value);
-    })}
+
+    })
+    this.router.navigateByUrl('profile/this.Product_id');
+  }
     else if(this.activatedRoute.snapshot.url[0].path=='edit'){
       this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
-        // console.log(form.value);
-        this.router.navigateByUrl('../profile/this.Product_id');
+        console.log(res);
+        this.router.navigateByUrl('profile/this.Product_id');
 })}
     }
 

@@ -109,13 +109,14 @@ export class ProductServiceService {
   ///////////////get product to edit //////////////////////
   geteditData(id:number){
     console.log("done");
+
    return this.HttpClient.get('http://127.0.0.1:8000/api/products/'+id);
 
  }
 
   /////////////////Update product////////////////////
   updateData(id:number,data:any):Observable<Product[]>{
-    console.log(data);
+
     return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
 
   }
