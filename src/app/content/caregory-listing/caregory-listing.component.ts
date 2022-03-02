@@ -26,7 +26,7 @@ this.service.getAllcategories().subscribe(
   // (err)=>{},
   // ()=>{},
 
-  
+
 
 )
 

@@ -7,8 +7,7 @@ import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user.models';
-
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -24,7 +23,12 @@ export class AddEditComponent implements OnInit {
   productuser!: User;
 
   constructor(private CategoryService:CategoryServiceService ,
-    private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
+    private productService:ProductServiceService ,
+    private userServer:UserServicesService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private httpClient: HttpClient,
+    )
     { }
 
   ngOnInit(): void {
@@ -37,16 +41,17 @@ export class AddEditComponent implements OnInit {
       this.getProductById();
     }
 
-    this.getAllCategories();
- this.getAllProducts();
+
+
+ this.CategoryService.getAllcategories().subscribe(
+  (res:any)=>{
+    this.categoryArray = res.data
 
   }
-  getAllCategories() {
-    // this.categoryArray = this.CategoryService.getAllcategories();
+  )
   }
-  getAllProducts() {
-    // this.productArray = this.productService.getAllProducts();
-  }
+
+
 
 
 
@@ -63,4 +68,10 @@ export class AddEditComponent implements OnInit {
     this.product = this.productService.getProductById(id)!;
     console.log(this.product)
     }
+    onSubmit(form:NgForm){
+  console.log(this.categoryArray);
+        this.productService.storeData(form.value).subscribe(res=>{
+              // console.log(form.value);
+      })
+}
 }
