@@ -21,7 +21,8 @@ export class AddEditComponent implements OnInit {
   editMode=false;
   product={} as Product;
   productuser!: User;
-
+  Product_id:any;
+  editproduct:any;
   constructor(private CategoryService:CategoryServiceService ,
     private productService:ProductServiceService ,
     private userServer:UserServicesService,
@@ -32,54 +33,58 @@ export class AddEditComponent implements OnInit {
     { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params)
-    console.log(this.activatedRoute.snapshot.url[0].path)
+    console.log(this.activatedRoute.snapshot.params['id']);
+    console.log(this.activatedRoute.snapshot.url[0].path);
+
     if(this.activatedRoute.snapshot.url[0].path=='edit'){
-      this.editMode=true
-    }
-    if(this.editMode){
-      this.getProductById();
+      this.editMode=!this.editMode
     }
 
 
 
- this.CategoryService.getAllcategories().subscribe(
+/////////////////return product by id  to edit in DB//////////////////////
+this.Product_id=this.activatedRoute.snapshot.params['id'];
+
+this.productService.geteditData(this.Product_id).subscribe(
   (res:any)=>{
-    this.categoryArray = res.data
+    console.log('gggggggggggg');
+     this.product=res.data;
+
 
   }
   )
+
+      ///////////to select category //////////////////////
+
+      this.CategoryService.getAllcategories().subscribe(
+        (res:any)=>{
+          this.categoryArray = res.data
+
+        }
+        )
   }
+
+
 
   btnClick() {
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/profile/product.id');
 };
-  form=new FormControl({
-    productName:new FormControl(),
-    productDescription:new FormControl(),
-    productprice:new FormControl(),
-
-  })
 
 
 
 
-  addProduct(productform:NgForm){
-    const product:Product=productform.value;
-    console.log(productform.value)
-    // this.userServer.addedprudect(product);
-    this.router.navigateByUrl('profile');
+  ///////////////// (onSubmit) add/update product in DB   //////////////////////
+  onSubmit(form:NgForm){
+    if(this.activatedRoute.snapshot.url[0].path=='add'){
+
+        this.productService.storeData(form.value).subscribe(res=>{
+            // console.log(form.value);
+    })}
+    else if(this.activatedRoute.snapshot.url[0].path=='edit'){
+      this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
+        // console.log(form.value);
+        this.router.navigateByUrl('../profile/this.Product_id');
+})}
+    }
 
   }
-  getProductById(){
-    const id = +this.activatedRoute.snapshot.params['id'];
-    this.product = this.productService.getProductById(id)!;
-    console.log(this.product)
-    }
-    onSubmit(form:NgForm){
-  console.log(this.categoryArray);
-        this.productService.storeData(form.value).subscribe(res=>{
-              // console.log(form.value);
-      })
-}
-}

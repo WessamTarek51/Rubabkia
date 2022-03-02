@@ -65,23 +65,15 @@ export class ProductServiceService {
 
   constructor(private HttpClient:HttpClient) { }
 
-  // addProductToCart(product:Product){
-  //   console.log(product);
-  //  for(let i of this.products){
-  //   if(i.name == product.name){
-  //       this.cartHasBeenChanged.emit(this.products);
-  //       return
-  //   }
-  //  }
-  //   this.products.push(product);
-  //   this.cartHasBeenChanged.emit(this.products);
-  // }
+
 
   getData(){
     // console.log("done");
     return this.HttpClient.get('http://127.0.0.1:8000/api/products');
 
   }
+
+
   favProduct(product:Product){
     for(let i of this.products){
       if(i.id == product.id){
@@ -100,13 +92,31 @@ export class ProductServiceService {
     //
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products');
   }
-  getProductById(id:number){
-    // return this.products.find(product => product.id===id)
-return this.products.find(Product=>Product.id===id)
-  }
+//   getProductById(id:number){
+//     // return this.products.find(product => product.id===id)
+// return this.products.find(Product=>Product.id===id)
+//   }
+
+
+/////////////////Add product////////////////////
   storeData(data:any):Observable<Product[]>{
     console.log(data);
     return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data);
+
+  }
+
+
+  ///////////////get product to edit //////////////////////
+  geteditData(id:number){
+    console.log("done");
+   return this.HttpClient.get('http://127.0.0.1:8000/api/products/'+id);
+
+ }
+
+  /////////////////Update product////////////////////
+  updateData(id:number,data:any):Observable<Product[]>{
+    console.log(data);
+    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
 
   }
 }
