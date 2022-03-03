@@ -22,4 +22,20 @@ export interface getAllProductsData{
     // image?: string;
 }
 
+// export interface getAllProductsDatacategory{
+//     // data:[];
+//     id: number;
+//     name:string;
+//     price: number;
+//     image?: string;
+//     category_id: number;
+//     category_name:string;
+
+
+// }
+export interface proData{
+    data:Product;
+  }
+  
+
 

@@ -15,7 +15,8 @@ fav:boolean=false;
 
 totalLength:any;
 page:number=1;
-
+ 
+dataCat:any;
   constructor(public service:ProductServiceService) { }
 
   ngOnInit(): void {
@@ -47,8 +48,18 @@ page:number=1;
   
         //  this.product=res.data;
          console.log(this.product);
+
     });
   }
+  //   getproductcat(){
+  //     this.service.getData().subscribe(res=>{
+
+  //         console.log(res);
+    
+  //          this.dataCat=res;
+           
+  //     });
+  // }
 
 
 }

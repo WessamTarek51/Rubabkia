@@ -64,6 +64,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
 
+  RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   ],
   providers: [],
   bootstrap: [AppComponent]
