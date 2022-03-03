@@ -20,6 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RouterModule,Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+// import { Ng2SearchPipeModule} from 'ng2-search-filter';
+import { ProductServiceService } from './services/product-service.service';
+
 
 const appRoutes: Routes=[
   {path:'',component:ProfileComponent}
@@ -65,8 +68,9 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     ToastrModule.forRoot(),
 
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
+   
   ],
-  providers: [],
+  providers: [ProductServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

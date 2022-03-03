@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { UserData } from './../_models/data.model';
 // import { Product } from './../_models/product.models';
 
@@ -12,7 +13,11 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class UserServicesService {
+
   // user:User=
   //   {id:1,
   //   name:"basam",
@@ -45,10 +50,18 @@ export class UserServicesService {
 //     console.log(product.name);
 //    this.user.product?.push(product);
 // }
+authToken: any;
   getData(){
-    return this.http.get<UserData>('http://127.0.0.1:8000/api/oo/1');
+    // this.loadToken();
+    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')});
+
+    return this.http.get<UserData>('http://127.0.0.1:8000/api/profile',{ headers});
   }
-  
+  // public loadToken() {
+  //   const token = localStorage.getItem('id_token');
+  //   this.authToken = token;
+  // }
+
 
     registeruser(data:any){
     const headers=new HttpHeaders()

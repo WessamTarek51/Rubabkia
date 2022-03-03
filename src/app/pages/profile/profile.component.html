@@ -7,7 +7,7 @@
                     <div class="col-12" *ngIf="user" >
                        <div class="profile">
                             <div class="avatar">
-            <img src="{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+            <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
                                 <h3 class="title">{{user.username}}</h3>
@@ -33,13 +33,13 @@
          <div *ngIf="user">
           <div class="row" *ngIf="user.products">
             <div class="col-md-3 col-sm-6"   *ngFor="let product of user.products" >
-            <img src="{{product.image}}" />
+            <img src="http://127.0.0.1:8000/storage/images/{{product.image}}" />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
                 <div class="overlay-iconss">
                   <a (click)="deleteProduct(product)" style="--i:1"><i class="bi bi-trash-fill"></i></a>
-                   <a  [routerLink]="['edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i></a>
+                   <a  [routerLink]="['/edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i></a>
                </div>
                </div>
               </div>
@@ -57,7 +57,7 @@
    <div *ngIf="user">
     <div class="row" *ngIf="user.products">
       <div class="col-md-3 col-sm-6"   *ngFor="let purchase of user.purchases" >
-      <img src="{{purchase.image}}" />
+      <img src="http://127.0.0.1:8000/storage/images/{{purchase.image}}" />
         <h4>{{purchase.name}}</h4>
         <div class="pri-ic">
           <p>{{purchase.price}}</p>
