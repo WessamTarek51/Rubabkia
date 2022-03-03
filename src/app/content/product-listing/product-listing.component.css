@@ -2,6 +2,18 @@
 /* .products{
     position: relative;
 } */
+.mynewform{
+    display: flex;
+}
+#mybtn{
+    width: 80%;
+}
+#mybtn:focus{
+    border: 0.1rem solid #3f4b26;
+}
+#search{
+    width: 20%;
+}
 .show-for-sr{
 
 background-color: #474F2F !important;}
