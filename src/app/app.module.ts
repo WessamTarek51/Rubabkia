@@ -24,6 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes=[
   {path:'',component:ProfileComponent}
 ];
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +45,10 @@ const appRoutes: Routes=[
     AddEditComponent,
     FavProductsComponent,
     ProductsofcategoryComponent,
+    RegisterComponent,
+    LoginComponent,
+    ForgetpasswordComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [
@@ -51,6 +61,9 @@ const appRoutes: Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    BrowserAnimationsModule ,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

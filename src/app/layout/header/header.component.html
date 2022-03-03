@@ -13,7 +13,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
         <form class="d-flex nav-item nav-icon">
           <input class="form-control me-2" id="mybtn" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" id="search-word">Search</button>
@@ -26,14 +26,28 @@
           <a routerLink="fav" ><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
         </li>
 
-        <li class="nav-item nav-icon">
-            <a class="word" routerLink="profile/1">
+       
+         <li class="nav-item nav-icon">
+            <a class="word" routerLink="profile">
               <div class="nav-it">
                   <i class="fa fa-user user-i"></i>
                   <h6>MyAccount</h6>
               </div>
+
             </a>
         </li>
+
+        <li class="nav-item nav-icon ">
+          <a class="nav-link active home-color" aria-current="page" *ngIf="!loggedin()" routerLink="register">Register</a>
+        </li>
+        <!-- <div *ngIf="token;then showlogin else showlogout "></div> -->
+         <li class="nav-item nav-icon " >
+          <a class="nav-link active home-color" aria-current="page" *ngIf="!loggedin()" routerLink="login" >Login</a>
+        </li>
+       <li class="nav-item nav-icon " id="logout"  >
+          <a class="nav-link active home-color" aria-current="page" *ngIf="loggedin()" (click)="logout()">Logout</a>
+        </li>
+
       </ul>
 
     </div>
