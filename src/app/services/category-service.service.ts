@@ -1,8 +1,9 @@
 import { Category,getAllCategoryData } from '../_models/category.models';
+import { Product,getAllProductsData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+// 
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,11 @@ export class CategoryServiceService {
   getAllcategories():Observable<getAllCategoryData>{
     return this.HttpClient.get<getAllCategoryData>('http://127.0.0.1:8000/api/categories');
 
+  }
+  
+    getCtId(categoryId:any){
+    // console.log("done");
+    return this.HttpClient.get('http://127.0.0.1:8000/api/categories/'+categoryId);
+   
   }
 }

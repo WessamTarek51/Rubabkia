@@ -51,6 +51,7 @@ const appRoutes: Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   ],
   providers: [],
   bootstrap: [AppComponent]

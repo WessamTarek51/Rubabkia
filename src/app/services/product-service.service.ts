@@ -1,4 +1,4 @@
-import { Product ,getAllProductsData } from '../_models/product.models';
+import { Product ,getAllProductsData, proData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -65,17 +65,6 @@ export class ProductServiceService {
 
   constructor(private HttpClient:HttpClient) { }
 
-  // addProductToCart(product:Product){
-  //   console.log(product);
-  //  for(let i of this.products){
-  //   if(i.name == product.name){
-  //       this.cartHasBeenChanged.emit(this.products);
-  //       return
-  //   }
-  //  }
-  //   this.products.push(product);
-  //   this.cartHasBeenChanged.emit(this.products);
-  // }
 
   getData(){
     // console.log("done");
@@ -104,6 +93,13 @@ export class ProductServiceService {
 return this.products.find(Product=>Product.id===id)
   }
 
+  getAllProductsiid(category_id:any):Observable<getAllProductsData> {
+    // return this.products;
+    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
+  }
+
+
+  
 }
 
 
