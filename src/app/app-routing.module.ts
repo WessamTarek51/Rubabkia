@@ -15,16 +15,18 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
-  {path:'profile/1',component:ProfileComponent},
+  // {path:'profile/1',component:ProfileComponent},
   {
   path:'profile',component:ProfileComponent,
   canActivate:[AuthGuard]
   },
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
+  {path:'profile/:id',component:ProfileComponent},
   {path:'chat',component:ChatUserComponent},
   {path:'fav',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
+  {path:'edit/:id',component:AddEditComponent},
   {path:'category/:id',component:ProductsofcategoryComponent,children:[
     {path:'show/:id',component:ProductDetailsComponent},
 
