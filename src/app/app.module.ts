@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RouterModule,Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { Ng2SearchPipeModule} from 'ng2-search-filter';
+// import { Ng2SearchPipeModule} from 'ng2-search-filter';
 import { ProductServiceService } from './services/product-service.service';
 
 
@@ -55,7 +55,7 @@ const appRoutes: Routes=[
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
-    Ng2SearchPipeModule,
+    // Ng2SearchPipeModule,
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]
