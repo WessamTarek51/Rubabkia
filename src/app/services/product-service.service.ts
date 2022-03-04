@@ -97,19 +97,7 @@ export class ProductServiceService {
 
 
   
-  // search(seacrhInput:string){
-  //   this.filterProduct.splice(0,this.filterProduct.length);
-  //   for(let i of this.products){
-  //     if(i.name.includes(seacrhInput)){
-  //       this.filterProduct.push(i)
-  //     }
-  //   }
-  //   console.log(this.filterProduct.length)
-  //  }
 
-  //  getFilter(): Product[]{
-  //    return this.filterProduct 
-  //  }
 
 }
 
