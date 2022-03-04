@@ -20,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RouterModule,Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 const appRoutes: Routes=[
   {path:'',component:ProfileComponent}
 ];
@@ -39,18 +41,20 @@ const appRoutes: Routes=[
     AddEditComponent,
     FavProductsComponent,
     ProductsofcategoryComponent,
-
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     NgxPaginationModule,
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
