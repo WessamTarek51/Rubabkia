@@ -5,10 +5,10 @@ import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user.models';
-
-
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -23,44 +23,71 @@ export class AddEditComponent implements OnInit {
   product={} as Product;
   productuser!: User;
 
+
+
+
+  Product_id:any;
+  editproduct:any;
   constructor(private CategoryService:CategoryServiceService ,
-    private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
+    private productService:ProductServiceService ,
+    private userServer:UserServicesService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private httpClient: HttpClient,
+    )
     { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params)
-    console.log(this.activatedRoute.snapshot.url[0].path)
+    console.log(this.activatedRoute.snapshot.params['id']);
+    console.log(this.activatedRoute.snapshot.url[0].path);
+
     if(this.activatedRoute.snapshot.url[0].path=='edit'){
-      this.editMode=true
-    }
-    if(this.editMode){
-      this.getProductById();
+      this.editMode=!this.editMode
     }
 
-    this.getAllCategories();
- this.getAllProducts();
+
+
+/////////////////return product by id  to edit in DB//////////////////////
+this.Product_id=this.activatedRoute.snapshot.params['id'];
+
+this.productService.geteditData(this.Product_id).subscribe(
+  (res:any)=>{
+      console.log(res.data);
+     this.product=res.data;
+
 
   }
-  getAllCategories() {
-    // this.categoryArray = this.CategoryService.getAllcategories();
+  )
+
+      ///////////to select category //////////////////////
+
+      this.CategoryService.getAllcategories().subscribe(
+        (res:any)=>{
+          this.categoryArray = res.data
+
+        }
+        )
   }
-  getAllProducts() {
-    // this.productArray = this.productService.getAllProducts();
+
+
+
+
+
+  ///////////////// (onSubmit) add/update product in DB   //////////////////////
+  onSubmit(form:NgForm){
+    if(this.activatedRoute.snapshot.url[0].path=='add'){
+
+        this.productService.storeData(form.value).subscribe(res=>{
+            // console.log(form.value);
+
+    })
+    this.router.navigateByUrl('profile/this.Product_id');
   }
-
-
-
-
-  addProduct(productform:NgForm){
-    const product:Product=productform.value;
-    console.log(productform.value)
-    // this.userServer.addedprudect(product);
-    this.router.navigateByUrl('profile');
-
-  }
-  getProductById(){
-    const id = +this.activatedRoute.snapshot.params['id'];
-    this.product = this.productService.getProductById(id)!;
-    console.log(this.product)
+    else if(this.activatedRoute.snapshot.url[0].path=='edit'){
+      this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
+        console.log(res);
+        this.router.navigateByUrl('profile/this.Product_id');
+})}
     }
-}
+
+  }

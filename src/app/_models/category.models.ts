@@ -7,7 +7,10 @@ export interface Category{
     image?: string;
     name:string;
 }
+export interface Categorys{
+    image?: string;
 
+}
 
 export interface getAllCategoryData{
     data:Product[];

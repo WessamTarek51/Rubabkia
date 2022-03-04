@@ -108,3 +108,6 @@ ul{
 .wishlist i {
     color: #ff7676
 }
+#logout{
+    cursor: pointer;
+}

@@ -11,5 +11,10 @@ export interface User{
     password:string;
     products?:Product[];
     purchases?:Purchase[];
+    // email:string;
+    // phone_number:number;
+    // address:string;
+    // password:string;
+    product?:Product[];
 }
 

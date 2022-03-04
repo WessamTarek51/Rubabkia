@@ -1,10 +1,13 @@
 import { UserData } from './../_models/data.model';
-import { HttpClient } from '@angular/common/http';
 // import { Product } from './../_models/product.models';
 
 import { User } from './../_models/user.models';
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
+import { environment } from 'src/environments/environment';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,15 +36,39 @@ export class UserServicesService {
   //     isFav:false,}]
   // };
 
-  constructor(private HttpClient:HttpClient) { }
+
+  constructor(private http:HttpClient) { }
   deleteProductOfUser(product:Product){
-    return this.HttpClient.delete('http://127.0.0.1:8000/api/products/'+product.id);
+    return this.http.delete('http://127.0.0.1:8000/api/products/'+product.id);
   }
 //  addedprudect(product:Product){
 //     console.log(product.name);
 //    this.user.product?.push(product);
 // }
   getData(){
-    return this.HttpClient.get<UserData>('http://127.0.0.1:8000/api/oo/1');
+    return this.http.get<UserData>('http://127.0.0.1:8000/api/oo/1');
   }
+  
+
+    registeruser(data:any){
+    const headers=new HttpHeaders()
+  return this.http.post(environment.apiUrl+'/api/register',data,{
+    headers:headers
+     }
+  );
+    }
+    loginuser(data:any){
+      return this.http.post(environment.apiUrl+'/api/login',data)
+        }
+    forgetpass(email:string){
+      return this.http.post(environment.apiUrl+'/api/forget',{email:email})
+    }
+    resetpass(token:any,password:string,confirmpass:string){
+      const data={
+        token:token,
+        password:password,
+        confirmpassword:confirmpass
+      }
+      return this.http.post(environment.apiUrl+'/api/reset',data)
+    }
 }

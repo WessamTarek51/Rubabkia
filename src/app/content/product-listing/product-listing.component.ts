@@ -28,14 +28,21 @@ search(){
       this.productData= res.data.filter(value => value.name === this.searchText)
       // this.productData = res.data;
       
-    },
-
-  )
-  // debugger
+    },)
   console.log(this.searchText);
   console.log(this.searchText);
 }
+searchas(){
+  this.service.getAllProducts().subscribe(
+    (res)=>{
+      
+      this.productData= res.data
+      // this.productData = res.data;
+      
+    },
 
+  )
+}
 // productDataa=[
 //   {product: 'shows'},
 //   {product: 'dress'},
@@ -47,17 +54,13 @@ search(){
   // productselected!:number;
   ngOnInit(): void {
     
+    
     this.service.getAllProducts().subscribe(
       (res)=>{
         this.productData = res.data;
       },
 
     )
-
-  //  this.productData=this.service.products;
-
-    // this.getproduct();
-
   }
 
   onFav(product:Product){
@@ -76,16 +79,10 @@ search(){
     });
   }
 
-
-  //   getproductcat(){
-  //     this.service.getData().subscribe(res=>{
-
-  //         console.log(res);
+  // seacrhProduct(seacrhInput:string){
     
-  //          this.dataCat=res;
-           
-  //     });
+  //   console.log(seacrhInput)
+  //   this.service.search(seacrhInput);
   // }
-
 
 }

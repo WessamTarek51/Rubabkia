@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  products:Product[]=[];
-  // [
+  private filterProduct: Product[]=[];
+  products:Product[]=
+  [
   //   {id:1,
   //   name:"aaaaaaa",
   //   price:20,
@@ -19,58 +20,28 @@ export class ProductServiceService {
   //   user:{id:1,username:"basma",image:"https://source.unsplash.com/random/200x200?sig=3",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
   //   isFav:false,
   // },
-  // {id:2,
-  //   name:"bbbbbbb",
-  //   price:30,
-  //   image:"https://source.unsplash.com/random/200x200?sig=3",
-  //   description:"hhh jgugugb jhugui",
-  //   category:{id:2,name:"clothing",image:"https://source.unsplash.com/random/200x200?sig=4"},
-  //   user:{id:1,username:"hemmat",image:"https://source.unsplash.com/random/200x200?sig=3",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
-  //   isFav:false,
 
-  // },
-  // {id:3,
-  //   name:"ccccc",
-  //   price:40,
-  //   image:"https://source.unsplash.com/random/200x200?sig=5",
-  //   description:"hhh jgugugb jhugui",
-  //   category:{id:3,name:"electric",image:"https://source.unsplash.com/random/200x200?sig=6"},
-  //   user:{id:1,username:"menna",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
-  //   isFav:false,
 
-  // },
-  // {id:4,
-  //   name:"dddddd",
-  //   price:50,
-  //   image:"https://source.unsplash.com/random/200x200?sig=7",
-  //   description:"hhh jgugugb jhugui",
-  //   category:{id:1,name:"food",image:"https://source.unsplash.com/random/200x200?sig=8"},
-  //   user:{id:1,username:"shimaaa",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
-  //   isFav:false,
 
-  // },
-  // {id:5,
-  //   name:"dddddd",
-  //   price:50,
-  //   image:"https://source.unsplash.com/random/200x200?sig=7",
-  //   description:"hhh jgugugb jhugui",
-  //   category:{id:2,name:"clothing",image:"https://source.unsplash.com/random/200x200?sig=8"},
-  //   user:{id:1,username:"shimaaa",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
-  //   isFav:false,
 
-  // },
+  ];
 
-  // ];
-  // cartHasBeenChanged: EventEmitter<Product[]>= new EventEmitter<Product[]>();
 
-  constructor(private HttpClient:HttpClient) { }
+  constructor(private HttpClient:HttpClient) {
+    for(let i of this.products){
+      this.filterProduct.push(i);
+      }
+   }
+
 
 
   getData(){
     // console.log("done");
     return this.HttpClient.get('http://127.0.0.1:8000/api/products');
-   
+
   }
+
+
   favProduct(product:Product){
     for(let i of this.products){
       if(i.id == product.id){
@@ -84,13 +55,22 @@ export class ProductServiceService {
   }
 }
   }
+
   getAllProducts():Observable<getAllProductsData> {
-    // return this.products;
+    //
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products');
   }
-  getProductById(id:number){
-    // return this.products.find(product => product.id===id)
-return this.products.find(Product=>Product.id===id)
+//   getProductById(id:number){
+//     // return this.products.find(product => product.id===id)
+// return this.products.find(Product=>Product.id===id)
+//   }
+
+
+/////////////////Add product////////////////////
+  storeData(data:any):Observable<Product[]>{
+    console.log(data);
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data);
+
   }
 
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
@@ -99,7 +79,38 @@ return this.products.find(Product=>Product.id===id)
   }
 
 
+
+
+  geteditData(id:number){
+    console.log("done");
+
+   return this.HttpClient.get('http://127.0.0.1:8000/api/products/'+id);
+
+ }
+
+  /////////////////Update product////////////////////
+  updateData(id:number,data:any):Observable<Product[]>{
+
+    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
+
+  }
+
+
   
+  // search(seacrhInput:string){
+  //   this.filterProduct.splice(0,this.filterProduct.length);
+  //   for(let i of this.products){
+  //     if(i.name.includes(seacrhInput)){
+  //       this.filterProduct.push(i)
+  //     }
+  //   }
+  //   console.log(this.filterProduct.length)
+  //  }
+
+  //  getFilter(): Product[]{
+  //    return this.filterProduct 
+  //  }
+
 }
 
 
