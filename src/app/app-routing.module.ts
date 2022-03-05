@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
   {path:'profile/:id',component:ProfileComponent},
-  {path:'chat',component:ChatUserComponent},
+  {path:'chat/:id',component:ChatUserComponent},
   {path:'fav',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
   {path:'edit/:id',component:AddEditComponent},

@@ -83,6 +83,22 @@ authToken: any;
         password:password,
         confirmpassword:confirmpass
       }
+
       return this.http.post(environment.apiUrl+'/api/reset',data)
+    }
+
+    getUsers(userIDs:Number[]){
+      const body = { 'id':userIDs};
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.http.post<User[]>('http://127.0.0.1:8000/api/userbyId',body,{headers});
+    }
+    getSenderById(senderID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+senderID);
+
+    }
+    getReciverById(receiverID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+receiverID);
+
     }
 }

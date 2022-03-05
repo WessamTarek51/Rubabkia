@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-3 col-sm-6" *ngFor="let product of productData | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLength}">
 
-          <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" height="100px" />
+          <img src="http://127.0.0.1:8000/storage/products/{{product.image}}"/>
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
             <p>{{product.price}}</p>

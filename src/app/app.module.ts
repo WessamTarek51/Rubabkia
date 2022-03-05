@@ -39,9 +39,9 @@ import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.c
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 import { FirebaseApp } from '@angular/fire/app';
-//import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
-//firebase.initializeApp(environment.firebaseConfig);
+firebase.initializeApp(environment.firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent,

@@ -2,8 +2,9 @@ import { Purchase } from './purchase.models';
 import { Product } from "./product.models";
 
 export interface User{
-    id?: number;
+    id: number;
     username:string;
+    name:string;
     image?: string;
     email:string;
     phoneNumber:number;
