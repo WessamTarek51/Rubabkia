@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -92,11 +93,22 @@ export class ProductServiceService {
     //
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products');
   }
-//   getProductById(id:number){
-//     // return this.products.find(product => product.id===id)
-// return this.products.find(Product=>Product.id===id)
-//   }
 
+   //getProductById(id:number){
+ //return this.products.find(product => product.id===id)
+//return this.products.find(Product=>Product.id===id)
+  // }
+
+
+ 
+  ////////////////////Show Detailes of product//////////
+  getDetailesOfProduct(id:number){
+    console.log("done");
+
+   return this.HttpClient.get('http://127.0.0.1:8000/api/product/'+id);
+
+ }
+      
 
 /////////////////Add product////////////////////
   storeData(data:any):Observable<Product[]>{

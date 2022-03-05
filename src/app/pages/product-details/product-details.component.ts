@@ -10,8 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   getId:any;
+  Product_id:any;
   product!:Product[];
-  constructor(private router: Router,private param:ActivatedRoute,private service:ProductServiceService) { }
+  constructor(private router: Router,
+    private param:ActivatedRoute,
+    private service:ProductServiceService,
+    private productService:ProductServiceService ,
+     private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getId=this.param.snapshot.paramMap.get('id');
@@ -21,12 +26,44 @@ export class ProductDetailsComponent implements OnInit {
             return value.id==this.getId;
 });
   }
+  this.Product_id=this.activatedRoute.snapshot.params['id'];
+
+  this.productService.getDetailesOfProduct(this.Product_id).subscribe(
+    (res:any)=>{
+        console.log(res.data);
+       this.product=res.data;
+  
+  
+    }
+    )
   }
 
+ /*  getDetailesOfProduct(){
+    this.service.getData().subscribe(res=>{
+      this.product=res;
+    });
+  } */
+
+  
+
+
+  /* getuser(){
+    this.service.getData().subscribe(res=>{
+      //let profile=JSON.parse(res.toString())
+  
+        //  console.log(profile);
+        console.log(res);
+  
+         this.user=res.data;
+        //  console.log(this.user.products?.length)
+    });
+  } */
 
  btnClick() {
         this.router.navigateByUrl('/chat');
 };
+
+
 
 
 }
