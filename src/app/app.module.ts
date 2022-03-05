@@ -27,13 +27,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 const appRoutes: Routes=[
   {path:'',component:ProfileComponent}
 ];
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
@@ -63,18 +64,23 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     NgxPaginationModule,
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+<<<<<<< HEAD
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
 
+=======
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+>>>>>>> 5b6900810b994fad356fd52bb7032bdd80855b48
 
   ],
   providers: [ProductServiceService],

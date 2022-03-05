@@ -36,6 +36,7 @@
           <div class="row" *ngIf="user.products">
             <div class="col-md-3 col-sm-6"   *ngFor="let product of user.products" >
             <img src="http://127.0.0.1:8000/storage/images/{{product.image}}" />
+            <!-- <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" /> -->
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
