@@ -70,17 +70,14 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-<<<<<<< HEAD
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
 
-=======
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
->>>>>>> 5b6900810b994fad356fd52bb7032bdd80855b48
 
   ],
   providers: [ProductServiceService],
