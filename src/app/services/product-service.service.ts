@@ -67,8 +67,11 @@ export class ProductServiceService {
 
 /////////////////Add product////////////////////
   storeData(data:any):Observable<Product[]>{
-    const headers=new  HttpHeaders;
-    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products/',data,{
+    const headers=new HttpHeaders({
+
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    });
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data,{
       headers:headers
     });
   }
@@ -88,8 +91,13 @@ export class ProductServiceService {
 
   /////////////////Update product////////////////////
   updateData(id:number,data:any):Observable<Product[]>{
-    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
+    const headers=new HttpHeaders({
 
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    })
+    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data,{
+      headers:headers
+    });
   }
 
 
