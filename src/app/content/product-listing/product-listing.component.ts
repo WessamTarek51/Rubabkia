@@ -11,7 +11,7 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 export class ProductListingComponent implements OnInit {
   product = {} as Product;
 productData!:Product[];
-// listproducts!:Product[];
+
 fav:boolean=false;
 
 totalLength:any;
@@ -25,27 +25,30 @@ search(){
   this.service.getAllProducts().subscribe(
     (res)=>{
       
-      this.productData= res.data.filter(value => value.name === this.searchText)
+      this.productData= res.data.filter(value => value.name.match(this.searchText)  || value.price <= this.searchText )
+      // this.productData = res.data;
+      
+    },)
+  console.log(this.searchText);
+  console.log(this.searchText);
+}
+searchas(){
+  this.service.getAllProducts().subscribe(
+    (res)=>{
+      
+      this.productData= res.data
       // this.productData = res.data;
       
     },
 
   )
-  // debugger
-  console.log(this.searchText);
-  console.log(this.searchText);
 }
 
-// productDataa=[
-//   {product: 'shows'},
-//   {product: 'dress'},
-//   {product: 'haaaat'},
-//   {product: 'accesory'}
-// ];
 
   constructor(public service:ProductServiceService) { }
   // productselected!:number;
   ngOnInit(): void {
+    
     
     this.service.getAllProducts().subscribe(
       (res)=>{
@@ -53,11 +56,6 @@ search(){
       },
 
     )
-
-  //  this.productData=this.service.products;
-
-    // this.getproduct();
-
   }
 
   onFav(product:Product){
@@ -75,17 +73,5 @@ search(){
 
     });
   }
-
-
-  //   getproductcat(){
-  //     this.service.getData().subscribe(res=>{
-
-  //         console.log(res);
-    
-  //          this.dataCat=res;
-           
-  //     });
-  // }
-
 
 }

@@ -11,8 +11,30 @@ import { environment } from './../../environments/environment';
 })
 export class ProductServiceService {
   products:Product[]=[];
+  private filterProduct: Product[]=[];
+  // products:Product[]=
+  // [
+  // //   {id:1,
+  // //   name:"aaaaaaa",
+  // //   price:20,
+  // //   image:"https://source.unsplash.com/random/200x200?sig=1",
+  // //   description:"hhh jgugugb jhugui",
+  // //   category:{id:1,name:"food",image:"https://source.unsplash.com/random/200x200?sig=2"},
+  // //   user:{id:1,username:"basma",image:"https://source.unsplash.com/random/200x200?sig=3",email:"wessam@gmail.com",phoneNumber:1124879180,address:"cairo",password:"1234"},
+  // //   isFav:false,
+  // // },
 
-  constructor(private HttpClient:HttpClient) { }
+
+
+
+  // ];
+
+
+  constructor(private HttpClient:HttpClient) {
+    for(let i of this.products){
+      this.filterProduct.push(i);
+      }
+   }
 
 
 
