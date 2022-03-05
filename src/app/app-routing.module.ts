@@ -12,20 +12,28 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
+
   {
   path:'profile',component:ProfileComponent,
   canActivate:[AuthGuard]
   },
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
+
+  {path:'getstarted',component:GetstartedComponent },
+
   {path:'chat',component:ChatUserComponent},
   {path:'fav',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
-  {path:'category/:id',component:ProductsofcategoryComponent},
-  {path:'profile',children:[
+  {path:'category/:id',component:ProductsofcategoryComponent,children:[
+    {path:'show/:id',component:ProductDetailsComponent},
+
+  ]},
+  {path:'profile/',children:[
   {path:'edit/:id',component:AddEditComponent},
 ]
 },

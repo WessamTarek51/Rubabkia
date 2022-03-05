@@ -14,5 +14,12 @@ export interface Product{
     isFav:boolean;
 }
 
+export interface getAllProductsData{
+    data:Product[];
+
+    // name:string;
+    // price: number;
+    // image?: string;
+}
 
 

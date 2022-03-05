@@ -5,10 +5,7 @@ import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
-
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 import { User } from 'src/app/_models/user.models';
 
 
@@ -22,11 +19,9 @@ import { User } from 'src/app/_models/user.models';
 export class AddEditComponent implements OnInit {
   productArray!:Product[];
   categoryArray!: Category[];
-
   editMode=false;
   product={} as Product;
-productuser!: User;
-
+  productuser!: User;
 
   constructor(private CategoryService:CategoryServiceService ,
     private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
@@ -47,19 +42,19 @@ productuser!: User;
 
   }
   getAllCategories() {
-    this.categoryArray = this.CategoryService.getAllcategories();
+    // this.categoryArray = this.CategoryService.getAllcategories();
   }
   getAllProducts() {
-    this.productArray = this.productService.getAllProducts();
+    // this.productArray = this.productService.getAllProducts();
   }
 
 
- 
+
 
   addProduct(productform:NgForm){
     const product:Product=productform.value;
     console.log(productform.value)
-    this.userServer.addedprudect(product);
+    // this.userServer.addedprudect(product);
     this.router.navigateByUrl('profile');
 
   }

@@ -15,6 +15,7 @@ token:any;
   form!:FormGroup;
   submitted=false;
   data:any;
+  result:any;
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router) { }
 
@@ -43,12 +44,13 @@ token:any;
      if(this.data.status === 1){
        this.token=this.data.access_token
        localStorage.setItem('token',this.token)
-       this.router.navigate([''])
+       
 
        this.toaster.success(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
          timeOut:2000,
          progressBar:true
        });
+       this.router.navigate([''])
       }
      else{
        this.toaster.error(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
@@ -61,7 +63,8 @@ token:any;
        
    
    })
- }
+   
+  }
 
  
 

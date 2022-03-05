@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
+
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -25,6 +26,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+
+import { RouterModule,Routes } from '@angular/router';
+import { GetstartedComponent } from './pages/getstarted/getstarted.component';
+
+
+const appRoutes: Routes=[
+  {path:'',component:ProfileComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +54,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
+    GetstartedComponent,
 
   ],
   imports: [
@@ -54,10 +65,13 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
+
     HttpClientModule,
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
-    
+    RouterModule.forRoot(appRoutes),
+   
+
   ],
   providers: [],
   bootstrap: [AppComponent]
