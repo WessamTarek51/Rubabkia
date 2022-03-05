@@ -38,6 +38,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
+import { FirebaseApp } from '@angular/fire/app';
+//import * as firebase from 'firebase';
+
+//firebase.initializeApp(environment.firebaseConfig);
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +78,6 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
     ToastrModule.forRoot(),
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
-
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
