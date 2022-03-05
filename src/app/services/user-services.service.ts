@@ -51,12 +51,13 @@ export class UserServicesService {
 //    this.user.product?.push(product);
 // }
 authToken: any;
-  getData(){
+  getData():Observable<UserData>{
     // this.loadToken();
-    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')});
+    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
     return this.http.get<UserData>('http://127.0.0.1:8000/api/profile',{ headers});
   }
+
   // public loadToken() {
   //   const token = localStorage.getItem('id_token');
   //   this.authToken = token;

@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Message } from 'src/app/_models/message.models';
+
 
 @Component({
   selector: 'app-chat-user',
@@ -7,9 +13,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatUserComponent implements OnInit {
 
-  constructor() { }
+  senderRef!: AngularFireList<Message> ;
+  receiverRef!: AngularFireList<Message> ;
+  messages!:Message[];
+  messageObj!:Message
+  @ViewChild('messageInput') messageElement!: ElementRef;
 
+  receiverID = 1
+  senderID = parseInt(localStorage.getItem('user_id')!)
+
+  constructor(public db: AngularFireDatabase){
+
+    this.senderRef = db.list('/chat/' + this.senderID + '/' +this.receiverID);
+    this.receiverRef = db.list('/chat/' + this.receiverID + '/' +this.senderID);
+   this.getChatMessages();
+
+
+  }
+
+  getChatMessages() {
+    this.senderRef!.valueChanges().subscribe(msgs=>{
+      this.messages = msgs
+      console.log(length + " " + this.messages[0].body)
+   });
+  }
   ngOnInit(): void {
+  }
+
+
+  sendMessage(message: string) {
+    this.messageElement.nativeElement.value = ''
+
+
+    this.messageObj ={
+      body: message,
+      senderID: this.senderID
+    }
+    this.senderRef.push(this.messageObj);
+    this.receiverRef.push(this.messageObj);
   }
 
 }

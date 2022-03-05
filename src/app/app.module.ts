@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,8 @@ import { RouterModule,Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 // import { Ng2SearchPipeModule} from 'ng2-search-filter';
 import { ProductServiceService } from './services/product-service.service';
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 
 const appRoutes: Routes=[
@@ -33,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +56,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
+    ListchatComponent,
+
 
   ],
   imports: [
@@ -66,9 +72,10 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     HttpClientModule,
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
-
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
-   
+  AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
+
+
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]

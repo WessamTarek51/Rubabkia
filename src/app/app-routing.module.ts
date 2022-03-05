@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
@@ -37,6 +38,8 @@ const routes: Routes = [
 },
 {path:'register',component:RegisterComponent},
 {path:'login',component:LoginComponent},
+{path:'message',component:ListchatComponent},
+
 ];
 
 @NgModule({
