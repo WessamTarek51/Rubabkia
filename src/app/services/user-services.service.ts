@@ -102,6 +102,12 @@ authToken: any;
        return this.http.get(environment.apiUrl+'/api/verify-email/'+id+'/'+hash,{headers:header})
      }
 
+     edit(data:any):Observable<UserData>{
+      const headers = new HttpHeaders({'Authorization': 'Bearer ' +localStorage.getItem('token')})
+       
+       return this.http.post<UserData>(environment.apiUrl+'/api/editProfile',data,{headers})
+     }
+  
 //  addedprudect(product:Product){
 //     console.log(product.name);
 //    this.user.product?.push(product);

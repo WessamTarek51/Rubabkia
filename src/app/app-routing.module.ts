@@ -12,7 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-
+import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 const routes: Routes = [
@@ -45,6 +45,7 @@ const routes: Routes = [
   {path:'edit/:id',component:AddEditComponent},
 ]
 },
+{path:'editprofile',component:EditprofileComponent},
 {path:'register',component:RegisterComponent},
 {path:'login',component:LoginComponent},
 {path:'message',component:ListchatComponent},
