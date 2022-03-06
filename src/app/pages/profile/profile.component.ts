@@ -13,6 +13,8 @@ import { Route, Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 user!:User;
 data!:UserData;
+showSppiner:boolean = true;
+
 
   constructor(private router: Router,private service:UserServicesService) { }
 
@@ -45,6 +47,7 @@ getuser(){
       console.log(res);
 
        this.user=res.data;
+       this.showSppiner=false;
       //  console.log(this.user.products?.length)
   });
 }
