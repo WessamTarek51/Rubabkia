@@ -29,7 +29,7 @@ const routes: Routes = [
   {path:'add',component:AddEditComponent},
   {path:'edit/:id',component:AddEditComponent},
   {path:'category/:id',component:ProductsofcategoryComponent,children:[
-    {path:'show/:id',component:ProductDetailsComponent},
+  {path:'show/:id',component:ProductDetailsComponent},
 
   ]},
   {path:'profile/',children:[

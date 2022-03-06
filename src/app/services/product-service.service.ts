@@ -61,7 +61,10 @@ export class ProductServiceService {
 
   getAllProducts():Observable<getAllProductsData> {
     //
-    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products');
+    // const header = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token') });
+    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products'
+    // ,{headers:header}
+    );
   }
 
 
