@@ -10,6 +10,9 @@ nav{
     padding-left: 40px;
 
 }
+ul{
+    padding-right: 70px;
+}
 
 #imgg{
     width: 70px;
@@ -33,9 +36,7 @@ nav{
 .navbar-brand:hover{
     color: #6b7943;
 }
-#navbarDropdown{
-    /* color: #fff; */
-}
+
 
 .navbar-brand{
     padding-left: 5%;

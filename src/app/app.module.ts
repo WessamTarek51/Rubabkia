@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,21 +20,41 @@ import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
-import {HttpClientModule} from '@angular/common/http';
+
+
+import { RouterModule,Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+// import { Ng2SearchPipeModule} from 'ng2-search-filter';
+import { ProductServiceService } from './services/product-service.service';
+import { AngularFireModule } from '@angular/fire/compat';
+
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+
+
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
-import { RouterModule,Routes } from '@angular/router';
+
+
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 
 
 const appRoutes: Routes=[
   {path:'',component:ProfileComponent}
 ];
+
+
+import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
+import { FirebaseApp } from '@angular/fire/app';
+import * as firebase from 'firebase/app';
+
+firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -54,26 +75,33 @@ const appRoutes: Routes=[
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
+
     GetstartedComponent,
+
+    ListchatComponent,
+
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     NgxPaginationModule,
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
 
+    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-   
+  RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
+  AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
+    CommonModule,
+
 
   ],
-  providers: [],
+  providers: [ProductServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

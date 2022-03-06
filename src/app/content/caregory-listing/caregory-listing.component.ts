@@ -23,10 +23,8 @@ this.service.getAllcategories().subscribe(
   (res:any)=>{
     this.category = res.data
   },
-  // (err)=>{},
-  // ()=>{},
 
-  
+
 
 )
 

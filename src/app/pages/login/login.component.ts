@@ -26,7 +26,7 @@ token:any;
     this.form=new FormGroup({
     email:new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required,Validators.minLength(8)]),
-   
+
   })
   }
   get f(){
@@ -39,12 +39,14 @@ token:any;
    }
    this.userservice.loginuser(this.form.value).subscribe(res=>{
      this.data=res
-    
+
      // console.log(this.data);
      if(this.data.status === 1){
        this.token=this.data.access_token
        localStorage.setItem('token',this.token)
-       
+       localStorage.setItem('user_id',this.data.id)
+
+       this.router.navigate([''])
 
        this.toaster.success(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
          timeOut:2000,
@@ -58,14 +60,14 @@ token:any;
          progressBar:true
        });
      }
-    
 
-       
-   
+
+
+
    })
    
   }
 
- 
+
 
 }

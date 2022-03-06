@@ -3,9 +3,13 @@
         <h2> Products </h2>
 
       <div class="row">
-        <div class="col-md-3 col-sm-6" *ngFor="let product of filteredproducts ">
+        <div class="col-md-3 col-sm-6" *ngFor="let product of filteredproducts
+         ">
+        <!-- ?.filteredproducts_getAllProductsDatacategory?.filteredproducts -->
 
-          <img src="{{product.image}}" />
+          <!-- let c of weapons?.weapon_category?.weapons -->
+
+          <img src="http://127.0.0.1:8000/storage/products/{{product.image}}"/>
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
             <p>{{product.price}}</p>

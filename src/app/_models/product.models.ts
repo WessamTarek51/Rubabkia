@@ -6,7 +6,7 @@ import { Category } from "./category.models";
 export interface Product{
     id?: number;
     name:string;
-    price: number;
+    price: string;
     image?: string;
     description:string;
     category:Category;
@@ -21,5 +21,11 @@ export interface getAllProductsData{
     // price: number;
     // image?: string;
 }
+
+
+export interface proData{
+    data:Product;
+  }
+
 
 

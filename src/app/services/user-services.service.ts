@@ -1,4 +1,6 @@
+import { Observable } from 'rxjs';
 import { UserData } from './../_models/data.model';
+
 
 // import { Product } from './../_models/product.models';
 
@@ -7,14 +9,18 @@ import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+
 
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class UserServicesService {
+
   // user:User=
   //   {id:1,
   //   name:"basam",
@@ -41,15 +47,27 @@ export class UserServicesService {
 
   constructor(private http:HttpClient) { }
 
-
   deleteProductOfUser(product:Product){
     return this.http.delete('http://127.0.0.1:8000/api/products/'+product.id);
   }
+//  addedprudect(product:Product){
+//     console.log(product.name);
+//    this.user.product?.push(product);
+// }
+authToken: any;
+  getData():Observable<UserData>{
+    // this.loadToken();
+    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  addedprudect(product:Product){
-    console.log(product.name);
-    // this.user.product?.push(product);
-    }
+    return this.http.get<UserData>('http://127.0.0.1:8000/api/profile',{ headers});
+  }
+
+  // public loadToken() {
+  //   const token = localStorage.getItem('id_token');
+  //   this.authToken = token;
+  // }
+
+
 
     registeruser(data:any){
     const headers=new HttpHeaders()
@@ -70,8 +88,10 @@ export class UserServicesService {
         password:password,
         confirmpassword:confirmpass
       }
+
       return this.http.post(environment.apiUrl+'/api/reset',data)
     }
+
     verifyemail(token:any):Observable<any>{
      const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
       return this.http.post(environment.apiUrl+'/api/email/verification-notification',null,{headers:header})
@@ -86,9 +106,21 @@ export class UserServicesService {
 //     console.log(product.name);
 //    this.user.product?.push(product);
 // }
-  getData(){
-    
-    return this.http.get<UserData>('http://127.0.0.1:8000/api/oo/1');
-  }
+
+
+    getUsers(userIDs:Number[]){
+      const body = { 'id':userIDs};
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.http.post<User[]>('http://127.0.0.1:8000/api/userbyId',body,{headers});
+    }
+    getSenderById(senderID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+senderID);
+
+    }
+    getReciverById(receiverID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+receiverID);
+
+    }
 
 }

@@ -16,7 +16,10 @@
    </div>
      <div class="row">
          <div class="col-4" *ngFor="let category of category| paginate:{itemsPerPage:3,currentPage:page,totalItems:totalLength}" >
-           <img src="{{category.image}}" />
+ 
+          <img src="../../../assets/img/{{category.image}}" />
+
+ 
            <a href="" [routerLink]="['category',category.id]"><h3>{{category.name}}</h3></a>
          </div>
 

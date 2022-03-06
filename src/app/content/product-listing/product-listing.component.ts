@@ -11,30 +11,53 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 export class ProductListingComponent implements OnInit {
   product = {} as Product;
 productData!:Product[];
+
 fav:boolean=false;
 
 totalLength:any;
 page:number=1;
 
-  constructor(public service:ProductServiceService) { }
+dataCat:any;
 
+searchText!:string;
+search(){
+  
+  this.service.getAllProducts().subscribe(
+    (res)=>{
+      
+      this.productData= res.data.filter(value => value.name.match(this.searchText)  || value.price <= this.searchText )
+      // this.productData = res.data;
+      
+    },)
+  console.log(this.searchText);
+  console.log(this.searchText);
+}
+searchas(){
+  this.service.getAllProducts().subscribe(
+    (res)=>{
+      
+      this.productData= res.data
+      // this.productData = res.data;
+      
+    },
+
+  )
+}
+
+
+  constructor(public service:ProductServiceService) { }
+  // productselected!:number;
   ngOnInit(): void {
+    
+    
     this.service.getAllProducts().subscribe(
       (res)=>{
         this.productData = res.data;
       },
 
     )
-
-  //  this.productData=this.service.products;
-
-    // this.getproduct();
-
   }
-  // onItemAdded(){
-  //   this.service.addProductToCart(this.product);
 
-  // }
   onFav(product:Product){
    this.service.favProduct(product);
   }
@@ -47,8 +70,8 @@ page:number=1;
   
         //  this.product=res.data;
          console.log(this.product);
+
     });
   }
-
 
 }

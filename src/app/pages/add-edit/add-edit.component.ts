@@ -7,10 +7,13 @@ import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user.models';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-
-
-
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 @Component({
   selector: 'app-add-edit',
   templateUrl: './add-edit.component.html',
@@ -22,45 +25,97 @@ export class AddEditComponent implements OnInit {
   editMode=false;
   product={} as Product;
   productuser!: User;
-
-  constructor(private CategoryService:CategoryServiceService ,
-    private productService:ProductServiceService ,private userServer:UserServicesService,private router:Router,private activatedRoute:ActivatedRoute)
+ Product_id:any;
+  editproduct:any;
+file:any;
+imageData:any;
+DirectImage:any='http://127.0.0.1:8000/public/products/';
+   constructor(private CategoryService:CategoryServiceService ,
+    private productService:ProductServiceService ,
+    private userServer:UserServicesService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private httpClient: HttpClient,
+    private toastr: ToastrService,
+    private FormBuilder:FormBuilder,
+    )
     { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params)
-    console.log(this.activatedRoute.snapshot.url[0].path)
+    console.log(this.activatedRoute.snapshot.params['id']);
+    console.log(this.activatedRoute.snapshot.url[0].path);
+
     if(this.activatedRoute.snapshot.url[0].path=='edit'){
-      this.editMode=true
-    }
-    if(this.editMode){
-      this.getProductById();
+      this.editMode=!this.editMode
     }
 
-    this.getAllCategories();
- this.getAllProducts();
+
+
+/////////////////return product by id  to edit in DB//////////////////////
+this.Product_id=this.activatedRoute.snapshot.params['id'];
+
+this.productService.geteditData(this.Product_id).subscribe(
+  (res:any)=>{
+      console.log(res.data);
+     this.product=res.data;
+
 
   }
-  getAllCategories() {
-    // this.categoryArray = this.CategoryService.getAllcategories();
+  )
+
+      ///////////to select category //////////////////////
+
+      this.CategoryService.getAllcategories().subscribe(
+        (res:any)=>{
+          this.categoryArray = res.data
+
+        }
+        )
   }
-  getAllProducts() {
-    // this.productArray = this.productService.getAllProducts();
-  }
 
 
+/////////////////////////////upload image//////////////////////
 
-
-  addProduct(productform:NgForm){
-    const product:Product=productform.value;
-    console.log(productform.value)
-    // this.userServer.addedprudect(product);
-    this.router.navigateByUrl('profile');
-
-  }
-  getProductById(){
-    const id = +this.activatedRoute.snapshot.params['id'];
-    this.product = this.productService.getProductById(id)!;
-    console.log(this.product)
-    }
+  uploadImage(event:any){
+     this.file =event.target.files[0];
+ console.log( this.file);
 }
+
+  ///////////////// (onSubmit) add/update product in DB   //////////////////////
+
+  onSubmit(form:NgForm){
+
+//////////////////////Add ///////////
+    if(this.activatedRoute.snapshot.url[0].path=='add'){
+
+      form.value.image=(this.file,this.file.name);
+      const formm=new FormData();
+       formm.append('image',this.file,this.file.image);
+       formm.append('category_id',form.value.category_id);
+       formm.append('name',form.value.name);
+       formm.append('price',form.value.price);
+       formm.append('description',form.value.description);
+        this.productService.storeData(formm).subscribe(res=>{
+            //  console.log(form.value);
+
+    })
+
+    this.router.navigateByUrl('profile/this.Product_id');
+  }
+////////////////////////edit//////////////
+    else if(this.activatedRoute.snapshot.url[0].path=='edit'){
+
+      // const formmm=new FormData();
+      // formmm.append('image', this.product.image);
+      // formmm.append('category_id',this.product.category.id);
+      // formmm.append('name',this.product.name);
+      // formmm.append('price',this.product.price);
+      // formmm.append('description',this.product.description);
+
+      this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
+        console.log(res);
+        this.router.navigateByUrl('profile/this.Product_id');
+})}
+    }
+
+  }
