@@ -16,6 +16,8 @@ export class ChatUserComponent implements OnInit {
   sender!:User;
   receiver!:User;
   data!:UserData;
+  showSppiner:boolean = true;
+
 
 
   senderRef!: AngularFireList<Message> ;
@@ -42,6 +44,7 @@ this.getReciverById();
     this.senderRef!.valueChanges().subscribe(msgs=>{
       this.messages = msgs
       console.log(length + " " + this.messages[0].body)
+      this.showSppiner=false;
    });
   }
   ngOnInit(): void {

@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
 user!:User;
 data!:UserData;
 result:any;
+showSppiner:boolean = true;
+
 
 token=localStorage.getItem('token');
   constructor(private router: Router,private service:UserServicesService,private toaster:ToastrService) { }
@@ -47,6 +49,7 @@ getuser(){
       console.log(res);
 
        this.user=res.data;
+       this.showSppiner=false;
       //  console.log(this.user.products?.length)
   });
 }

@@ -53,6 +53,7 @@ const appRoutes: Routes=[
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 import { FirebaseApp } from '@angular/fire/app';
 import * as firebase from 'firebase/app';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -79,6 +80,7 @@ firebase.initializeApp(environment.firebaseConfig);
     GetstartedComponent,
 
     ListchatComponent,
+    LoadingComponent,
 
 
 

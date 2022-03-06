@@ -16,6 +16,7 @@ export class ListchatComponent implements OnInit {
   chatRef!: AngularFireList<Number> ;
   userIDs:Number[] = [];
   currentUserId = parseInt(localStorage.getItem('user_id')!)
+  showSppiner:boolean = true;
 
 
   constructor(private service:UserServicesService,private router:Router) {
@@ -45,6 +46,8 @@ export class ListchatComponent implements OnInit {
     this.service.getUsers(this.userIDs).subscribe(res=>{
         console.log(res);
          this.users=res;
+         this.showSppiner=false;
+
     });
   }
 
