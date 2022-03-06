@@ -101,6 +101,7 @@ this.productService.geteditData(this.Product_id).subscribe(
        formm.append('name',form.value.name);
        formm.append('price',form.value.price);
        formm.append('description',form.value.description);
+
         this.productService.storeData(formm).subscribe(res=>{
             //  console.log(form.value);
 
@@ -111,23 +112,25 @@ this.productService.geteditData(this.Product_id).subscribe(
 ////////////////////////edit//////////////
     else if(this.activatedRoute.snapshot.url[0].path=='edit'){
 
-      this.product.image=(this.file,this.file.name);
-      console.log(this.product.image);
-      console.log(this.product);
 
-      //  const formm=new FormData();
-      // formm.append('image',this.file,this.file.image);
+      form.value.image=(this.file,this.file.name);
+      const formm=new FormData();
+       formm.append('image',this.file,this.file.image);
+       formm.append('category_id',form.value.category_id);
+       formm.append('name',form.value.name);
+       formm.append('price',form.value.price);
+       formm.append('description',form.value.description);
 
-      //  formm.append('category_id',form.value.category_id);
-      //  formm.append('name',form.value.name);
-      //  formm.append('price',form.value.price);
-      //  formm.append('description',form.value.description);
-
-      this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
-        console.log(res);
-
-})}
-this.router.navigateByUrl('profile/this.Product_id');
+        this.userServer.deleteProductOfUser( this.product).subscribe(res=>{
+          console.log(this.product);
+        this.productService.storeData(formm).subscribe(res=>{})
+        })
+        this.router.navigateByUrl('profile/this.Product_id');
     }
 
-  }
+}
+
+
+
+
+}

@@ -68,7 +68,6 @@ export class ProductServiceService {
 /////////////////Add product////////////////////
   storeData(data:any):Observable<Product[]>{
     const headers=new HttpHeaders({
-
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
     return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data,{
@@ -79,7 +78,8 @@ export class ProductServiceService {
 /////////////////Add  Purchases////////////////////
   AddPurchases(data:any):Observable<Product[]>{
     const headers=new HttpHeaders({
-      'content-type' : 'application/json',
+      // 'content-type' : 'application/json',
+      // 'Content-Type':'multipart/form-data',
       'Access-Control-Allow-Origin' : '*',
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
@@ -104,13 +104,16 @@ export class ProductServiceService {
   /////////////////Update product////////////////////
   updateData(id:number,data:any):Observable<Product[]>{
     const headers=new HttpHeaders({
-'Content-Type':'application/json',
+      // 'content-type' : 'application/json',
+      'Content-Type':'multipart/form-data',
+      'Access-Control-Allow-Origin' : '*',
       'Authorization':'Bearer '+localStorage.getItem('token')
-    })
+    });
     return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data,{
       headers:headers
     });
   }
+
 
 
 
