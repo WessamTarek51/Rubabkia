@@ -11,12 +11,14 @@
         <div class="col-md-3 col-sm-6" *ngFor="let product of productData | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLength}">
 
           <img src="http://127.0.0.1:8000/storage/products/{{product.image}}"/>
+        
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
             <p>{{product.price}}</p>
             <div class="overlay-iconss">
               <a [routerLink]="['show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
-               <a style="--i:3"><i (click)="onFav(product)" [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i></a>
+               <a style="--i:3"><i (click)="onFav(product)" [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i> </a>
+               <a [routerLink]="['profile',product.id]"  (click)="deleteProduct(product)"><i class="bi bi-bag-check-fill"></i></a>
            </div>
            <!-- <i class="bi bi-suit-heart"></i> -->
            <!-- <i class="bi bi-suit-heart-fill"></i> -->
