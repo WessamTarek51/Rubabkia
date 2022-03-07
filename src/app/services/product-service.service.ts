@@ -103,13 +103,14 @@ export class ProductServiceService {
 
   /////////////////Update product////////////////////
   updateData(id:number,data:any):Observable<Product[]>{
+    console.log(data);
     const headers=new HttpHeaders({
-      // 'content-type' : 'application/json',
-      'Content-Type':'multipart/form-data',
-      'Access-Control-Allow-Origin' : '*',
+      //  'Accept' : 'application/json',
+      // 'Content-Type':'multipart/form-data',
+      // 'Access-Control-Allow-Origin' : '*',
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
-    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data,{
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/image/'+id,data,{
       headers:headers
     });
   }
