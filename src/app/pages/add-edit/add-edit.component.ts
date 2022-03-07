@@ -111,11 +111,14 @@ this.productService.geteditData(this.Product_id).subscribe(
   }
 ////////////////////////edit//////////////
     else if(this.activatedRoute.snapshot.url[0].path=='edit'){
+      console.log( this.file);
 
 
-      form.value.image=(this.file,this.file.name);
       const formm=new FormData();
-       formm.append('image',this.file,this.file.image);
+      if(this.file!=undefined){
+        form.value.image=(this.file,this.file.name);
+        formm.append('image',this.file,this.file.image);
+      }
        formm.append('category_id',form.value.category_id);
        formm.append('name',form.value.name);
        formm.append('price',form.value.price);

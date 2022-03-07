@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
-  {path:'profile/:id',component:ProfileComponent},
+  {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
   {path:'chat',component:ChatUserComponent},
   {path:'fav',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
