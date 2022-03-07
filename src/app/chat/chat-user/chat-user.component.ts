@@ -26,10 +26,10 @@ export class ChatUserComponent implements OnInit {
   messageObj!:Message
   @ViewChild('messageInput') messageElement!: ElementRef;
 
-  receiverID = 1
+  receiverID =this.param.snapshot.params['id'];
   senderID = parseInt(localStorage.getItem('user_id')!)
 
-  constructor(public db: AngularFireDatabase,private param:ActivatedRoute,private service:UserServicesService){
+  constructor(public db: AngularFireDatabase,private param:ActivatedRoute,private service:UserServicesService,){
 
     this.receiverID = parseInt(this.param.snapshot.paramMap.get('id')!);
     this.senderRef = db.list('/chat/' + this.senderID + '/' +this.receiverID);
@@ -76,5 +76,5 @@ this.getReciverById();
     });
   }
 
-  
+
 }

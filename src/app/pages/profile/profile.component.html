@@ -11,15 +11,15 @@
                             <div class="avatar">
             <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
-                            
+                            <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
+
                             <div class="name">
-                             
-                              <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
-                             
-                              
+
+
+
                                 <h3 class="title">{{user.username}}</h3>
                                 <h6 class="title">{{user.phoneNumber}}-{{user.address}}</h6>
-                                
+
                                 <button type="button" class="colorButton"> <i class="bi bi-pencil-fill icon-padding" ></i>Edit Profile</button>
                                 <button type="button" class="colorButton"  (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add Product</button>
                                 <button type="button" class="colorButton" (click)="btnClickFav();"> <i class="fa fa-heart-o icon-padding" ></i>Fav Product</button>

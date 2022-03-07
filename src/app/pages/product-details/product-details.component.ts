@@ -9,24 +9,39 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  getId:any;
-  product!:Product[];
-  constructor(private router: Router,private param:ActivatedRoute,private service:ProductServiceService) { }
+  productt!:Product[];
+  product={} as Product;
+
+  Product_id:any;
+  constructor(private router: Router,private param:ActivatedRoute,private service:ProductServiceService, private activatedRoute:ActivatedRoute,) { }
 
   ngOnInit(): void {
-    this.getId=this.param.snapshot.paramMap.get('id');
-    console.log(this.getId,'getId');
-    if(this.getId){
-       this.product= this.service.products.filter((value)=>{
-            return value.id==this.getId;
-});
+//     this.getId=this.param.snapshot.paramMap.get('id');
+//     console.log(this.getId,'getId');
+//     if(this.getId){
+//        this.productt= this.service.products.filter((value)=>{
+//             return value.id==this.getId;
+// });
+//   }
+  this.Product_id=this.activatedRoute.snapshot.params['id'];
+
+  this.service.getDetailesOfProduct(this.Product_id).subscribe(
+    (res:any)=>{
+      console.log(res.data);
+     this.product=res.data;
+
+
   }
+  );
   }
 
 
- btnClick() {
-        this.router.navigateByUrl('/chat/1');
+ btnClick(id:number) {
+        this.router.navigateByUrl('/chat/'+id);
 };
+
+
+
 
 
 }

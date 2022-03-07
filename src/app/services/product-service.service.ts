@@ -1,3 +1,4 @@
+import { UserData } from './../_models/data.model';
 import { Product ,getAllProductsData, proData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 // import { HttpClient, HttpParams } from '@angular/common/http';
@@ -91,6 +92,13 @@ export class ProductServiceService {
     return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
 
   }
+
+  getDetailesOfProduct(id:number){
+    console.log("done");
+
+    return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id);
+
+    }
 
 
 
