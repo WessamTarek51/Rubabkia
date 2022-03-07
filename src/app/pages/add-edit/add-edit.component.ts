@@ -116,10 +116,12 @@ this.productService.geteditData(this.Product_id).subscribe(
        formm.append('price',form.value.price);
        formm.append('description',form.value.description);
 
-        this.userServer.deleteProductOfUser( this.product).subscribe(res=>{
-          console.log(this.product);
-        this.productService.storeData(formm).subscribe(res=>{})
-        })
+        // this.userServer.deleteProductOfUser( this.product).subscribe(res=>{
+        //   console.log(this.product);
+        // this.productService.storeData(formm).subscribe(res=>{})
+        // })
+      this.productService.updateData(this.Product_id,formm).subscribe(res=>{});
+
         this.router.navigateByUrl('profile/this.Product_id');
     }
 
