@@ -98,4 +98,15 @@ searchas(){
 
   }
 
+  addfav(id:any){
+    this.service.getFavProduct(id).subscribe(
+      (res)=>{
+console.log(res);
+      },
+
+    )
+
+  }
+
+
 }

@@ -5,105 +5,18 @@
     <br>
 
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3 col-sm-6" *ngFor="let item of productData" >
         <div class="img-wrap">
             <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=1" />
+            <img src="http://127.0.0.1:8000/public/products/{{item.image}}" />
         </div>
 
-        <h4>Teshirrt</h4>
+        <h4>{{item.name}}</h4>
         <div class="pri-ic">
 
           <p>$50.00</p>
           <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=2" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=3" />
-        </div>            <h4>Teshirrt</h4>
-          <div class="pri-ic">
-
-            <p>$50.00</p>
-            <div class="overlay-iconss">
-              <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-               <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-           </div>
-          </div>
-
-
-
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=4" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-3  col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=5" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=6" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
+            <a [routerLink]="['/show',item.id]" style="--i:1"><i class="fa fa-eye"></i></a>
              <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
 
          </div>
@@ -112,41 +25,6 @@
       </div>
 
 
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=7" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
-
-
-      <div class="col-md-3 col-sm-6">
-        <div class="img-wrap">
-            <span class="close">&times;</span>
-            <img src="https://source.unsplash.com/random/200x200?sig=8" />
-        </div>            <h4>Teshirrt</h4>
-        <div class="pri-ic">
-
-          <p>$50.00</p>
-          <div class="overlay-iconss">
-            <a href="" style="--i:1"><i class="fa fa-eye"></i></a>
-             <a href="" style="--i:3"> <i class="fa fa-heart"></i></a>
-
-         </div>
-        </div>
-
-      </div>
 
     </div>
 <!-- -----------------pagination---------- -->

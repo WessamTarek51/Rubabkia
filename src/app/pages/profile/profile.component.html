@@ -9,7 +9,7 @@
                     <div class="col-12" *ngIf="user" >
                        <div class="profile">
                             <div class="avatar">
-            <img src="http://127.0.0.1:8000/public/images/{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+            <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
 
@@ -44,7 +44,7 @@
          <div *ngIf="user">
           <div class="row" *ngIf="user.products">
             <div class="col-md-3 col-sm-6"   *ngFor="let product of user.products" >
-            <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" />
+            <img src="http://127.0.0.1:8000/public/products/{{product.image}}" />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
@@ -68,7 +68,7 @@
    <div *ngIf="user">
     <div class="row" *ngIf="user.products">
       <div class="col-md-3 col-sm-6"   *ngFor="let purchase of user.purchases" >
-      <img src="http://127.0.0.1:8000/storage/products{{purchase.image}}" />
+      <img src="http://127.0.0.1:8000/public/products{{purchase.image}}" />
         <h4>{{purchase.name}}</h4>
         <div class="pri-ic">
           <p>{{purchase.price}}</p>

@@ -9,15 +9,16 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router:Router) { }
    token:any
-   
+   senderID = parseInt(localStorage.getItem('user_id')!)
+
   ngOnInit(): void {
   }
 logout(){
- 
+
     localStorage.removeItem('token')
- 
+
   this.router.navigate(['/login'])
-  
+
 }
 loggedin(){
   return localStorage.getItem('token')

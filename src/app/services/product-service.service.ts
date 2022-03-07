@@ -122,7 +122,17 @@ export class ProductServiceService {
     return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id);
 
     }
+    getFavProduct(id:number){
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
+      return this.HttpClient.get('http://127.0.0.1:8000/api/like/'+id,{headers});
+    }
+    getDataFav(id:any):Observable<getAllProductsData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/showlike/'+id,{headers});
+
+    }
 
 
 

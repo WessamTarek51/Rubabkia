@@ -30,12 +30,12 @@ const routes: Routes = [
 
   {path:'getstarted',component:GetstartedComponent },
 
-  
+
 
   {path:'profile/:id',component:ProfileComponent},
   {path:'chat/:id',component:ChatUserComponent},
 
-  {path:'fav',component:FavProductsComponent},
+  {path:'fav/:id',component:FavProductsComponent},
   {path:'add',component:AddEditComponent},
   {path:'edit/:id',component:AddEditComponent},
   {path:'category/:id',component:ProductsofcategoryComponent,children:[
