@@ -54,6 +54,7 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
 import { FirebaseApp } from '@angular/fire/app';
 import * as firebase from 'firebase/app';
 import { LoadingComponent } from './pages/loading/loading.component';
+import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -81,6 +82,7 @@ firebase.initializeApp(environment.firebaseConfig);
 
     ListchatComponent,
     LoadingComponent,
+     EditprofileComponent,
 
 
 

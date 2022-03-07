@@ -31,3 +31,8 @@
         color:#464E2E;
        
     }
+    .input-group-text{
+        background-color:#464E2E !important;
+        color:white;
+         height: 40px;
+    }

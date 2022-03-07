@@ -32,10 +32,22 @@
                       
                     </div>
                     </div>
-                    <div class="mb-5">
-                      
-                      <input type="password" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid':submitted && f['password'].errors}" id="exampleInputPassword1">
-                      <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
+                    <div class="mb-5 input-group">
+                    
+                      <input [type]="show?'text':'password'" class="form-control" formControlName="password"  placeholder="Password" [ngClass]="{'is-invalid':submitted && f['password'].errors}" id="exampleInputPassword1">
+                       <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i
+                            class="fa"
+                            [ngClass]="{
+                              'fa-eye-slash': !show,
+                              'fa-eye': show
+                            }"
+                            (click)="showpass()"
+                          ></i>
+                        </span>
+                      </div>
+                       <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
                         <div *ngIf=" f['password'].errors['required']">
                             Please Enter your Password
                         </div>

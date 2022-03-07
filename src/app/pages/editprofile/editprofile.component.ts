@@ -5,21 +5,28 @@ import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router'
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-editprofile',
+  templateUrl: './editprofile.component.html',
+  styleUrls: ['./editprofile.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class EditprofileComponent implements OnInit {
+  show:boolean=false;
   file:any;
   form!:FormGroup;
   submitted=false;
   data:any;
-  show:boolean=false;
+  username:any;
+  address:any;
+  email:any;
+  phonenumber:any;
+  gender:any;
+  image:any;
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
   ngOnInit(): void {
     this.createform();
+    
   }
   createform(){
     this.form=new FormGroup({
@@ -33,8 +40,27 @@ export class RegisterComponent implements OnInit {
    
   })
   this.form.setValidators(this.MustMatch('password','confirmpassword'))
+  this.userservice.getData().subscribe(res=>{
 
-  }
+      console.log(res['data']);
+      this.username=res['data'].username;
+      this.email=res['data'].email;
+      this.address=res['data'].address;
+      this.phonenumber=res['data'].phoneNumber;
+      this.image=res['data'].image;
+      
+      this.form.patchValue({
+        name: this.username,
+        email:this.email,
+        phone_number:this.phonenumber,
+        address:this.address,
+       
+     });
+     console.log(this.username)
+      
+    
+  });
+}
   public MustMatch(controlName:string,matchingControlName:string):any{
     return (formgroup:FormGroup)=>{
            const control=formgroup.controls[controlName];
@@ -68,23 +94,16 @@ export class RegisterComponent implements OnInit {
     formdata.append("phone_number",this.form.get('phone_number')?.value)
     formdata.append('image',this.file,this.file.name)
     console.log(formdata)
-    this.userservice.registeruser(formdata).subscribe(res=>{
+    this.userservice.edit(formdata).subscribe(res=>{
       this.data=res
-      // console.log(this.data);
+      console.log(this.data)
       if(this.data.status === 1){
         this.toaster.success(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
           timeOut:2000,
           progressBar:true
         });
-        this.submitted=false
-        this.form.get('name')?.reset()
-        this.form.get('password')?.reset()
-        this.form.get('confirmpassword')?.reset()
-        this.form.get('email')?.reset
-        this.form.get('phone_number')?.reset()
-        this.form.get('address')?.reset()
-        this.form.get('email')?.reset()
-        this.router.navigate([''])
+        this.router.navigate(['profile'])
+        
       }
       else{
         this.toaster.error(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
@@ -104,8 +123,9 @@ export class RegisterComponent implements OnInit {
     console.log(this.file);
   }
   
-  showpass(){
-    this.show=!this.show
-  }
+ showpass(){
+   this.show=!this.show
+ }
+
 
 }
