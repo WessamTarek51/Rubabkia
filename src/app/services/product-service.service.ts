@@ -77,17 +77,17 @@ export class ProductServiceService {
   }
 
 /////////////////Add  Purchases////////////////////
-  AddPurchases(data:any):Observable<Product[]>{
-    const headers=new HttpHeaders({
-      // 'content-type' : 'application/json',
-      // 'Content-Type':'multipart/form-data',
-      'Access-Control-Allow-Origin' : '*',
-      'Authorization':'Bearer '+localStorage.getItem('token')
-    });
-    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases',data,{
-      headers:headers
-    });
-  }
+AddPurchases(data:any):Observable<Product[]>{
+  const headers=new HttpHeaders({
+    // 'content-type' : 'application/json',
+    // 'Content-Type':'multipart/form-data',
+    'Access-Control-Allow-Origin' : '*',
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+  return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases',data,{
+    headers:headers
+  });
+}
 
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
