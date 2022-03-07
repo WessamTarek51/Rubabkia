@@ -90,7 +90,6 @@ export class ProductServiceService {
   }
 
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
-    // return this.products;
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
   }
 
@@ -106,9 +105,6 @@ export class ProductServiceService {
   updateData(id:number,data:any):Observable<Product[]>{
     console.log(data);
     const headers=new HttpHeaders({
-      //  'Accept' : 'application/json',
-      // 'Content-Type':'multipart/form-data',
-      // 'Access-Control-Allow-Origin' : '*',
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
     return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/image/'+id,data,{
