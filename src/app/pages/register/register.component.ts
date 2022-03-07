@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   form!:FormGroup;
   submitted=false;
   data:any;
+  show:boolean=false;
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
@@ -103,6 +104,8 @@ export class RegisterComponent implements OnInit {
     console.log(this.file);
   }
   
-  
+  showpass(){
+    this.show=!this.show
+  }
 
 }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+show:boolean=false;
 token:any;
   form!:FormGroup;
   submitted=false;
@@ -68,6 +68,8 @@ token:any;
    
   }
 
-
+showpass(){
+  this.show=!this.show
+}
 
 }

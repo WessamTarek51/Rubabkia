@@ -10,7 +10,7 @@ import {Router} from '@angular/router'
   styleUrls: ['./editprofile.component.css']
 })
 export class EditprofileComponent implements OnInit {
-
+  show:boolean=false;
   file:any;
   form!:FormGroup;
   submitted=false;
@@ -123,7 +123,9 @@ export class EditprofileComponent implements OnInit {
     console.log(this.file);
   }
   
- 
+ showpass(){
+   this.show=!this.show
+ }
 
 
 }
