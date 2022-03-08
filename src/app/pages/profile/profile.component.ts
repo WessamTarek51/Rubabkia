@@ -46,7 +46,7 @@ getuser(){
     //let profile=JSON.parse(res.toString())
 
       //  console.log(profile);
-      console.log(res);
+      console.log(res['data']);
 
        this.user=res.data;
        this.showSppiner=false;

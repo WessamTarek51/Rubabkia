@@ -78,6 +78,7 @@ this.productService.geteditData(this.Product_id).subscribe(
 
   uploadImage(event:any){
      this.file =event.target.files[0];
+
  console.log( this.file);
 }
 
@@ -95,6 +96,7 @@ this.productService.geteditData(this.Product_id).subscribe(
        formm.append('name',form.value.name);
        formm.append('price',form.value.price);
        formm.append('description',form.value.description);
+
         this.productService.storeData(formm).subscribe(res=>{
             //  console.log(form.value);
 
@@ -104,18 +106,31 @@ this.productService.geteditData(this.Product_id).subscribe(
   }
 ////////////////////////edit//////////////
     else if(this.activatedRoute.snapshot.url[0].path=='edit'){
+      console.log( this.file);
 
-      // const formmm=new FormData();
-      // formmm.append('image', this.product.image);
-      // formmm.append('category_id',this.product.category.id);
-      // formmm.append('name',this.product.name);
-      // formmm.append('price',this.product.price);
-      // formmm.append('description',this.product.description);
 
-      this.productService.updateData(this.Product_id,this.product).subscribe(res=>{
-        console.log(res);
+      const formm=new FormData();
+      if(this.file!=undefined){
+        form.value.image=(this.file,this.file.name);
+        formm.append('image',this.file,this.file.image);
+      }
+       formm.append('category_id',form.value.category_id);
+       formm.append('name',form.value.name);
+       formm.append('price',form.value.price);
+       formm.append('description',form.value.description);
+
+        // this.userServer.deleteProductOfUser( this.product).subscribe(res=>{
+        //   console.log(this.product);
+        // this.productService.storeData(formm).subscribe(res=>{})
+        // })
+      this.productService.updateData(this.Product_id,formm).subscribe(res=>{});
+
         this.router.navigateByUrl('profile/this.Product_id');
-})}
     }
 
-  }
+}
+
+
+
+
+}

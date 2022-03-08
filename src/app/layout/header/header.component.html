@@ -20,11 +20,11 @@
         </li>
 
         <li class="nav-item nav-icon ">
-          <a routerLink="fav" ><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
+          <a [routerLink]="['fav',senderID]"><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
         </li>
 
 
-       
+
 
 
          <li class="nav-item nav-icon">
@@ -41,7 +41,7 @@
         <li class="nav-item nav-icon ">
           <a class="nav-link active home-color" aria-current="page" *ngIf="!loggedin()" routerLink="register">Register</a>
         </li>
-       
+
          <li class="nav-item nav-icon " >
           <a class="nav-link active home-color" aria-current="page" *ngIf="!loggedin()" routerLink="login" >Login</a>
         </li>

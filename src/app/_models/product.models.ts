@@ -6,8 +6,10 @@ import { Category } from "./category.models";
 export interface Product{
     id?: number;
     name:string;
+    username:string;
+    userid:number;
     price: string;
-    image?: string;
+    image: string;
     description:string;
     category:Category;
     user:User;

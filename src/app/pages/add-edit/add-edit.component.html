@@ -35,16 +35,35 @@
 
 
          <div class="form-group">
-         <button   class="btnimges" type="button"  #btnimages  onclick="document.getElementById('getFile').click() ">
-           select images </button>
 
 
-           <input required type='file' name="image" (change)="uploadImage($event)"
-            class="form-control imageInput"
-             ngModel #image="ngModel"
-            id="getFile" style="display:none"  [(ngModel)]="product.image"
-            [ngClass]="{'invalid': image.invalid && image.touched}"
-            >
+          <div *ngIf="editMode">
+            <br>
+            <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="width:25%; height: 30%;">
+
+            <button   class="btnimges" type="button"  #btnimages  onclick="document.getElementById('getFile').click()">
+              select images </button>
+           <input  type='file' name="image" (change)="uploadImage($event)"
+           class="form-control imageInput"
+            ngModel #image="ngModel"
+           id="getFile" style="display:none"  [(ngModel)]="product.image"
+           [ngClass]="{'invalid': image.invalid && image.touched}"
+           >
+            <br>
+          </div>
+          <div *ngIf="!editMode">
+            <br>
+            <button   class="btnimges" type="button"  #btnimages  onclick="document.getElementById('getFile').click()">
+              select images </button>
+              <input  required type='file' name="image" (change)="uploadImage($event)"
+              class="form-control imageInput"
+               ngModel #image="ngModel"
+              id="getFile" style="display:none"  [(ngModel)]="product.image"
+              [ngClass]="{'invalid': image.invalid && image.touched}"
+              >
+            <br>
+          </div>
+
 
 
           <!-- <div class="imgerr" *ngIf="submitted && f.image.errors" class="invalid-feedback">

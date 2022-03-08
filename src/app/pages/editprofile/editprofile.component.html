@@ -3,8 +3,8 @@
  <div class="row mb-5 mt-5 d-flex justify-content-center"  style=" color:white;">
        
         <div class="col-xl-6 col-lg-6 col-md-7 col-sm-10 col-10" style="background-color:#ACB992;color:#464E2E;border-radius:10px;padding: 20px;" >
-            <h3>No account? Sign up</h3>
-            <p>Registration takes less than a minute but gives you full control over your orders.</p>
+            <h3>Update Your Profile</h3>
+            
             <br>
            
             <form class="row g-4" (ngSubmit)="submit()" [formGroup]="form" >
@@ -13,7 +13,7 @@
                   <label for="CustomEmail" class="form-label">E-mail address</label>
                   <div class="input-group ">
                    
-                    <input type="email" class="form-control" formControlName="email" name="email" [ngClass]="{'is-invalid':submitted && f['email'].errors}" id="CustomEmail" aria-describedby="inputGroupPrepend" required>
+                    <input type="email" class="form-control" formControlName="email" name="email"  [ngClass]="{'is-invalid':submitted && f['email'].errors}" id="CustomEmail" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
                         <div *ngIf=" f['email'].errors['required']">
                             Please Enter your Email
@@ -29,7 +29,7 @@
                     <label for="DefaultUsername" class="form-label">Username</label>
                     <div class="input-group">
             
-                      <input type="text" class="form-control" formControlName="name" name="name" id="DefaultUsername" [ngClass]="{'is-invalid':submitted && f['name'].errors}"  aria-describedby="inputGroupPrepend2" required>
+                      <input type="text" class="form-control" formControlName="name" value="{{username}}" name="name" id="DefaultUsername" [ngClass]="{'is-invalid':submitted && f['name'].errors}"  aria-describedby="inputGroupPrepend2" required>
                       <div class="invalid-feedback" *ngIf="submitted && f['name'].errors">
                         <div *ngIf=" f['name'].errors['required']">
                             Please Enter your name
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-md-12">
                   <label for="Custom04" class="form-label">Address</label>
-                  <input type="text" class="form-control" formControlName="address"  name="address" [ngClass]="{'is-invalid':submitted && f['address'].errors}" id="Custom" aria-describedby="inputGroupPrepend" required>
+                  <input type="text" class="form-control" formControlName="address"  name="address" value="address" [ngClass]="{'is-invalid':submitted && f['address'].errors}" id="Custom" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback" *ngIf="submitted && f['address'].errors">
                     <div *ngIf=" f['address'].errors['required']">
                         Please Enter your address
@@ -77,7 +77,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">image</label>
-                    <input class="form-control" type="file" (change)="imageupload($event)" formControlName="image"  name="image" id="formFile" required>
+                    <input class="form-control" type="file" (change)="imageupload($event)" formControlName="image" value=""  name="image" id="formFile" required>
                     <div class="invalid-feedback" *ngIf="submitted && f['image'].errors ">
                        <div *ngIf=" f['image'].errors['required']">
                           Please choose your image
@@ -86,9 +86,9 @@
                     
                   </div>
                   </div>
-               <label  class="form-label">Password</label>
+                  <label  class="form-label">Password</label>
                 <div class="col-md-12 input-group">
-                    <input [type]="show?'text':'password'"  class="form-control"  formControlName="password" name="password" [ngClass]="{'is-invalid':submitted && f['password'].errors}"  id="Custom01" required>
+                    <input [type]="show?'text':'password'" class="form-control"  formControlName="password" name="password" [ngClass]="{'is-invalid':submitted && f['password'].errors}"  id="Custom01" required>
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i
@@ -111,10 +111,9 @@
                       
                     </div>
                   </div>
-                  
-                  <label for="Custom01" class="form-label">Confirm Password</label> 
+                  <label for="Custom01" class="form-label">Confirm Password</label>
                   <div class="col-md-12 input-group">
-                    <input [type]="show?'text':'password'"  class="form-control" formControlName="confirmpassword" id="Custom01" [ngClass]="{'is-invalid':submitted && f['confirmpassword'].errors}" name="confirm_password"  required>
+                    <input [type]="show?'text':'password'" class="form-control" formControlName="confirmpassword" id="Custom01" [ngClass]="{'is-invalid':submitted && f['confirmpassword'].errors}" name="confirm_password"  required>
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i
@@ -140,11 +139,11 @@
                   <div class="col-1"></div>
                
                 <div class="col-12">
-                    <button type="submit" style="background-color: #464E2E;color: white;" class="btn  float-end"><i class="bi bi-person"></i> Sign Up</button>
+                    <button type="submit" style="background-color: #464E2E;color: white;" class="btn  float-end"><i class="bi bi-person"></i>Update</button>
                 </div>
               </form>
         </div>
 
     </div>
 
-   </div> 
+   </div>

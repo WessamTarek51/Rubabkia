@@ -1,3 +1,4 @@
+import { UserData } from './../_models/data.model';
 import { Product ,getAllProductsData, proData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 // import { HttpClient, HttpParams } from '@angular/common/http';
@@ -70,14 +71,28 @@ export class ProductServiceService {
 
 /////////////////Add product////////////////////
   storeData(data:any):Observable<Product[]>{
-    const headers=new  HttpHeaders;
-    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products/',data,{
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    });
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data,{
+      headers:headers
+    });
+  }
+
+/////////////////Add  Purchases////////////////////
+  AddPurchases(data:any):Observable<Product[]>{
+    const headers=new HttpHeaders({
+      // 'content-type' : 'application/json',
+      // 'Content-Type':'multipart/form-data',
+      'Access-Control-Allow-Origin' : '*',
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    });
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases',data,{
       headers:headers
     });
   }
 
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
-    // return this.products;
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
   }
 
@@ -91,10 +106,36 @@ export class ProductServiceService {
 
   /////////////////Update product////////////////////
   updateData(id:number,data:any):Observable<Product[]>{
-    return this.HttpClient.put<Product[]>('http://127.0.0.1:8000/api/products/'+id,data);
-
+    console.log(data);
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    });
+    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/image/'+id,data,{
+      headers:headers
+    });
   }
 
+  getDetailesOfProduct(id:number){
+    console.log("done");
+
+    return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id);
+
+    }
+    getFavProduct(id:number){
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.HttpClient.get('http://127.0.0.1:8000/api/like/'+id,{headers});
+    }
+    getDataFav(id:any):Observable<getAllProductsData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/showlike/'+id,{headers});
+
+    }
+    deleteFavOfUser(product:Product){
+
+      return this.HttpClient.delete('http://127.0.0.1:8000/api/favdelete/'+product.id);
+    }
 
 
 

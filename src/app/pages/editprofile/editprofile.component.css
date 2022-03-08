@@ -19,20 +19,8 @@
     #first{
         background-color: #ACB992 !important;
     }
-    .log{
-        
-        height: 100vh;
+    .input-group-text{
+        background-color:#464E2E !important;
+        color:white;
+         height: 40px;
     }
-    .row{
-        position: relative;
-        height: 50%;
-    }
-    .redirect{
-        color:#464E2E;
-        font-size: 20px;
-        }
-   .input-group-text{
-            background-color:#464E2E !important;
-            color:white;
-             height: 40px;
-        }
