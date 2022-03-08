@@ -19,6 +19,9 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
+
+
+
 import { RouterModule,Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 // import { Ng2SearchPipeModule} from 'ng2-search-filter';
@@ -30,14 +33,30 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-const appRoutes: Routes=[
-  {path:'',component:ProfileComponent}
-];
+
+
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+
+
+
+import { GetstartedComponent } from './pages/getstarted/getstarted.component';
+
+
+const appRoutes: Routes=[
+  {path:'',component:ProfileComponent}
+];
+
+
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
+import { FirebaseApp } from '@angular/fire/app';
+import * as firebase from 'firebase/app';
+import { LoadingComponent } from './pages/loading/loading.component';
+
+firebase.initializeApp(environment.firebaseConfig);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +76,12 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
+
+    GetstartedComponent,
+
     ListchatComponent,
+    LoadingComponent,
+
 
 
   ],
@@ -68,16 +92,15 @@ import { ListchatComponent } from './chat/chat-user/listchat/listchat.component'
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
+
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule ,
     ToastrModule.forRoot(),
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
-
     CommonModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+
 
   ],
   providers: [ProductServiceService],

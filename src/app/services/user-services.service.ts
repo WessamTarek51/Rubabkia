@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs';
 import { UserData } from './../_models/data.model';
+
+
 // import { Product } from './../_models/product.models';
 
 import { User } from './../_models/user.models';
@@ -7,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
+
 
 
 
@@ -43,6 +46,7 @@ export class UserServicesService {
 
 
   constructor(private http:HttpClient) { }
+
   deleteProductOfUser(product:Product){
     return this.http.delete('http://127.0.0.1:8000/api/products/'+product.id);
   }
@@ -64,6 +68,7 @@ authToken: any;
   // }
 
 
+
     registeruser(data:any){
     const headers=new HttpHeaders()
   return this.http.post(environment.apiUrl+'/api/register',data,{
@@ -83,6 +88,39 @@ authToken: any;
         password:password,
         confirmpassword:confirmpass
       }
+
       return this.http.post(environment.apiUrl+'/api/reset',data)
     }
+
+    verifyemail(token:any):Observable<any>{
+     const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
+      return this.http.post(environment.apiUrl+'/api/email/verification-notification',null,{headers:header})
+    }
+    completeverify(token:any,id:any,hash:any):Observable<any>{
+      const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
+       
+       return this.http.get(environment.apiUrl+'/api/verify-email/'+id+'/'+hash,{headers:header})
+     }
+
+//  addedprudect(product:Product){
+//     console.log(product.name);
+//    this.user.product?.push(product);
+// }
+
+
+    getUsers(userIDs:Number[]){
+      const body = { 'id':userIDs};
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.http.post<User[]>('http://127.0.0.1:8000/api/userbyId',body,{headers});
+    }
+    getSenderById(senderID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+senderID);
+
+    }
+    getReciverById(receiverID:Number){
+      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+receiverID);
+
+    }
+
 }

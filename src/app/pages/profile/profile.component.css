@@ -185,3 +185,7 @@ cursor: pointer;
     padding-left: 25px;
     padding-right: 25px;
 }
+.redirect{
+    color:#3f4b26;
+    cursor: pointer;
+}

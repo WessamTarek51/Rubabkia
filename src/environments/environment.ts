@@ -5,6 +5,7 @@
 export const environment = {
 
   production: false,
+
   apiUrl:'http://127.0.0.1:8000',
   firebaseConfig :{
     apiKey: "AIzaSyCfJ47euW0qRaNu5D8eG30JzGQFeDzj5t8",
@@ -15,6 +16,7 @@ export const environment = {
     appId: "1:578679223196:web:23c8907a51e738bd0b8e59",
     measurementId: "G-W2BNMB814W"
   }
+
 
 
 };

@@ -1,7 +1,7 @@
 
 
 
-
+<app-loading *ngIf="showSppiner" ></app-loading>
 <div class="container mt-4">
   <div class="card mx-auto chat-header">
         <div class="card-header chat-header-color">
@@ -10,25 +10,25 @@
                     <li class="nav-item">
                         <a href="#!" class="nav-link">
                             <div class="position-relative image-chat">
-                                <img src="https://source.unsplash.com/random/200x200?sig=1" width="100%" height="100%"
+                                <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" width="100%" height="100%"
                                     class=" rounded-circle" alt="">
 
                             </div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#!" class="nav-link">Nelh</a>
+                        <a class="nav-link">{{receiver.username}}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a href="#!" class="nav-link">
+                        <a  class="nav-link">
                             <i class="fas fa-times"></i>
                         </a>
                     </li>
                 </ul>
-            </div>
+              </div>
         </div>
 
 
@@ -52,16 +52,19 @@
                     </div> -->
                 </div>
                 <div class="position-relative avatar">
-                    <img src="https://source.unsplash.com/random/200x200?sig=1" width="100%" height="100%"
+                    <img src="http://127.0.0.1:8000/storage/images/{{sender.image}}" width="100%" height="100%"
                         class="rounded-circle" alt="">
                 </div>
             </div>
-          </div>
-
-
-          <div *ngFor="let message of messages">
-            <div class="d-flex align-items-baseline text-end justify-content-end mb-4" *ngIf="message.senderID != senderID">
-                <div class="pe-2">
+          
+         
+            <div class="d-flex align-items-baseline text-end justify-content-start mb-4" *ngIf="message.senderID != senderID">
+              <div class="position-relative avatar">
+                <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" width="100%" height="100%"
+                    class="rounded-circle" alt="">
+            </div> 
+              
+              <div class="pe-2">
                     <div>
                         <div class="card card-text d-inline-block p-2 px-3 m-1">{{message.body}}</div>
                     </div>
@@ -70,10 +73,7 @@
                         <div class="small">01:13PM</div>
                     </div> -->
                 </div>
-                <div class="position-relative avatar">
-                    <img src="https://source.unsplash.com/random/200x200?sig=1" width="100%" height="100%"
-                        class="rounded-circle" alt="">
-                </div>
+                
             </div>
           </div>
 

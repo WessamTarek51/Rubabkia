@@ -4,21 +4,17 @@
 
       <div class="row">
           <div class="mynewform">
-          <input  id="mybtn" #seacrhInput class="me-2" [(ngModel)]="searchText" type="search" placeholder="Search by name or your limited price" #tagInput (keyup)="(search())" aria-label="Search">
+          <input  id="mybtn" #seacrhInput class="me-2" [(ngModel)]="searchText" type="search" placeholder="Search by name or your limited price" #tagInput (keyup)="(search())" (keydown)="(searchas())" aria-label="Search">
           <button class="btn btn-outline-success"   id="search" (click)="search()">Search</button>
 
         </div>
         <div class="col-md-3 col-sm-6" *ngFor="let product of productData | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLength}">
 
-          <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" height="180px" />
+          <img src="http://127.0.0.1:8000/storage/products/{{product.image}}"/>
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
             <p>{{product.price}}</p>
             <div class="overlay-iconss">
-
-              <!-- <i class="bi-cart-check-fill"></i> -->
-              <!-- <a [routerLink]="['profile',product.id]" style="--i:1"><i class="bi-cart"></i></a> -->
-              <!-- <a style="--i:1"><i class="bi-cart-check-fill" [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i></a> -->
               <a [routerLink]="['show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
                <a style="--i:3"><i (click)="onFav(product)" [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i></a>
            </div>

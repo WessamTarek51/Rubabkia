@@ -32,17 +32,17 @@ search(){
   console.log(this.searchText);
   console.log(this.searchText);
 }
-// searchas(){
-//   this.service.getAllProducts().subscribe(
-//     (res)=>{
+searchas(){
+  this.service.getAllProducts().subscribe(
+    (res)=>{
       
-//       this.productData= res.data
-//       // this.productData = res.data;
+      this.productData= res.data
+      // this.productData = res.data;
       
-//     },
+    },
 
-//   )
-// }
+  )
+}
 
 
   constructor(public service:ProductServiceService) { }

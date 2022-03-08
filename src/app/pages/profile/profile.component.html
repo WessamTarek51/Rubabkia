@@ -1,3 +1,5 @@
+<app-loading *ngIf="showSppiner" ></app-loading>
+
 <div class="profile-page">
     <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
     <div class="main main-raised">
@@ -9,9 +11,15 @@
                             <div class="avatar">
             <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
+                            
                             <div class="name">
+                             
+                              <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
+                             
+                              
                                 <h3 class="title">{{user.username}}</h3>
                                 <h6 class="title">{{user.phoneNumber}}-{{user.address}}</h6>
+                                
                                 <button type="button" class="colorButton"> <i class="bi bi-pencil-fill icon-padding" ></i>Edit Profile</button>
                                 <button type="button" class="colorButton"  (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add Product</button>
                                 <button type="button" class="colorButton" (click)="btnClickFav();"> <i class="fa fa-heart-o icon-padding" ></i>Fav Product</button>
@@ -35,14 +43,14 @@
          <div *ngIf="user">
           <div class="row" *ngIf="user.products">
             <div class="col-md-3 col-sm-6"   *ngFor="let product of user.products" >
-            <img src="http://127.0.0.1:8000/storage/images/{{product.image}}" />
+            <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" />
             <!-- <img src="http://127.0.0.1:8000/storage/products/{{product.image}}" /> -->
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
                 <div class="overlay-iconss">
                   <a (click)="deleteProduct(product)" style="--i:1"><i class="bi bi-trash-fill"></i></a>
-                   <a  [routerLink]="['/edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i></a>
+                   <a  [routerLink]="['/edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i> </a>
                </div>
                </div>
               </div>
@@ -60,7 +68,7 @@
    <div *ngIf="user">
     <div class="row" *ngIf="user.products">
       <div class="col-md-3 col-sm-6"   *ngFor="let purchase of user.purchases" >
-      <img src="http://127.0.0.1:8000/storage/images/{{purchase.image}}" />
+      <img src="http://127.0.0.1:8000/storage/products{{purchase.image}}" />
         <h4>{{purchase.name}}</h4>
         <div class="pri-ic">
           <p>{{purchase.price}}</p>

@@ -1,8 +1,9 @@
+import { UserData } from './../../_models/data.model';
+import { User } from './../../_models/user.models';
+import { UserServicesService } from './../../services/user-services.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Message } from 'src/app/_models/message.models';
 
 
@@ -12,6 +13,12 @@ import { Message } from 'src/app/_models/message.models';
   styleUrls: ['./chat-user.component.css']
 })
 export class ChatUserComponent implements OnInit {
+  sender!:User;
+  receiver!:User;
+  data!:UserData;
+  showSppiner:boolean = true;
+
+
 
   senderRef!: AngularFireList<Message> ;
   receiverRef!: AngularFireList<Message> ;
@@ -22,12 +29,14 @@ export class ChatUserComponent implements OnInit {
   receiverID = 1
   senderID = parseInt(localStorage.getItem('user_id')!)
 
-  constructor(public db: AngularFireDatabase){
+  constructor(public db: AngularFireDatabase,private param:ActivatedRoute,private service:UserServicesService){
 
+    this.receiverID = parseInt(this.param.snapshot.paramMap.get('id')!);
     this.senderRef = db.list('/chat/' + this.senderID + '/' +this.receiverID);
     this.receiverRef = db.list('/chat/' + this.receiverID + '/' +this.senderID);
    this.getChatMessages();
-
+this.getSenderById();
+this.getReciverById();
 
   }
 
@@ -35,6 +44,7 @@ export class ChatUserComponent implements OnInit {
     this.senderRef!.valueChanges().subscribe(msgs=>{
       this.messages = msgs
       console.log(length + " " + this.messages[0].body)
+      this.showSppiner=false;
    });
   }
   ngOnInit(): void {
@@ -53,4 +63,18 @@ export class ChatUserComponent implements OnInit {
     this.receiverRef.push(this.messageObj);
   }
 
+  getSenderById(){
+    this.service.getSenderById(this.senderID).subscribe(res=>{
+        console.log(res);
+         this.sender=res.data;
+    });
+  }
+  getReciverById(){
+    this.service.getReciverById(this.receiverID).subscribe(res=>{
+        console.log(res);
+         this.receiver=res.data;
+    });
+  }
+
+  
 }

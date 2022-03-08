@@ -5,7 +5,6 @@ import { Product } from 'src/app/_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { FormControl ,NgForm } from '@angular/forms';
 import { UserServicesService } from 'src/app/services/user-services.service';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user.models';
 import { HttpClient } from '@angular/common/http';
@@ -26,11 +25,7 @@ export class AddEditComponent implements OnInit {
   editMode=false;
   product={} as Product;
   productuser!: User;
-
-
-
-
-  Product_id:any;
+ Product_id:any;
   editproduct:any;
 file:any;
 imageData:any;
