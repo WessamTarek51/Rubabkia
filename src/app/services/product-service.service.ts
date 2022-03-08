@@ -129,7 +129,10 @@ export class ProductServiceService {
       return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/showlike/'+id,{headers});
 
     }
+    deleteFavOfUser(product:Product){
 
+      return this.HttpClient.delete('http://127.0.0.1:8000/api/favdelete/'+product.id);
+    }
 
 
 
