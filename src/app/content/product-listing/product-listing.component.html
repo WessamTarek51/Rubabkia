@@ -16,7 +16,7 @@
             <p>{{product.price}}</p>
             <div class="overlay-iconss">
               <a [routerLink]="['show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
-               <a style="--i:3" ><i (click)="addfav(product.id)"  [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i> </a>
+               <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" (click)="changFav(product)"></i> </a>
                <a [routerLink]="['profile',product.id]"  (click)="deleteProduct(product)"><i class="bi bi-bag-check-fill"></i></a>
            </div>
            <!-- <i class="bi bi-suit-heart"></i> -->

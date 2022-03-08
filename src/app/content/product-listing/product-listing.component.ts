@@ -62,6 +62,7 @@ searchas(){
   // productselected!:number;
   ngOnInit(): void {
 
+
     this.service.getAllProducts().subscribe(
       (res)=>{
         this.productData = res.data;
@@ -69,10 +70,33 @@ searchas(){
 
     )
   }
+  changFav(product:Product){
+console.log(product.id);
+console.log(product.isFav);
 
-  onFav(product:Product){
-   this.service.favProduct(product);
+  if(product.isFav==true){
+    this.service.deleteFavOfUser(product).subscribe(res=>{
+      console.log (res.toString);
+
+    });
+
+
   }
+   else{
+    this.service.addFavProduct(product).subscribe(res=>{
+      console.log (res.toString);
+
+    });
+
+   }
+   product.isFav=!product.isFav
+
+
+  }
+
+  // onFav(product:Product){
+  //  this.service.favProduct(product);
+  // }
   getproduct(){
     this.service.getData().subscribe(res=>{
       //let profile=JSON.parse(res.toString())
@@ -98,15 +122,8 @@ searchas(){
 
   }
 
-  addfav(id:any){
-    this.service.getFavProduct(id).subscribe(
-      (res)=>{
-console.log(res);
-      },
 
-    )
-
-  }
 
 
 }
+

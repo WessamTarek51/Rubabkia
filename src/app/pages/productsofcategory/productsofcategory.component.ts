@@ -50,7 +50,7 @@ export class ProductsofcategoryComponent implements OnInit {
 
   }
   onFav(product:Product){
-    this.productservice.favProduct(product);
+    // this.productservice.favProduct(product);
    }
 
   //  this.param.paramMap.subscribe(params =>{
@@ -68,12 +68,12 @@ export class ProductsofcategoryComponent implements OnInit {
 
 // }
 addfav(id:any){
-  this.productservice.getFavProduct(id).subscribe(
-    (res)=>{
-console.log(res);
-    },
+//   this.productservice.getFavProduct(id).subscribe(
+//     (res)=>{
+// console.log(res);
+//     },
 
-  )
+//   )
 
 }
 
