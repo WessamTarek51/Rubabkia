@@ -48,7 +48,8 @@ export class UserServicesService {
   constructor(private http:HttpClient) { }
 
   deleteProductOfUser(product:Product){
-    return this.http.delete('http://127.0.0.1:8000/api/products/'+product.id);
+
+    return this.http.delete('http://127.0.0.1:8000/api/deleteproduct/'+product.id);
   }
 //  addedprudect(product:Product){
 //     console.log(product.name);
@@ -98,16 +99,16 @@ authToken: any;
     }
     completeverify(token:any,id:any,hash:any):Observable<any>{
       const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
-       
+
        return this.http.get(environment.apiUrl+'/api/verify-email/'+id+'/'+hash,{headers:header})
      }
 
      edit(data:any):Observable<UserData>{
       const headers = new HttpHeaders({'Authorization': 'Bearer ' +localStorage.getItem('token')})
-       
+
        return this.http.post<UserData>(environment.apiUrl+'/api/editProfile',data,{headers})
      }
-  
+
 //  addedprudect(product:Product){
 //     console.log(product.name);
 //    this.user.product?.push(product);

@@ -30,19 +30,19 @@ export class ProductsofcategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-    this.categoryId=this.param.snapshot.paramMap.get('id');    
+
+    this.categoryId=this.param.snapshot.paramMap.get('id');
     if(this.categoryId){
       this.productservice.getAllProductsiid(this.categoryId).subscribe(
         (res )=>{
-          
+
             this.filteredproducts=res.data
-          
+
           // console.log(res.data)
 
           // console.log(this.categoryId)
         },
-  
+
       )
 
 
@@ -50,7 +50,7 @@ export class ProductsofcategoryComponent implements OnInit {
 
   }
   onFav(product:Product){
-    this.productservice.favProduct(product);
+    // this.productservice.favProduct(product);
    }
 
   //  this.param.paramMap.subscribe(params =>{
@@ -65,25 +65,34 @@ export class ProductsofcategoryComponent implements OnInit {
 //         // console.log(res);
 //          this.proCat=res;
 //     });
-    
-// }
 
-  
+// }
+addfav(id:any){
+//   this.productservice.getFavProduct(id).subscribe(
+//     (res)=>{
+// console.log(res);
+//     },
+
+//   )
+
+}
+
+
     }
 
-    
 
 
 
 
-  
+
+
   // categories.forEach(item => {
   //   console.log(item);
   //   let filtered = this.products.filter(x => x.category == item);
   //   console.log(filtered);
   // });
 
-    
+
 
 
 

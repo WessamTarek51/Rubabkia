@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from './../../_models/product.models';
 import { ProductServiceService } from './../../services/product-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class FavProductsComponent implements OnInit {
   productData!:Product[];
   senderID :any;
+  user=parseInt(localStorage.getItem('user_id')!);
 
-  constructor(public service:ProductServiceService, private param:ActivatedRoute) { }
+
+  constructor(public service:ProductServiceService, private param:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.senderID=this.param.snapshot.paramMap.get('id');
@@ -36,10 +38,20 @@ dataFav(senderID:number){
   this.service.getDataFav(senderID).subscribe(
     (res)=>{
 
-      // this.productData = res.data;
+      this.productData = res.data;
       console.log(res);
 
     },)
+}
+deleteProduct(product:Product,senderID:number){
+  // this.service.deleteProductOfUser(product);
+  // console.log(this.user.products?.length);
+  this.service.deleteFavOfUser(product).subscribe(res=>{
+    // this.router.navigate(['/fav',this.user])
+    this.dataFav(senderID)
+
+  });
+
 }
 
 }

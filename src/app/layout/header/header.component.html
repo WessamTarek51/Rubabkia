@@ -20,7 +20,7 @@
         </li>
 
         <li class="nav-item nav-icon ">
-          <a [routerLink]="['fav',senderID]"><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
+          <a [routerLink]="['fav',senderID]" *ngIf="loggedin()"><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
         </li>
 
 
@@ -29,7 +29,7 @@
 
          <li class="nav-item nav-icon">
 
-            <a class="word" routerLink="profile">
+            <a class="word" routerLink="profile" *ngIf="loggedin()">
               <div class="nav-it">
                   <i class="fa fa-user user-i"></i>
                   <h6>MyAccount</h6>
