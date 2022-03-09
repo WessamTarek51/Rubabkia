@@ -46,6 +46,13 @@ export class ProductServiceService {
 
   }
 
+////////////////delete Purchases/////////////////
+
+deletePurchases(product:Product){
+
+  return this.HttpClient.delete('http://127.0.0.1:8000/api/deletepurchases/'+product.id);
+}
+
 
   getAllProducts():Observable<getAllProductsData> {
          const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})

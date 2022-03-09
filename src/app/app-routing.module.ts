@@ -32,7 +32,8 @@ const routes: Routes = [
 
 
 
-  {path:'profile/:id',component:ProfileComponent},
+  {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
+
   {path:'chat/:id',component:ChatUserComponent},
 
   {path:'fav/:id',component:FavProductsComponent},
