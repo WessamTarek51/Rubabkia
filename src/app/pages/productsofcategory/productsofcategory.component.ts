@@ -49,42 +49,31 @@ export class ProductsofcategoryComponent implements OnInit {
 }
 
   }
-  onFav(product:Product){
-    // this.productservice.favProduct(product);
-   }
+  changFav(product:Product){
+    console.log(product.id);
+    console.log(product.isFav);
 
-  //  this.param.paramMap.subscribe(params =>{
-  //    this.dataCat= params.get("id");
-  //   //  console.log(this.dataCat);
+      if(product.isFav==true){
+        this.productservice.deleteFavOfUser(product).subscribe(res=>{
+          console.log (res.toString);
 
-  //  });
-  //  this.getcategorycat(this.proCat)
+        });
 
-//   getcategorycat(id:any){
-//     this.categoryservice.getCtId(this.categoryId).subscribe(res=>{
-//         // console.log(res);
-//          this.proCat=res;
-//     });
 
-// }
-addfav(id:any){
-//   this.productservice.getFavProduct(id).subscribe(
-//     (res)=>{
-// console.log(res);
-//     },
+      }
+       else{
+        this.productservice.addFavProduct(product).subscribe(res=>{
+          console.log (res.toString);
 
-//   )
+        });
 
-}
+       }
+       product.isFav=!product.isFav
 
+
+      }
 
     }
-
-
-
-
-
-
 
   // categories.forEach(item => {
   //   console.log(item);

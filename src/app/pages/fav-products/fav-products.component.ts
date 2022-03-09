@@ -43,15 +43,34 @@ dataFav(senderID:number){
 
     },)
 }
-deleteProduct(product:Product,senderID:number){
+changFav(product:Product,senderID:number){
   // this.service.deleteProductOfUser(product);
   // console.log(this.user.products?.length);
   this.service.deleteFavOfUser(product).subscribe(res=>{
     // this.router.navigate(['/fav',this.user])
+    product.isFav=!product.isFav
+
     this.dataFav(senderID)
 
   });
 
 }
+// changFav(product:Product){
+//   console.log(product.id);
+//   console.log(product.isFav);
+
+//     if(product.isFav==true){
+//       this.service.deleteFavOfUser(product).subscribe(res=>{
+//         console.log (res.toString);
+
+//       });
+
+
+//     }
+
+//      product.isFav=!product.isFav
+
+
+//     }
 
 }
