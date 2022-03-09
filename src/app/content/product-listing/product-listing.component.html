@@ -8,15 +8,15 @@
           <button class="btn btn-outline-success"   id="search" (click)="search()">Search</button>
 
         </div>
-        <div class="col-md-3 col-sm-6" *ngFor="let product of productData | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLength}">
-          <img src="http://127.0.0.1:8000/public/products/{{product.image}}" />
+        <div class="col-md-3 col-sm-6" *ngFor="let product of productData | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLength}" >
+          <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
 
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
             <p>{{product.price}}</p>
             <div class="overlay-iconss">
               <a [routerLink]="['show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
-               <a style="--i:3" ><i (click)="addfav(product.id)"  [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}"></i> </a>
+               <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" (click)="changFav(product)"></i> </a>
                <a [routerLink]="['profile',product.id]"  (click)="deleteProduct(product)"><i class="bi bi-bag-check-fill"></i></a>
            </div>
            <!-- <i class="bi bi-suit-heart"></i> -->
@@ -28,17 +28,6 @@
 <div class="paging">
   <pagination-controls class="page-item" (pageChange)="page = $event"></pagination-controls>
   </div>
-      <!-- <div class="paginationn" aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </div> -->
-
-
 
     </div>
 
