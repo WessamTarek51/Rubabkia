@@ -112,17 +112,22 @@ console.log(product.isFav);
 
 
 ///////////////////delete product to add it in purchases/////////////
-  deleteProduct(product:Product){
-     this.userService.deleteProductOfUser(product).subscribe(res=>{
-      console.log(product);
-    this.service.AddPurchases (product).subscribe(res=>{
-    });
+deleteProduct(product:Product){
+  this.userService.deleteProductOfUser(product).subscribe(res=>{
+   console.log(product);
+ this.service.AddPurchases (product).subscribe(res=>{
+ });
 
- })
+})
 
-  }
+}
 
 
+buyProduct(product:Product){
+this.userService.buyProduct(product).subscribe(res=>{
+
+});
+}
 
 
 }

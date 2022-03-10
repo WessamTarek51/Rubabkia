@@ -38,6 +38,8 @@ const routes: Routes = [
   {path:'chat/:id',component:ChatUserComponent},
 
   {path:'fav/:id',component:FavProductsComponent},
+  {path:'nof/:id',component:RequestsComponent},
+
 
   {path:'add',component:AddEditComponent},
   {path:'edit/:id',component:AddEditComponent},

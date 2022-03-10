@@ -22,6 +22,9 @@
         <li class="nav-item nav-icon ">
           <a [routerLink]="['fav',senderID]" *ngIf="loggedin()"><i class="fa fa-heart-o user-ii" alt="Add to favourits"></i></a>
         </li>
+        <li class="nav-item nav-icon ">
+          <a [routerLink]="['nof',senderID]" *ngIf="loggedin()"><i class="bi bi-bell-fill user-ii"></i></a>
+        </li>
 
 
 
