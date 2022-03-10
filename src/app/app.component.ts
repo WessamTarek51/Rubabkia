@@ -8,3 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Rubabika';
 }
+
+              // "node_modules/sweetalert2/src/sweetalert2.scss"
+
