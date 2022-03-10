@@ -123,6 +123,11 @@ deleteProduct(product:Product){
 }
 
 
+buyProduct(product:Product){
+this.userService.buyProduct(product).subscribe(res=>{
+
+});
+}
 
 
 }

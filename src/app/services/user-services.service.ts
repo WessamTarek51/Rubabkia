@@ -130,4 +130,13 @@ authToken: any;
 
     }
 
+
+    buyProduct(product:Product):Observable<Notification>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+      const body = { 'product_id':product.id,'seller_id':product.userid};
+
+      return this.http.post<Notification>(environment.apiUrl+'/api/buy/'+product.id,body,{headers})
+
+    }
+
 }

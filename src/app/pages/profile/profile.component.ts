@@ -16,6 +16,7 @@ user!:User;
 data!:UserData;
 result:any;
 showSppiner:boolean = true;
+userID = parseInt(localStorage.getItem('user_id')!)
 
 
 token=localStorage.getItem('token');
@@ -24,13 +25,13 @@ token=localStorage.getItem('token');
   ngOnInit(): void {
     // this.user=this.service.user;
     this.getuser();
-     
+
 }
   btnClick() {
     this.router.navigateByUrl('/add');
 }
 btnClickFav(){
-  this.router.navigateByUrl('/fav');
+  this.router.navigate(['/fav',this.userID]);
 
 }
 deleteProduct(product:Product){
@@ -62,19 +63,19 @@ verify(){
       timeOut:2000,
       progressBar:true
     });
-    
+
   }
   else{
     this.toaster.info(JSON.stringify(this.result.message),JSON.stringify(this.result.code),{
       timeOut:2000,
       progressBar:true
     });
-   
+
   }
- 
+
 
   })
 }
-  
+
 
 }
