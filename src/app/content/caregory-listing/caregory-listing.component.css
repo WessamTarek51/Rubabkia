@@ -4,6 +4,14 @@
     color: #474F2F;
 
 }
+.imgss{
+    height: 80%;
+    width: 100%;
+}
+.page-item{
+    height: 30%;
+    width: 100%;
+}
 .categories a{
     /* color: #000; */
     color: #474F2F;

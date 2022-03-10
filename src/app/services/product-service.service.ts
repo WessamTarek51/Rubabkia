@@ -46,14 +46,6 @@ export class ProductServiceService {
 
   }
 
-////////////////delete Purchases/////////////////
-
-deletePurchases(product:Product){
-
-  return this.HttpClient.delete('http://127.0.0.1:8000/api/deletepurchases/'+product.id);
-}
-
-
   getAllProducts():Observable<getAllProductsData> {
          const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 if(localStorage.getItem('token')!=null){
@@ -75,18 +67,17 @@ if(localStorage.getItem('token')!=null){
   }
 
 /////////////////Add  Purchases////////////////////
-AddPurchases(data:any):Observable<Product[]>{
+AddPurchases(product:Product):Observable<Product[]>{
   const headers=new HttpHeaders({
     // 'content-type' : 'application/json',
     // 'Content-Type':'multipart/form-data',
     'Access-Control-Allow-Origin' : '*',
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases',data,{
+  return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases/'+product.id,product,{
     headers:headers
   });
 }
-
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
     return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
   }

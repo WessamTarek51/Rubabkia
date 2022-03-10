@@ -9,6 +9,7 @@ import { getAllCategoryData } from 'src/app/_models/category.models';
 import { ActivatedRoute } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-product-listing',
   templateUrl: './product-listing.component.html',
@@ -113,10 +114,15 @@ console.log(product.isFav);
 
 ///////////////////delete product to add it in purchases/////////////
 AddPruchases(product:Product){
-  this.service.deletePurchases(product).subscribe(res=>{
     this.service.AddPurchases (product).subscribe(res=>{})
-  })
-}
+ }
+
+
+buyProduct(product:Product){
+  this.userService.buyProduct(product).subscribe(res=>{
+
+  });
+  }
 }
 
 // deleteProduct(product:Product){
@@ -128,6 +134,9 @@ AddPruchases(product:Product){
 // })
 
 // }
+
+
+
 
 
 
