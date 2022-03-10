@@ -12,19 +12,19 @@ import { NofData } from 'src/app/_models/nof.models';
 })
 export class RequestsComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
-  nof!:NofData[];
+  nof!:NofData;
+  
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
-
+   
+      this.service.request(this.seller).subscribe(
+        (res)=>{
+        this.nof=res
+      console.log(this.nof.data[0])
+        },)
+    
   }
-  requset(seller:number){
-    this.service.request(seller).subscribe(
-      (res)=>{
-      this.nof=res
-
-      // console.log()
-      },)
-  }
+  
 
 }
