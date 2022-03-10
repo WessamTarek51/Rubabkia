@@ -1,5 +1,5 @@
-import { DataNotifications } from "./notiication.models";
+import { Notifi } from './notiication.models';
 
-export interface NofData{
-  data:DataNotifications;
+export interface NotificationData{
+  data:Notifi[];
 }

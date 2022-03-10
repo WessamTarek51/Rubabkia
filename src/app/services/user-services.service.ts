@@ -9,8 +9,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { DataNotifications, Notifications } from '../_models/notiication.models';
-import { NofData } from '../_models/nof.models';
+import { NotificationData } from '../_models/nof.models';
 
 
 
@@ -142,10 +141,10 @@ authToken: any;
 
 
     }
-    request(id:number):Observable<NofData[]>{
+    request(id:number):Observable<NotificationData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.get<NofData[]>(environment.apiUrl+'/api/notification/'+id,{headers})
+      return this.http.get<NotificationData>(environment.apiUrl+'/api/notification/'+id,{headers})
 
     }
 
