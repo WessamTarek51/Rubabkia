@@ -29,5 +29,21 @@ export class RequestsComponent implements OnInit {
       console.log
       },)
   }
+  accept(nof:Notifi,seller:number){
 
-}
+    this.service.accept(nof).subscribe(
+      (res)=>{
+      },)
+      this.requset(seller);
+
+  }
+  reject(id:number,seller:number){
+    this.service.reject(id).subscribe(
+      (res)=>{
+      },)
+      this.requset(seller);
+
+  }
+  }
+
+
