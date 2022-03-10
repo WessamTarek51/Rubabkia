@@ -16,6 +16,7 @@ import { EditprofileComponent } from './pages/editprofile/editprofile.component'
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 import { LoadingComponent } from './pages/loading/loading.component';
+import { RequestsComponent } from './pages/requests/requests.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -37,6 +38,8 @@ const routes: Routes = [
   {path:'chat/:id',component:ChatUserComponent},
 
   {path:'fav/:id',component:FavProductsComponent},
+  {path:'nof/:id',component:RequestsComponent},
+
 
   {path:'add',component:AddEditComponent},
   {path:'edit/:id',component:AddEditComponent},
