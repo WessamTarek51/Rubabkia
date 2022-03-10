@@ -1,9 +1,7 @@
-import { Notifications } from './../../_models/notiication.models';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
-import { DataNotifications } from 'src/app/_models/notiication.models';
-import { NofData } from 'src/app/_models/nof.models';
+import { NotificationData } from 'src/app/_models/nof.models';
+import { Notifi } from 'src/app/_models/notiication.models';
 
 @Component({
   selector: 'app-requests',
@@ -12,19 +10,40 @@ import { NofData } from 'src/app/_models/nof.models';
 })
 export class RequestsComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
-  nof!:NofData;
-  
+  data!:NotificationData;
+  notifi!:Notifi[];
+
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
-   
-      this.service.request(this.seller).subscribe(
-        (res)=>{
-        this.nof=res
-      console.log(this.nof.data[0])
-        },)
-    
+ this.requset(this.seller)
   }
-  
+  requset(seller:number){
+    this.service.request(seller).subscribe(
+      (res)=>{
 
-}
+      this.notifi=res.data
+      console.log(res.data)
+      console.log(this.notifi)
+      // console.log(this.notifi[0].id)
+      console.log
+      },)
+  }
+  accept(nof:Notifi,seller:number){
+
+    this.service.accept(nof).subscribe(
+      (res)=>{
+      },)
+      this.requset(seller);
+
+  }
+  reject(id:number,seller:number){
+    this.service.reject(id).subscribe(
+      (res)=>{
+      },)
+      this.requset(seller);
+
+  }
+  }
+
+
