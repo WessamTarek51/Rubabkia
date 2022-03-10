@@ -16,6 +16,7 @@ import { EditprofileComponent } from './pages/editprofile/editprofile.component'
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 import { LoadingComponent } from './pages/loading/loading.component';
+
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
