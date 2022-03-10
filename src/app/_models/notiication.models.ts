@@ -5,3 +5,9 @@ export interface Notifications{
    buyer:User;
    product:Product;
 }
+export interface DataNotifications{
+ id:number;
+ username:User;
+ image:string;
+ name:string;
+}

@@ -47,15 +47,14 @@ export class EditprofileComponent implements OnInit {
       this.email=res['data'].email;
       this.address=res['data'].address;
       this.phonenumber=res['data'].phoneNumber;
-      this.image=res['data'].image;
+      this.image=res['data'].image
       
       this.form.patchValue({
         name: this.username,
         email:this.email,
         phone_number:this.phonenumber,
         address:this.address,
-       
-     });
+       });
      console.log(this.username)
       
     

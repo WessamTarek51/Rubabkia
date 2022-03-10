@@ -14,7 +14,7 @@
         <h4>{{item.name}}</h4>
         <div class="pri-ic">
 
-          <p>$50.00</p>
+          <p>{{item.price}}</p>
           <div class="overlay-iconss">
             <a [routerLink]="['/show',item.id]" style="--i:1"><i class="fa fa-eye"></i></a>
             <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':!item.isFav,'bi bi-suit-heart':item.isFav}" (click)="changFav(item,senderID)"></i> </a>
