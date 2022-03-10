@@ -25,7 +25,7 @@ export class RequestsComponent implements OnInit {
       this.notifi=res.data
       console.log(res.data)
       console.log(this.notifi)
-      console.log(this.notifi[0].id)
+      // console.log(this.notifi[0].id)
       console.log
       },)
   }
