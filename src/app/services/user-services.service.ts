@@ -48,8 +48,9 @@ export class UserServicesService {
   constructor(private http:HttpClient) { }
 
   deleteProductOfUser(product:Product){
+    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.http.delete('http://127.0.0.1:8000/api/deleteproduct/'+product.id);
+    return this.http.delete('http://127.0.0.1:8000/api/deleteproduct/'+product.id,{headers});
   }
 //  addedprudect(product:Product){
 //     console.log(product.name);
