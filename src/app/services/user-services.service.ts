@@ -9,8 +9,8 @@ import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { DataNotifications, Notifications } from '../_models/notiication.models';
-import { NofData } from '../_models/nof.models';
+import { NotificationData } from '../_models/nof.models';
+import { Notifi } from '../_models/notiication.models';
 
 
 
@@ -142,11 +142,39 @@ authToken: any;
 
 
     }
-    request(id:number):Observable<DataNotifications>{
+    request(id:number):Observable<NotificationData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.get<DataNotifications>(environment.apiUrl+'/api/notification/'+id,{headers})
+      return this.http.get<NotificationData>(environment.apiUrl+'/api/notification/'+id,{headers})
 
     }
+
+    accept(nof:Notifi):Observable<Notifi[]>{
+      console.log(nof);
+      const headers=new HttpHeaders({
+        'content-type' : 'application/json',
+        // 'Content-Type':'multipart/form-data',
+        'Access-Control-Allow-Origin' : '*',
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+
+      return this.http.post<Notifi[]>(environment.apiUrl+'/api/purchases/'+nof.id_not,nof,{headers})
+
+    }
+    reject(id:number):Observable<Notifi[]>{
+      const headers=new HttpHeaders({
+        'content-type' : 'application/json',
+        // 'Content-Type':'multipart/form-data',
+        'Access-Control-Allow-Origin' : '*',
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+
+      return this.http.delete<Notifi[]>(environment.apiUrl+'/api/nof/'+id,{headers})
+
+    }
+
+
+
+
 
 }
