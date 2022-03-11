@@ -56,7 +56,8 @@ import { FirebaseApp } from '@angular/fire/app';
 import * as firebase from 'firebase/app';
 import { LoadingComponent } from './pages/loading/loading.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
-// import { RequestsComponent } from './pages/requests/requests.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -86,6 +87,7 @@ firebase.initializeApp(environment.firebaseConfig);
     LoadingComponent,
      EditprofileComponent,
      RequestsComponent,
+     UserProfileComponent,
 
 
 

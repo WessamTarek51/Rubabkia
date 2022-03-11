@@ -32,7 +32,7 @@
 
          <li class="nav-item nav-icon">
 
-            <a class="word" routerLink="profile" *ngIf="loggedin()">
+            <a class="word" [routerLink]="['profile',senderID]" *ngIf="loggedin()">
               <div class="nav-it">
                   <i class="fa fa-user user-i"></i>
                   <h6>MyAccount</h6>
