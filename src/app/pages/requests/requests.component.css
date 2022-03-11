@@ -175,3 +175,12 @@ h2{
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+.bb{
+  display: inline-block;
+  background-color: #474F2F;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin-right: 30px;
+  }
