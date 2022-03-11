@@ -6,13 +6,13 @@
     display: flex;
 }
 #mybtn{
-    width: 80%;
+    width: 75%;
 }
 #mybtn:focus{
     border: 0.1rem solid #3f4b26;
 }
 #search{
-    width: 20%;
+    width: 23%;
 }
 .show-for-sr{
 

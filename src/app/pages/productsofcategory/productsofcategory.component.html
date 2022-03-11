@@ -1,4 +1,5 @@
-  <div class="products">
+ <div style="min-height: 100vh; position: relative; ">
+ <div class="products" >
     <div class="small-container" >
         <h2> Products </h2>
 
@@ -17,21 +18,14 @@
               <a [routerLink]="['/show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
               <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" (click)="changFav(product)"></i> </a>
             </div>
-           <!-- <i class="bi bi-suit-heart"></i> -->
-           <!-- <i class="bi bi-suit-heart-fill"></i> -->
+
           </div>
         </div>
       </div>
 
 
 
-
-
-
-
-
-
-
     </div>
 
 
+ </div>

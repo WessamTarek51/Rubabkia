@@ -17,13 +17,14 @@ import { GetstartedComponent } from './pages/getstarted/getstarted.component';
 import { ListchatComponent } from './chat/chat-user/listchat/listchat.component';
 import { LoadingComponent } from './pages/loading/loading.component';
 import { RequestsComponent } from './pages/requests/requests.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
   // {path:'profile/1',component:ProfileComponent},
   {
-  path:'profile',component:ProfileComponent,
+  path:'profile/:id',component:ProfileComponent,
   canActivate:[AuthGuard]
   },
   {path:'forgetpassword',component:ForgetpasswordComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
 
 
   {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
+  {path:'user/:id',component:UserProfileComponent},
 
   {path:'chat/:id',component:ChatUserComponent},
 
@@ -57,6 +59,7 @@ const routes: Routes = [
 {path:'login',component:LoginComponent},
 {path:'message',component:ListchatComponent},
 {path:'loading',component:LoadingComponent},
+{path:'requests',component:RequestsComponent},
 
 
 ];

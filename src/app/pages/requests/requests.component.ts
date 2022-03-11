@@ -18,7 +18,7 @@ export class RequestsComponent implements OnInit {
   ngOnInit(): void {
  this.requset(this.seller)
   }
-  requset(seller:number){
+  requset(seller:any){
     this.service.request(seller).subscribe(
       (res)=>{
 

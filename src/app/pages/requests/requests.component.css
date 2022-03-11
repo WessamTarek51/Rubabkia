@@ -1,5 +1,17 @@
-body{margin-top:20px;}
+html{
+	height: 100%;
+}
+.container{
+	margin-top:20px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 
+}
+/* .fir{
+	display: flex;
+	flex-direction: column; */
+/* } */
 
 /* USER LIST TABLE */
 h2{
@@ -175,3 +187,12 @@ h2{
 .table-stats .table-line-plus .status-social-icon {
 	color: #a75d54;
 }
+
+.bb{
+  display: inline-block;
+  background-color: #474F2F;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin-right: 30px;
+  }
