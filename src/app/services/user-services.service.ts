@@ -152,7 +152,7 @@ authToken: any;
     }
     request(id:number):Observable<NotificationData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-
+       
       return this.http.get<NotificationData>(environment.apiUrl+'/api/notification/'+id,{headers})
     }
 

@@ -26,10 +26,10 @@ export class RequestsComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
-      console.log(res.data)
-      console.log(this.notifi)
+      // console.log(res.data)
+      // console.log(this.notifi)
       // console.log(this.notifi[0].id)
-      console.log
+      // console.log
       },)
   }
   accept(nof:Notifi,seller:number){

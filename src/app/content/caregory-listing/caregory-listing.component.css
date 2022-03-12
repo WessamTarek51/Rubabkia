@@ -31,8 +31,11 @@
 
 .col-4 img{
     width: 100%;
+    
 }
-
+.col-4 img:hover{
+    cursor: pointer;
+}
 .small-container{
     max-width: 1080px;
     margin: auto;
