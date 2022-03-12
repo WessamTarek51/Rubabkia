@@ -12,11 +12,14 @@ export class RequestsComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
   data!:NotificationData;
   notifi!:Notifi[];
-
+  
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
- this.requset(this.seller)
+    this.service.refreshNeeded.subscribe(()=>{
+      this.requset(this.seller)
+    })
+   this.requset(this.seller)
   }
   requset(seller:any){
     this.service.request(seller).subscribe(
