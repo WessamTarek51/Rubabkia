@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { UserData } from './../_models/data.model';
 
 
@@ -48,7 +48,10 @@ export class UserServicesService {
 
 
   constructor(private http:HttpClient) { }
-
+  private _refreshNeeded=new Subject<void>();
+  get refreshNeeded(){
+       return this._refreshNeeded
+  }
   deleteProductOfUser(product:Product){
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
@@ -134,11 +137,16 @@ authToken: any;
     }
 
 
-    buyProduct(product:Product):Observable<Notification>{
+    buyProduct(product:Product):Observable<NotificationData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
       const body = { 'product_id':product.id,'seller_id':product.userid};
 
-      return this.http.post<Notification>(environment.apiUrl+'/api/buy/'+product.id,body,{headers})
+      return this.http.post<NotificationData>(environment.apiUrl+'/api/buy/'+product.id,body,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
+
 
 
     }
@@ -146,7 +154,6 @@ authToken: any;
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
       return this.http.get<NotificationData>(environment.apiUrl+'/api/notification/'+id,{headers})
-
     }
 
     accept(nof:Notifi):Observable<Notifi[]>{
@@ -158,7 +165,11 @@ authToken: any;
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
 
-      return this.http.post<Notifi[]>(environment.apiUrl+'/api/purchases/'+nof.id_not,nof,{headers})
+      return this.http.post<Notifi[]>(environment.apiUrl+'/api/purchases/'+nof.id_not,nof,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
 
     }
     reject(id:number):Observable<Notifi[]>{
@@ -169,7 +180,11 @@ authToken: any;
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
 
-      return this.http.delete<Notifi[]>(environment.apiUrl+'/api/nof/'+id,{headers})
+      return this.http.delete<Notifi[]>(environment.apiUrl+'/api/nof/'+id,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
 
     }
 

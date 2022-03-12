@@ -7,6 +7,7 @@ import { User } from 'src/app/_models/user.models';
 import { Purchase } from './../../_models/purchase.models';
 import { getAllCategoryData } from 'src/app/_models/category.models';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -59,7 +60,7 @@ searchas(){
 
   constructor(public service:ProductServiceService ,
     private userService:UserServicesService,
-    private activatedRoute:ActivatedRoute,) { }
+    private activatedRoute:ActivatedRoute,private toaster:ToastrService) { }
   // productselected!:number;
   ngOnInit(): void {
 
@@ -121,6 +122,10 @@ AddPruchases(product:Product){
 buyProduct(product:Product){
 
   this.userService.buyProduct(product).subscribe(res=>{
+    this.toaster.success(JSON.stringify(res.message),JSON.stringify(res.code),{
+      timeOut:2000,
+      progressBar:true
+    });
   });
   }
 }
