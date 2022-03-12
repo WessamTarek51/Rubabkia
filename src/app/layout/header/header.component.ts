@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     this.service.refreshNeeded.subscribe(()=>{
       this.requset(this.seller)
     })
-   
+    this.requset(this.seller)
   }
   requset(seller:number){
     this.service.request(seller).subscribe(
@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
       this.notifi=res.data
       console.log(res.data)
       this.counter=this.notifi.length
+      console.log(this.counter)
       
      },)
      
