@@ -6,7 +6,7 @@ import { UserData } from 'src/app/_models/data.model';
 import { User } from 'src/app/_models/user.models';
 import { Purchase } from './../../_models/purchase.models';
 import { getAllCategoryData } from 'src/app/_models/category.models';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -20,7 +20,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductListingComponent implements OnInit {
   product = {} as Product;
 productData!:Product[];
-
+token:any=localStorage.getItem('token');
 fav:boolean=false;
 // Purchasedata:getAllCategoryData | undefined;
 Purchasedata!:Product[];
@@ -60,7 +60,7 @@ searchas(){
 
   constructor(public service:ProductServiceService ,
     private userService:UserServicesService,
-    private activatedRoute:ActivatedRoute,private toaster:ToastrService) { }
+    private activatedRoute:ActivatedRoute,private toaster:ToastrService,private router:Router) { }
   // productselected!:number;
   ngOnInit(): void {
 
@@ -73,6 +73,10 @@ searchas(){
     )
   }
   changFav(product:Product){
+    if(!this.token){
+      this.router.navigate(['login'])
+    }
+    else{
 console.log(product.id);
 console.log(product.isFav);
 
@@ -93,7 +97,7 @@ console.log(product.isFav);
    }
    product.isFav=!product.isFav
 
-
+    }
   }
 
   // onFav(product:Product){
@@ -120,13 +124,17 @@ AddPruchases(product:Product){
 
 
 buyProduct(product:Product){
-
+  if(!this.token){
+    this.router.navigate(['login'])
+  }
+  else{
   this.userService.buyProduct(product).subscribe(res=>{
     this.toaster.success(JSON.stringify(res.message),JSON.stringify(res.code),{
       timeOut:2000,
       progressBar:true
     });
   });
+}
   }
 }
 
