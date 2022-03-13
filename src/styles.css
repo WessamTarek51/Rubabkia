@@ -5,8 +5,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Pacifico', cursive;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 /* body{
-    height: 100vh;
+    height: 100%;
 } */

@@ -1,5 +1,17 @@
-body{margin-top:20px;}
+html{
+	height: 100%;
+}
+.container{
+	margin-top:20px;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 
+}
+/* .fir{
+	display: flex;
+	flex-direction: column; */
+/* } */
 
 /* USER LIST TABLE */
 h2{
