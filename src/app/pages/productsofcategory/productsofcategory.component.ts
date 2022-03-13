@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute , Params } from '@angular/router';
+import { ActivatedRoute , Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { CategoryServiceService } from 'src/app/services/category-service.service';
@@ -14,7 +14,7 @@ import { Product,getAllProductsData , proData} from 'src/app/_models/product.mod
   styleUrls: ['./productsofcategory.component.css']
 })
 export class ProductsofcategoryComponent implements OnInit {
-
+   token=localStorage.getItem('token');
    categoryId:any;
   categories:Category[]=[];
   filteredproducts!:Product[]
@@ -23,7 +23,7 @@ export class ProductsofcategoryComponent implements OnInit {
 
 
   constructor(private categoryservice:CategoryServiceService,private productservice:ProductServiceService,
-    private param:ActivatedRoute ,private HttpClient:HttpClient ) {
+    private param:ActivatedRoute ,private HttpClient:HttpClient ,private router:Router ) {
     // this.categories=categoryservice.categories;
 
    }
@@ -50,6 +50,10 @@ export class ProductsofcategoryComponent implements OnInit {
 
   }
   changFav(product:Product){
+    if(!this.token){
+      this.router.navigate(['login'])
+    }
+    else{
     console.log(product.id);
     console.log(product.isFav);
 
@@ -74,7 +78,7 @@ export class ProductsofcategoryComponent implements OnInit {
       }
 
     }
-
+  }
   // categories.forEach(item => {
   //   console.log(item);
   //   let filtered = this.products.filter(x => x.category == item);
