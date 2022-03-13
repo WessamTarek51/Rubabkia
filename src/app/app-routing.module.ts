@@ -1,3 +1,4 @@
+import { ProductListingComponent } from './content/product-listing/product-listing.component';
 import { FavProductsComponent } from './pages/fav-products/fav-products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,6 +30,8 @@ const routes: Routes = [
   },
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
+  {path:'product',component:ProductListingComponent },
+
 
 
   {path:'getstarted',component:GetstartedComponent },
