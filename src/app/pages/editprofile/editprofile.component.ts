@@ -21,6 +21,7 @@ export class EditprofileComponent implements OnInit {
   phonenumber:any;
   gender:any;
   image:any;
+  userid=localStorage.getItem('user_id')
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
@@ -101,7 +102,7 @@ export class EditprofileComponent implements OnInit {
           timeOut:2000,
           progressBar:true
         });
-        this.router.navigate(['profile'])
+        this.router.navigate(['profile',this.userid])
         
       }
       else{
