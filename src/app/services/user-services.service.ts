@@ -11,7 +11,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { NotificationData } from '../_models/nof.models';
 import { Notifi } from '../_models/notiication.models';
-
+import { AcceptedmessageData } from '../_models/acceptedmessage.models';
+import { Acceptedmessage } from '../_models/acceptedmessage.models';
 
 
 
@@ -189,7 +190,40 @@ authToken: any;
     }
 
 
+    acceptmessage(nof:Notifi):Observable<AcceptedmessageData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+      const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
+
+      return this.http.post<AcceptedmessageData>(environment.apiUrl+'/api/accept/'+nof.id_not,body,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
 
 
 
+    }
+    acceptedmessages():Observable<AcceptedmessageData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmessages',{headers})
+    }
+
+    
+    ok(id:number):Observable<Acceptedmessage[]>{
+      const headers=new HttpHeaders({
+        'content-type' : 'application/json',
+        // 'Content-Type':'multipart/form-data',
+        'Access-Control-Allow-Origin' : '*',
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+
+      return this.http.delete<Acceptedmessage[]>(environment.apiUrl+'/api/acceptedmessages/'+id,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
+
+    }
 }
+

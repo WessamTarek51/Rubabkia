@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Notifi } from 'src/app/_models/notiication.models';
+import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,6 +12,7 @@ import { Notifi } from 'src/app/_models/notiication.models';
 export class HeaderComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
   notifi!:Notifi[];
+  acceptedres!:Acceptedmessage[];
   counter!:number;
   private updateSubscription!: Subscription;
   constructor(private router:Router,private service:UserServicesService) { }
@@ -30,12 +32,18 @@ export class HeaderComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
-      console.log(res.data)
+      
       this.counter=this.notifi.length
-      console.log(this.counter)
+      
       
      },)
      
+  }
+  acceptresponse(){
+    this.service.acceptedmessages().subscribe(res=>{
+       this.acceptedres=res.data
+       console.log(this.acceptedres)
+    })
   }
 logout(){
 
