@@ -32,12 +32,9 @@ export class HeaderComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
-      
       this.counter=this.notifi.length
-      
-      
      },)
-     
+
   }
   acceptresponse(){
     this.service.acceptedmessages().subscribe(res=>{

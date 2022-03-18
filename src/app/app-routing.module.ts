@@ -33,6 +33,7 @@ const routes: Routes = [
 
 
 
+
   {path:'getstarted',component:GetstartedComponent },
 
 
@@ -40,7 +41,7 @@ const routes: Routes = [
   {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
   {path:'user/:id',component:UserProfileComponent},
 
-  {path:'chat/:id',component:ChatUserComponent,canActivate:[AuthGuard]},
+  {path:'chat',component:ChatUserComponent,canActivate:[AuthGuard]},
 
   {path:'fav/:id',component:FavProductsComponent},
   {path:'nof/:id',component:RequestsComponent},

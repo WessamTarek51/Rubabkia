@@ -17,6 +17,7 @@ export interface User{
     products?:Product[];
     purchases?:Purchase[];
     sales?:Sales[];
+    unseenCountMessages?:number
 
     // email:string;
     // phone_number:number;
