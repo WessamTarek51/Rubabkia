@@ -17,6 +17,7 @@ export class FeedbackComponent implements OnInit {
 
   userID =this.param.snapshot.params['id'];
   userData!:User;
+  acceptId:any;
   constructor(
     private productService:ProductServiceService ,
     private userServer:UserServicesService,
@@ -29,6 +30,10 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSenderById();
+    this.activatedRoute.queryParams.subscribe(param=>{
+      this.acceptId=param['accept']
+      console.log(this.acceptId)
+      })
   }
 
   getSenderById(){
@@ -38,18 +43,49 @@ export class FeedbackComponent implements OnInit {
          this.userData=res.data;
     });
   }
+
+  changFav(product:Product){
+    console.log(product.id);
+    console.log(product.isFav);
+
+      if(product.isFav==true){
+        this.productService.deleteFavOfUser(product).subscribe(res=>{
+          console.log (res.toString);
+
+        });
+
+
+      }
+       else{
+        this.productService.addFavProduct(product).subscribe(res=>{
+          console.log (res.toString);
+
+        });
+
+       }
+       product.isFav=!product.isFav
+
+
+      }
+      AddPruchases(product:Product){
+        this.productService.AddPurchases (product).subscribe(res=>{})
+     }
+
+
+    // buyProduct(product:Product){
+
+    //   this.productService.buyProduct(product).subscribe(res=>{
+    //   });
+      // }
+    
+
   onSubmit(form:NgForm){
 
     //////////////////////Add ///////////
-        // if(this.activatedRoute.snapshot.url[0].path=='add'){
+
     
-          // const formm=new FormData();
-          //  formm.append('name',form.value.name);
-          //  formm.append('price',form.value.price);
-          //  formm.append('description',form.value.description);
-    
-            this.userServer.storefeedData(form.value).subscribe(res=>{
-                 console.log(form.value);
+            this.userServer.storefeedData(form.value,this.acceptId).subscribe(res=>{
+              console.log(form.value);
     
         })
     

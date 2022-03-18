@@ -4,6 +4,7 @@ import { User } from './../../_models/user.models';
 import { UserServicesService } from './../../services/user-services.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FeedbackData ,Feedback} from 'src/app/_models/feedback.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,10 +14,12 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
   userID =this.param.snapshot.params['id'];
   userData!:User;
+  data!:Feedback[];
   constructor(private param:ActivatedRoute,private service:UserServicesService,private productServices:ProductServiceService) { }
 
   ngOnInit(): void {
 this.getSenderById();
+this.allfeedbacks();
   }
   getSenderById(){
     this.service.getSenderById(this.userID).subscribe(res=>{
@@ -58,6 +61,13 @@ this.getSenderById();
       });
       }
     
+      allfeedbacks(){
 
+        this.service.gerallfeedData(this.userID).subscribe(res=>{
+          this.data = res.data
+          console.log(this.data)
+        });
+        }
+   
 
 }
