@@ -13,6 +13,7 @@ import { NotificationData } from '../_models/nof.models';
 import { Notifi } from '../_models/notiication.models';
 import { AcceptedmessageData } from '../_models/acceptedmessage.models';
 import { Acceptedmessage } from '../_models/acceptedmessage.models';
+import { Feedback } from '../_models/feedback.model';
 
 
 
@@ -225,5 +226,15 @@ authToken: any;
       )
 
     }
+
+    storefeedData(data:Acceptedmessage):Observable<Feedback[]>{
+      const headers=new HttpHeaders({
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+      return this.http.post<Feedback[]>('http://127.0.0.1:8000/api/feedbacks'+data.id,{
+        headers:headers
+      });
+    }
+  
 }
 

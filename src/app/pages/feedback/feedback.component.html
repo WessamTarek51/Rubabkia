@@ -1,0 +1,91 @@
+<div class="profile-page">
+    <div class="page-header header-filter" data-parallax="true" ></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container"  >
+                <div class="row">
+               
+                    <div class="col-12" *ngIf="userData">
+                       <div class="profile">
+                            <div class="avatar">
+            <img src="http://127.0.0.1:8000/storage/images/{{userData.image}}"  style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                            </div>
+                            <div class="name">
+                                <h3 class="title"> {{userData.username}}    </h3>
+                                <h6 class="title"> {{userData.phoneNumber}} - {{userData.address}}</h6>
+                              <button type="button" class="bb btn" [routerLink]="['/chat/',userData.id]" > Message</button>
+  
+                                <br>
+                                <br>
+                              
+  
+                                <hr>
+                                <br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+  
+  
+  
+        <div class="products">
+          <div class="small-container">
+            <h2><i class="bi bi-bag-check-fill"></i>Products</h2>
+          <br>
+           <br>
+            <div class="row">
+              <div class="col-md-3 col-sm-6"   >
+              <img  style="height:180px!important;width:100%!important;"  />
+                <h4></h4>
+                <div class="pri-ic">
+                  <p></p>
+                  <div class="overlay-iconss">
+                    <!-- <a [routerLink]="['/show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
+                     <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" ></i> </a> -->
+                     <!-- <a [routerLink]="['profile',product.id]"  (click)="AddPruchases(product)"><i class="bi bi-bag-check-fill"></i></a> -->
+                     <!-- <a   ><i class="bi bi-bag-check-fill"></i></a> -->
+  
+                 </div>
+                 </div>
+                </div>
+                <div>
+                 
+                  <hr>
+  
+                  <br>
+                  <br>
+                  <br>
+                <!-- <div class="rate"> You can rate
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div> -->
+                <form action=""  #productform="ngForm" (ngSubmit)="onSubmit(productform)">
+   
+                    <textarea  id="mybtn"  class="me-2" name="message"  type="search" placeholder="send by name or your limited price" ngModel #message="ngModel"></textarea>
+                    <button class="btn btn-success"   id="search" type="submit">send</button>
+          
+            </form>
+
+              </div>
+            </div>
+  
+  
+              
+  
+  
+  </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  
