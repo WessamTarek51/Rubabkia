@@ -41,7 +41,6 @@ const routes: Routes = [
 
   {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
   {path:'user/:id',component:UserProfileComponent},
-  {path:'feedbacks/',component:FeedbackComponent},
 
   
   {path:'chat',component:ChatUserComponent,canActivate:[AuthGuard]},
@@ -66,6 +65,7 @@ const routes: Routes = [
 {path:'message',component:ListchatComponent},
 {path:'loading',component:LoadingComponent},
 {path:'requests',component:RequestsComponent},
+{path:'feedbacks/:id',component:FeedbackComponent},
 
 
 

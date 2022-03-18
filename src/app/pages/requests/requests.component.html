@@ -41,12 +41,12 @@
         </div>
         <div class="flex-grow-1 ms-3" >
           <strong class="me-auto" style="padding-right: 10px;">{{res.seller_name}}</strong>
-          <a
+          <button
           [routerLink]="['/feedbacks/',res.seller_id]"
           [queryParams]="{ accept: res.id}"
         >
           write your feedback
-        </a>
+          </button>
           <!-- <button type="button" class="bb btn" [routerLink]="['/user/',item.buyer_id]"  > 
             
             Profile</button> -->

@@ -32,6 +32,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   getSenderById(){
+    console.log(this.userID)
     this.userServer.getSenderById(this.userID).subscribe(res=>{
         console.log(res);
          this.userData=res.data;
