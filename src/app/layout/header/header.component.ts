@@ -32,7 +32,10 @@ export class HeaderComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
+      // console.log(res.data)
       this.counter=this.notifi.length
+      // console.log(this.counter)
+
      },)
 
   }

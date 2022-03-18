@@ -16,6 +16,7 @@
 
                               <br>
                               <br>
+                            
 
                               <hr>
                               <br>
@@ -33,7 +34,7 @@
          <br>
           <div class="row" *ngIf="userData">
             <div class="col-md-3 col-sm-6"   *ngFor="let product of userData.products" >
-            <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
+            <img src="http://127.0.0.1:8000/public/products/{{product.image}}"  style="height:180px!important;width:100%!important;"  />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
@@ -46,11 +47,38 @@
                </div>
                </div>
               </div>
+              <div>
+               
+                <hr>
+
+                <br>
+                <br>
+                <br>
+              <!-- <div class="rate"> You can rate
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
+              </div>
+
+              <textarea name="" id="" cols="30" rows="10" placeholder="your comment"></textarea> -->
             </div>
+          </div>
+
+
+            
 
 
 </div>
 </div>
 </div>
+
+
 
 

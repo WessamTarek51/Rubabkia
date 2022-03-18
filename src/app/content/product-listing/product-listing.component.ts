@@ -33,6 +33,7 @@ data!:UserData;
 searchText!:string;
 Product_id: any;
 
+
 search(){
 
   this.service.getAllProducts().subscribe(
@@ -48,8 +49,9 @@ search(){
 searchas(){
   this.service.getAllProducts().subscribe(
     (res)=>{
-
+    
       this.productData= res.data
+
       // this.productData = res.data;
 
     },
@@ -64,14 +66,20 @@ searchas(){
   // productselected!:number;
   ngOnInit(): void {
 
-
+   
+   
+      
     this.service.getAllProducts().subscribe(
       (res)=>{
         this.productData = res.data;
       },
 
     )
+
   }
+  
+
+  
   changFav(product:Product){
     if(!this.token){
       this.router.navigate(['login'])
