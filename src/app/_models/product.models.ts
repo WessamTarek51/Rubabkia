@@ -30,4 +30,6 @@ export interface proData{
   }
 
 
-
+  export interface prooData{
+    data:[];
+  }
