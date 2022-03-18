@@ -13,6 +13,8 @@ import { NotificationData } from '../_models/nof.models';
 import { Notifi } from '../_models/notiication.models';
 import { AcceptedmessageData } from '../_models/acceptedmessage.models';
 import { Acceptedmessage } from '../_models/acceptedmessage.models';
+import { RejectedmessageData } from '../_models/rejectedmessage.models';
+import { Rejectedmessage } from '../_models/rejectedmessage.models';
 
 
 
@@ -209,7 +211,7 @@ authToken: any;
       return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmessages',{headers})
     }
 
-    
+    // for acceptresponse
     ok(id:number):Observable<Acceptedmessage[]>{
       const headers=new HttpHeaders({
         'content-type' : 'application/json',
@@ -225,5 +227,38 @@ authToken: any;
       )
 
     }
+
+
+  rejectmessage(nof:Notifi):Observable<RejectedmessageData>{
+   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+   const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
+
+      return this.http.post<RejectedmessageData>(environment.apiUrl+'/api/reject/'+nof.id_not,body,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
+ }
+ rejectedmessages():Observable<RejectedmessageData>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.get<RejectedmessageData>(environment.apiUrl+'/api/rejectedmessages',{headers})
+}
+// for rejectresponse
+okay(id:number):Observable<Rejectedmessage[]>{
+  const headers=new HttpHeaders({
+    'content-type' : 'application/json',
+    // 'Content-Type':'multipart/form-data',
+    'Access-Control-Allow-Origin' : '*',
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+
+  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers}).pipe(
+    tap(()=>{
+      this._refreshNeeded.next()
+    })
+  )
+
+}
 }
 

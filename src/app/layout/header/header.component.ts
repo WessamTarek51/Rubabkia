@@ -4,6 +4,7 @@ import { interval, Subscription } from 'rxjs';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Notifi } from 'src/app/_models/notiication.models';
 import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
+import { Rejectedmessage } from 'src/app/_models/rejectedmessage.models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
   notifi!:Notifi[];
   acceptedres!:Acceptedmessage[];
+  rejectedres!:Rejectedmessage[];
   counter!:number;
   private updateSubscription!: Subscription;
   constructor(private router:Router,private service:UserServicesService) { }
@@ -22,10 +24,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // this.service.refreshNeeded.subscribe(()=>{
     //   this.requset(this.seller)
+    //   this.acceptresponse()
     // })
     this.updateSubscription = interval(3000).subscribe(
       (val) => { this.requset(this.seller)});
     this.requset(this.seller)
+    // this.acceptresponse()
   }
   requset(seller:number){
     this.service.request(seller).subscribe(
@@ -33,18 +37,21 @@ export class HeaderComponent implements OnInit {
 
       this.notifi=res.data
       
-      this.counter=this.notifi.length
       
+      this.service.acceptedmessages().subscribe(res=>{
+        this.acceptedres=res.data
+        // this.counter=this.notifi.length+this.acceptedres.length
+        
+     })
+     this.service.rejectedmessages().subscribe(res=>{
+       this.rejectedres=res.data
+        this.counter=this.notifi.length+this.acceptedres.length+this.rejectedres.length
+     })
       
      },)
-     
+ 
   }
-  acceptresponse(){
-    this.service.acceptedmessages().subscribe(res=>{
-       this.acceptedres=res.data
-       console.log(this.acceptedres)
-    })
-  }
+  
 logout(){
 
     localStorage.removeItem('token')
