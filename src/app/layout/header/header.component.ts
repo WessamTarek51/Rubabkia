@@ -4,6 +4,7 @@ import { interval, Subscription } from 'rxjs';
 import { UserServicesService } from 'src/app/services/user-services.service';
 import { Notifi } from 'src/app/_models/notiication.models';
 import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
+import { Rejectedmessage } from 'src/app/_models/rejectedmessage.models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   notifi!:Notifi[];
   acceptedres!:Acceptedmessage[];
   counter!:number;
+  rejectedres!:Rejectedmessage[];
   private updateSubscription!: Subscription;
   constructor(private router:Router,private service:UserServicesService) { }
    token:any
@@ -32,9 +34,16 @@ export class HeaderComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
-      // console.log(res.data)
-      this.counter=this.notifi.length
-      // console.log(this.counter)
+     
+      
+      this.service.rejectedmessages().subscribe(res=>{
+        this.rejectedres=res.data
+       
+      })
+      this.service.acceptedmessages().subscribe(res=>{
+        this.acceptedres=res.data
+        this.counter=this.notifi.length+this.acceptedres.length+this.rejectedres.length
+     })
 
      },)
 

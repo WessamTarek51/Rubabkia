@@ -58,7 +58,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
-
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -101,7 +101,7 @@ firebase.initializeApp(environment.firebaseConfig);
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-
+    RatingModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule ,

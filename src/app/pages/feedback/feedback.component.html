@@ -68,7 +68,9 @@
                   <label for="star1" title="text">1 star</label>
                 </div> -->
                 <form action=""  #productform="ngForm" (ngSubmit)="onSubmit(productform)">
-   
+                  Give your rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" ngModel #rate="ngModel" [max]="max" isReadonly=false>
+                  </rating>
+                  <br>
                     <textarea  id="mybtn"  class="me-2" name="message"  type="search" placeholder="send by name or your limited price" ngModel #message="ngModel"></textarea>
                     <button class="btn btn-success"   id="search" type="submit">send</button>
           
