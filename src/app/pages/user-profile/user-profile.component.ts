@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   userData!:User;
   data!:Feedback[];
   max=5;
-  readonly:boolean=true;
+  isReadonly:boolean=true;
   constructor(private param:ActivatedRoute,private service:UserServicesService,private productServices:ProductServiceService) { }
 
   ngOnInit(): void {
