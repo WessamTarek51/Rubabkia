@@ -15,6 +15,8 @@ export class UserProfileComponent implements OnInit {
   userID =this.param.snapshot.params['id'];
   userData!:User;
   data!:Feedback[];
+  max=5;
+  readonly:boolean=true;
   constructor(private param:ActivatedRoute,private service:UserServicesService,private productServices:ProductServiceService) { }
 
   ngOnInit(): void {

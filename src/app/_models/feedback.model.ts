@@ -10,7 +10,7 @@ productname:string;
 productimage:string;
 image:string;
 message:string;
-
+rate:number;
 }
 
 export interface FeedbackData{

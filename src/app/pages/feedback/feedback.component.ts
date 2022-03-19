@@ -14,7 +14,7 @@ import { User } from './../../_models/user.models';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
-
+  max=5;
   userID =this.param.snapshot.params['id'];
   userData!:User;
   acceptId:any;
