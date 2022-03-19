@@ -90,12 +90,12 @@ li{
 }
 
 .people-list .chat-list li:hover {
-  background: #efefef;
+  background: #ACB992;
   cursor: pointer
 }
 
 .people-list .chat-list li.active {
-  background: #efefef
+  background: #ACB992
 }
 
 .people-list .chat-list li .name {
@@ -124,7 +124,7 @@ li{
 
 .chat .chat-header {
   padding: 15px 20px;
-  border-bottom: 2px solid #f4f7f6
+  border-bottom: 2px solid #ACB992
 }
 
 .chat .chat-header img {
@@ -140,7 +140,7 @@ li{
 
 .chat .chat-history {
   padding: 20px;
-  border-bottom: 2px solid #fff
+  border-bottom: 2px solid #ACB992
 }
 
 .chat .chat-history ul {
@@ -189,7 +189,7 @@ li{
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: #fff;
+  border-bottom-color: #ACB992;
   border-width: 10px;
   margin-left: -10px
 }
@@ -213,12 +213,12 @@ li{
 }
 
 .chat .chat-history .other-message {
-  background: #e8f1f3;
+  background: #ACB992;
   text-align: right
 }
 
 .chat .chat-history .other-message:after {
-  border-bottom-color: #e8f1f3;
+  border-bottom-color: #ACB992;
   left: 93%
 }
 

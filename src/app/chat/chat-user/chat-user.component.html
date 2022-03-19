@@ -105,28 +105,28 @@
               </div>
 
               <div class="chat" *ngIf="messages != null" >
-                  <div class="chat-header clearfix">
-                      <div class="row">
-                          <div class="col-lg-6">
+                  <div class="chat-header clearfix"style="background-color: #ACB992;">
+                      <div class="row" >
+                          <div class="col-lg-6" >
                               <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
                                   <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" alt="avatar">
                               </a>
 
 
                               <div class="chat-about">
-                                  <h6 class="m-b-0">{{receiver.name}}</h6>
+                                  <h6 class="m-b-0" style="color: white; ">{{receiver.name}}</h6>
                               </div>
                           </div>
 
                       </div>
                   </div>
 
-                  <div class="chat-history">
-                      <ul class="m-b-0">
-                        <div *ngFor="let message of messages">
+                  <div class="chat-history ">
+                      <ul class="m-b-0" >
+                        <div *ngFor="let message of messages" >
 
-                          <div *ngIf="message.body != null">
-                          <li class="clearfix" *ngIf="message.senderID == senderID">
+                          <div *ngIf="message.body != null" >
+                          <li class="clearfix" *ngIf="message.senderID == senderID" >
                               <div class="message other-message float-right">{{message.body}}</div>
                           </li>
 
