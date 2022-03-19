@@ -90,7 +90,7 @@
                       <strong class="me-auto" style="padding-right: 10px;">{{ress.buyer_name}}</strong>
                       <button type="button" class="bb btn" > Profile</button>
                       <br>
-                      Give rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="ress.rate" ngModel #rate="ngModel" [max]="max" isReadonly=true>
+                      Give rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="ress.rate" ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
                       </rating>
                       <br>
                       comminted {{ress.message}}
