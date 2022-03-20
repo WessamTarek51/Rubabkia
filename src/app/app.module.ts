@@ -44,6 +44,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 
 
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 
 const appRoutes: Routes=[
@@ -111,6 +112,7 @@ firebase.initializeApp(environment.firebaseConfig);
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
     CommonModule,
+    NgxScrollTopModule,
 
 
   ],

@@ -41,7 +41,7 @@
     </div>
     <div class="products">
         <div class="small-container">
-          <h2><i class="bi bi-file-person-fill"></i>MyProducts</h2>
+          <h2><i class="bi bi-file-person-fill padding-5"></i>MyProducts</h2>
         <br>
          <br>
       <div *ngIf="user">
@@ -73,7 +73,7 @@
 
 <div class="products">
   <div class="small-container">
-    <h2><i class="bi bi-bag-check-fill"></i>My Purchases</h2>
+    <h2><i class="bi bi-bag-check-fill padding-5"></i>My Purchases</h2>
   <br>
    <br>
    <div *ngIf="user">
@@ -103,7 +103,7 @@
 
 <div class="products">
   <div class="small-container">
-    <h2><i class="fa fa-coins"></i>My Sold Products</h2>
+    <h2><i class="fa fa-coins padding-5"></i>My Sold Products</h2>
   <br>
    <br>
    <div *ngIf="user.sales!=null">
@@ -126,7 +126,62 @@
     </div>
 
 <br>
+</div>
+</div>
+<div class="products">
+  <div class="small-container">
+    <hr>
+    <br>
+    <h2><i class="bi bi-chat-right-fill padding-5"></i>Comments</h2>
+  <br>
+
+<div style=" position: relative; ">
+  <!-- for requests -->
+ <div *ngIf="dataa!=null" >
+    <div class="container-fluid "  *ngFor="let ress of dataa"   >
+
+        <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
+
+    <div class="col-12 px-5  pt-3 pb-3"  >
+    <div class="d-flex align-items-center">
+      <div class="flex-shrink-0">
+        <img src="http://127.0.0.1:8000/storage/images/{{ress.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+      </div>
+      <div class="flex-grow-1 ms-3" >
+        <strong class="me-auto" style="padding-right: 10px;">{{ress.buyer_name}}</strong>
+        <button type="button" class="bb btn" [routerLink]="['/user',ress.buyer_id]" > Profile</button>
+        <br>
+        Give rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="ress.rate" ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+        </rating>
+        <br>
+        comminted {{ress.message}}
+      </div>
+
+      <br>
+    </div>
+    </div>
+  </div>
+    </div>
+    </div>
+    <div *ngIf="dataa?.length==0">
+      <div class="row">
+        <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
 <br>
+
+    </div>
 </div>
 </div>
 </div>

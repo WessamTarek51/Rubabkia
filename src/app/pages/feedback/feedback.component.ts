@@ -17,6 +17,7 @@ import { User } from './../../_models/user.models';
 export class FeedbackComponent implements OnInit {
   max=5;
   userID =this.param.snapshot.params['id'];
+  user = parseInt(localStorage.getItem('user_id')!)
   userData!:User;
   acceptId:any;
   data!:Feedback[];
@@ -92,7 +93,7 @@ export class FeedbackComponent implements OnInit {
 
 
             this.userServer.storefeedData(form.value,this.acceptId).subscribe(res=>{
-              this.router.navigateByUrl('nof/,this.userID');
+              this.router.navigateByUrl('nof/'+this.user);
               console.log(form.value);
 
         })
@@ -111,6 +112,6 @@ export class FeedbackComponent implements OnInit {
         }
 
       onclick(){
-        this.router.navigateByUrl('nof/,this.userID');
+        this.router.navigateByUrl('nof/'+this.user);
       }
 }

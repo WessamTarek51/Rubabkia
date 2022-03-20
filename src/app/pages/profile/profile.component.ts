@@ -15,10 +15,10 @@ import { NgForOf } from '@angular/common';
 export class ProfileComponent implements OnInit {
 user!:User;
 data!:UserData;
+dataa!:Feedback[];
 result:any;
 showSppiner:boolean = true;
 max=5;
-dataa!:Feedback[];
 isReadonly=true;
 userID = parseInt(localStorage.getItem('user_id')!)
 sum:any=0;
@@ -30,6 +30,7 @@ token=localStorage.getItem('token');
     // this.user=this.service.user;
     this.getuser();
     this.allfeedbacks();
+
 }
   btnClick() {
     this.router.navigateByUrl('/add');
@@ -59,6 +60,7 @@ getuser(){
       console.log(this.user.products)
 
   });
+
 }
 verify(){
   this.service.verifyemail(this.token).subscribe(res=>{
@@ -87,15 +89,13 @@ allfeedbacks(){
 
   this.service.gerallfeedData(this.userID).subscribe(res=>{
     this.dataa = res.data
-  //   for( var i = 0; i < this.dataa.length; i++ ){
-  //     this.sum += parseInt(, 10 ); //don't forget to add the base
-  // }
 
-  // var avg = this.sum/this.dataa.length;
-  //   console.log(this.data)
-   this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
- this.avg = (this.sum / this.dataa.length) || 0;
- console.log(this.avg)
+    this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
+this.avg = (this.sum / this.dataa.length) || 0;
+console.log(this.avg)
+console.log(this.data)
   });
   }
+
+
 }
