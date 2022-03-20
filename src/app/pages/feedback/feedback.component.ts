@@ -31,6 +31,7 @@ export class FeedbackComponent implements OnInit {
     private httpClient: HttpClient,
     private FormBuilder:FormBuilder,
     private param:ActivatedRoute
+    // private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -83,28 +84,33 @@ export class FeedbackComponent implements OnInit {
     //   this.productService.buyProduct(product).subscribe(res=>{
     //   });
       // }
-    
+
 
   onSubmit(form:NgForm){
 
     //////////////////////Add ///////////
 
-    
+
             this.userServer.storefeedData(form.value,this.acceptId).subscribe(res=>{
+              this.router.navigateByUrl('nof/,this.userID');
               console.log(form.value);
-    
+
         })
-    
+
         // this.router.navigateByUrl('profile/this.Product_id');
       }
       allfeedbacks(){
 
         this.userServer.gerallfeedData(this.userID).subscribe(res=>{
           this.data = res.data
-          
+
           this.sum = this.data.reduce((a, b) => a + b.rate, 0);
           this.avg = (this.sum / this.data.length) || 0;
           console.log(this.avg)
         });
         }
+
+      onclick(){
+        this.router.navigateByUrl('nof/,this.userID');
+      }
 }

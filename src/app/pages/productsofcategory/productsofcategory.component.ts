@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Params, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { ProductServiceService } from 'src/app/services/product-service.service';
+import { UserServicesService } from 'src/app/services/user-services.service';
 import { Category,getAllCategoryData } from 'src/app/_models/category.models';
 import { Product,getAllProductsData , proData} from 'src/app/_models/product.models';
 
@@ -23,7 +25,7 @@ export class ProductsofcategoryComponent implements OnInit {
 
 
   constructor(private categoryservice:CategoryServiceService,private productservice:ProductServiceService,
-    private param:ActivatedRoute ,private HttpClient:HttpClient ,private router:Router ) {
+    private param:ActivatedRoute ,private HttpClient:HttpClient,private toaster:ToastrService ,private router:Router ,private userservice:UserServicesService) {
     // this.categories=categoryservice.categories;
 
    }
@@ -77,6 +79,24 @@ export class ProductsofcategoryComponent implements OnInit {
 
       }
 
+    }
+    AddPruchases(product:Product){
+      this.productservice.AddPurchases (product).subscribe(res=>{})
+   }
+  
+  
+  buyProduct(product:Product){
+    if(!this.token){
+      this.router.navigate(['login'])
+    }
+    else{
+    this.userservice.buyProduct(product).subscribe(res=>{
+      this.toaster.success(JSON.stringify(res.message),JSON.stringify(res.code),{
+        timeOut:2000,
+        progressBar:true
+      });
+    });
+  }
     }
   }
   // categories.forEach(item => {

@@ -36,6 +36,9 @@
       padding-left: 140px;
 
   }
+  .overlay-iconss a{
+      padding: 2px;
+  }
   .overlay-iconss i{
       /* color: #000; */
       color: #474F2F;
@@ -52,7 +55,7 @@
       background-color: black;
       color: cornsilk;
       margin: 0 10px;
-      padding-bottom: 10px;
+      padding-bottom: 10px ;
       border-radius: 10%;
   }
   @media only screen and (max-width: 600px){

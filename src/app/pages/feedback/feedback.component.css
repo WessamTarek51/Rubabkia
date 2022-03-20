@@ -5,6 +5,28 @@ html *{
     margin: 0;
     padding: 0;
   }
+  .row{
+    display: flex;
+    
+  }
+  .mynewform{
+    display: flex;
+}
+#mybtn{
+    width: 75%;
+}
+.bb{
+  display: inline-block;
+  background-color: #474F2F;
+  color: #fff;
+  padding: 8px 35px;
+  border-radius: 10px;
+  /* margin-right: 20px; */
+  }
+
+#search{
+  width: 23%;
+}
   .rate {
     float: left;
     height: 46px;
@@ -84,7 +106,7 @@ html *{
   .profile-page .profile img {
     max-width: 160px;
     width: 100%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     -webkit-transform: translate3d(0,-50%,0);
     -moz-transform: translate3d(0,-50%,0);
     -o-transform: translate3d(0,-50%,0);
@@ -113,7 +135,7 @@ html *{
   }
   
   .profile-page .descripti{
-    margin: 1.071rem auto 0;
+    /* margin: 1.071rem auto 0; */
     max-width: 600px;
     color: #999;
     font-weight: 300;
