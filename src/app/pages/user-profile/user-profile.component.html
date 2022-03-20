@@ -16,14 +16,16 @@
 
                               <br>
                               <br>
-                            
-
-                              <hr>
-                              <br>
                           </div>
+
+                          </div>
+
                   </div>
               </div>
+
           </div>
+
+</div>
 
 
 
@@ -48,11 +50,9 @@
                </div>
               </div>
               <div>
-               
+
                 <hr>
 
-                <br>
-                <br>
                 <br>
               <!-- <div class="rate"> You can rate
                 <input type="radio" id="star5" name="rate" value="5" />
@@ -70,17 +70,16 @@
               <!-- <textarea name="" id="" cols="30" rows="10" placeholder="your comment"></textarea> -->
 
 
-              <hr>
 
 
               <div style=" position: relative; ">
                 <!-- for requests -->
                   <div class="container">
-              
+
                   <div class="container-fluid "  *ngFor="let ress of data"   >
-                  
+
                       <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
-                  
+
                   <div class="col-12 px-5  pt-3 pb-3"  >
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
@@ -88,7 +87,7 @@
                     </div>
                     <div class="flex-grow-1 ms-3" >
                       <strong class="me-auto" style="padding-right: 10px;">{{ress.buyer_name}}</strong>
-                      <button type="button" class="bb btn" > Profile</button>
+                      <button type="button" class="bb btn" [routerLink]="['/user',ress.buyer_id]" > Profile</button>
                       <br>
                       Give rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="ress.rate" ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
                       </rating>
@@ -108,7 +107,7 @@
           </div>
 
 
-            
+
 
 
 </div>

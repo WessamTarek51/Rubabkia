@@ -37,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
  btnClick(id:number) {
-        this.router.navigateByUrl('/chat/'+id);
+        this.router.navigateByUrl('/message/'+id);
 };
 
 
