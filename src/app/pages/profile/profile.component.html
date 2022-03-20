@@ -17,7 +17,7 @@
 
 
                                 <h3 class="title">{{user.username}}</h3>
-                                <rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+                                <rating *ngIf="avg"  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
                                 </rating>
                                 <h6 class="title">{{user.phoneNumber}}-{{user.address}}</h6>
 
