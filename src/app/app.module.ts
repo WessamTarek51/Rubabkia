@@ -59,6 +59,7 @@ import { EditprofileComponent } from './pages/editprofile/editprofile.component'
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -90,6 +91,7 @@ firebase.initializeApp(environment.firebaseConfig);
      RequestsComponent,
      UserProfileComponent,
      FeedbackComponent,
+     NotfoundComponent,
 
 
 

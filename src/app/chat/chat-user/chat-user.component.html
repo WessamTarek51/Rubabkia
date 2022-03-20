@@ -82,18 +82,18 @@
 
 <div class="container">
   <div class="row clearfix">
-      <div class="col-lg-12">
-          <div class="card chat-app">
-              <div id="plist" class="people-list">
+      <div class="col-lg-12" >
+          <div class="card chat-app" >
+              <div id="plist" class="people-list" >
 
-                  <ul class="list-unstyled chat-list mt-2 mb-0">
+                  <ul class="list-unstyled chat-list mt-2 mb-0" >
 
                       <li class="clearfix" *ngFor="let user of users">
                           <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="avatar">
                           <div class="about">
-                              <div class="name"  (click)="onChatClick(user)">{{user.name}}</div>
+                              <div class="name"  (click)="onChatClick(user)" style="color: #474F2F; font-size: 18px;">{{user.name}}</div>
 
-                              <span class="rounded-pill bg-danger" *ngIf="user.unseenCountMessages">
+                              <span class="rounded-pill bg-danger badge" style="padding: 5px; font-size: 15px;" *ngIf="user.unseenCountMessages">
                                 {{user.unseenCountMessages}}
                                 <span class="visually-hidden">New alerts</span>
                               </span>
@@ -105,25 +105,25 @@
               </div>
 
               <div class="chat" *ngIf="messages != null" >
-                  <div class="chat-header clearfix">
-                      <div class="row">
-                          <div class="col-lg-6">
+                  <div class="chat-header clearfix" style="background-color: #ACB992; color: #474F2F;" >
+                      <div class="row" >
+                          <div class="col-lg-6" >
                               <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
                                   <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" alt="avatar">
                               </a>
 
 
                               <div class="chat-about">
-                                  <h6 class="m-b-0">{{receiver.name}}</h6>
+                                  <h6 class="m-b-0" style="color: #474F2F; font-weight: bold; font-size: 18px; ">{{receiver.name}}</h6>
                               </div>
                           </div>
 
                       </div>
                   </div>
 
-                  <div class="chat-history">
-                      <ul class="m-b-0">
-                        <div *ngFor="let message of messages">
+                  <div class="chat-history" style="overflow: auto; height: 70vh;">
+                      <ul class="m-b-0" >
+                        <div *ngFor="let message of messages" >
 
                           <div *ngIf="message.body != null">
                           <li class="clearfix" *ngIf="message.senderID == senderID">
@@ -139,12 +139,12 @@
 
                       </ul>
                   </div>
-                  <div class="chat-message clearfix">
-                      <div class="input-group mb-0">
+                  <div class="chat-message clearfix" style="background-color:#ACB992; ">
+                      <div class="input-group mb-0" >
                           <div class="input-group-prepend">
                               <span class="input-group-text" (click)="sendMessage(messageInput.value)"><i class="fa fa-send"></i></span>
                           </div>
-                          <input type="text" class="form-control"  #messageInput placeholder="Enter text here...">
+                          <input type="text" class="form-control"  #messageInput placeholder="Enter text here..." style="background-color:#ACB992;  color:#474F2F; " (keyup.enter)="sendMessage(messageInput.value)">
                       </div>
                   </div>
               </div>
@@ -154,8 +154,8 @@
 
 
               <div class="chat" *ngIf="messages == null" >
-                <div class="chat-history">
-                <p style="height: 80vh; text-align: center';">Select a user to start chat</p>
+                <div class="chat-history" >
+                <p style="height: 80vh; text-align: center; padding-top: 30%; color: #474F2F;">Select a user to start chat</p>
                 </div>
             </div>
 
