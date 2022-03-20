@@ -238,12 +238,8 @@ authToken: any;
       });
     }
     gerallfeedData(id:any):Observable<FeedbackData>{
-      const headers=new HttpHeaders({
-        'Authorization':'Bearer '+localStorage.getItem('token')
-      });
-      return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id,{
-        headers:headers
-      });
+
+      return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id);
     }
 
 

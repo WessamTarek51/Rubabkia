@@ -14,7 +14,7 @@
                               <rating *ngIf="avg"  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
                               </rating>
                               <h6 class="title"> {{userData.phoneNumber}} - {{userData.address}}</h6>
-                              <button type="button" class="bb btn" [routerLink]="['/chat/',userData.id]" > Message</button>
+                              <button type="button" class="bb btn" [routerLink]="['/message/',userData.id]" > Message</button>
 
                               <br>
                               <br>
@@ -32,28 +32,38 @@
 
 
       <div class="products">
+
         <div class="small-container">
-          <h2><i class="bi bi-bag-check-fill"></i>Products</h2>
+          <hr>
+<br>
+          <h2 style="padding-left: 30px;"><i class="bi bi-bag-check-fill padding-5"></i>Products</h2>
         <br>
          <br>
-          <div class="row" *ngIf="userData">
+            <div *ngIf="userData.products!=null">
+              <div class="row" *ngIf="userData">
+
             <div class="col-md-3 col-sm-6"   *ngFor="let product of userData.products" >
             <img src="http://127.0.0.1:8000/public/products/{{product.image}}"  style="height:180px!important;width:100%!important;"  />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
                 <div class="overlay-iconss">
-                  <a [routerLink]="['/show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
-                   <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" (click)="changFav(product)"></i> </a>
-                   <!-- <a [routerLink]="['profile',product.id]"  (click)="AddPruchases(product)"><i class="bi bi-bag-check-fill"></i></a> -->
-                   <a   (click)="buyProduct(product)"><i class="bi bi-bag-check-fill"></i></a>
+                  <a [routerLink]="['/show',product.id]" style="--i:1 ;padding-right: 4px;"><i class="fa fa-eye"></i></a>
+                 
 
                </div>
                </div>
               </div>
-              <div>
+              </div>
 
-                <hr>
+
+
+              <div *ngIf="userData.products?.length==0">
+                <div class="row">
+                  <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
+                </div>
+                </div>
+              <div>
 
                 <br>
               <!-- <div class="rate"> You can rate
@@ -71,13 +81,16 @@
 
               <!-- <textarea name="" id="" cols="30" rows="10" placeholder="your comment"></textarea> -->
 
-
-
+<hr>
+<br>
+<div class="products">
+                <div class="small-container">
+                  <h2><i class="bi bi-chat-right-fill padding-5"></i>Comments</h2>
+                <br>
 
               <div style=" position: relative; ">
                 <!-- for requests -->
-                  <div class="container">
-
+               <div *ngIf="data!=null" >
                   <div class="container-fluid "  *ngFor="let ress of data"   >
 
                       <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
@@ -96,21 +109,39 @@
                       <br>
                       comminted {{ress.message}}
                     </div>
-                    <div class="float-end">
-                      <!-- <button type="button" class="btn btn-primary btn-md" (click)="accept(item,seller)" style="background-color:  #464E2E; border-color: #464E2E ; margin-right: 20px;"><i class="fa fa-check" aria-hidden="true"></i>Accept</button> -->
-                      <!-- <button type="button" class="btn btn-danger btn-md" (click)="reject(item.id_not,seller)"> <i class="fa fa-ban"></i>Reject </button> -->
+
+                    <br>
+                  </div>
+                  </div>
+                </div>
+                  </div>
+                  </div>
+                  <div *ngIf="data?.length==0">
+                    <div class="row">
+                      <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
                     </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                   </div>
             </div>
-          </div>
+</div>
 
 
 
 
+          <br>
 
 </div>
 </div>

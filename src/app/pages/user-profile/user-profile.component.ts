@@ -15,6 +15,8 @@ export class UserProfileComponent implements OnInit {
   userID =this.param.snapshot.params['id'];
   userData!:User;
   data!:Feedback[];
+  showSppiner:boolean = true;
+
   max=5;
   sum:any=0;
   avg!:number;
@@ -29,7 +31,10 @@ this.allfeedbacks();
     this.service.getSenderById(this.userID).subscribe(res=>{
         console.log(res);
          this.userData=res.data;
+         this.showSppiner=false;
+
     });
+
   }
   changFav(product:Product){
     console.log(product.id);
@@ -64,17 +69,18 @@ this.allfeedbacks();
       this.service.buyProduct(product).subscribe(res=>{
       });
       }
-    
+
       allfeedbacks(){
 
         this.service.gerallfeedData(this.userID).subscribe(res=>{
           this.data = res.data
-          
+
           this.sum = this.data.reduce((a, b) => a + b.rate, 0);
  this.avg = (this.sum / this.data.length) || 0;
  console.log(this.avg)
+console.log(this.data)
         });
         }
-   
+
 
 }

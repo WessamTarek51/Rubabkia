@@ -3,6 +3,7 @@
       <br>
     <h2>Favourite Products</h2>
     <br>
+    <div class="chat" *ngIf="productData != null" >
 
     <div class="row">
       <div class="col-md-3 col-sm-6" *ngFor="let item of productData" >
@@ -20,6 +21,7 @@
             <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':!item.isFav,'bi bi-suit-heart':item.isFav}" (click)="changFav(item,senderID)"></i> </a>
 
          </div>
+         </div>
         </div>
 
       </div>
@@ -27,6 +29,14 @@
 
 
     </div>
+
+
+
+    <div *ngIf="productData.length==0">
+      <div class="row">
+        <p style="color: #3f4b26; text-align: center;" >User Has No Fav Products</p>
+      </div>
+      </div>
 <!-- -----------------pagination---------- -->
 
 

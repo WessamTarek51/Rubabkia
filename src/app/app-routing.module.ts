@@ -41,7 +41,7 @@ const routes: Routes = [
 
 
   {path:'profile/:id',component:ProfileComponent, canActivate:[AuthGuard]},
-  {path:'user/:id',component:UserProfileComponent,canActivate:[AuthGuard]},
+  {path:'user/:id',component:UserProfileComponent},
 
 
   {path:'chat',component:ChatUserComponent,canActivate:[AuthGuard]},

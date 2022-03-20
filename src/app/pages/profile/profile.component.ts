@@ -56,6 +56,8 @@ getuser(){
        this.user=res.data;
        this.showSppiner=false;
       //  console.log(this.user.products?.length)
+      console.log(this.user.products)
+
   });
 }
 verify(){
@@ -88,7 +90,7 @@ allfeedbacks(){
   //   for( var i = 0; i < this.dataa.length; i++ ){
   //     this.sum += parseInt(, 10 ); //don't forget to add the base
   // }
-  
+
   // var avg = this.sum/this.dataa.length;
   //   console.log(this.data)
    this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);

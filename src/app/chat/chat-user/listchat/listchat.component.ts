@@ -3,7 +3,7 @@ import { UserData } from './../../../_models/data.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './../../../_models/user.models';
 import { UserServicesService } from './../../../services/user-services.service';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -13,7 +13,7 @@ import { getDatabase, ref, onValue } from "firebase/database";
   templateUrl: './listchat.component.html',
   styleUrls: ['./listchat.component.css']
 })
-export class ListchatComponent implements OnInit {
+export class ListchatComponent implements OnInit,AfterViewChecked {
   sender!:User;
   receiver!:User;
   data!:UserData;
@@ -26,6 +26,8 @@ export class ListchatComponent implements OnInit {
   messages!:Message[];
   messageObj!:Message
   @ViewChild('messageInput') messageElement!: ElementRef;
+  @ViewChild('scrollMe')   private myScrollContainer!: ElementRef;
+
 
   receiverID =this.param.snapshot.params['id'];
   senderID = parseInt(localStorage.getItem('user_id')!)
@@ -49,7 +51,12 @@ this.getReciverById();
    });
   }
   ngOnInit(): void {
+    this.scrollToBottom();
+
   }
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+}
 
 
   sendMessage(message: string) {
@@ -76,6 +83,12 @@ this.getReciverById();
          this.receiver=res.data;
     });
   }
+  scrollToBottom(): void {
+    try {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
+}
+
 
 
 }

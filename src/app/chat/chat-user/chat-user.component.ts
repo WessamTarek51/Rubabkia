@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { UserData } from './../../_models/data.model';
 import { User } from './../../_models/user.models';
 import { UserServicesService } from './../../services/user-services.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { Message } from 'src/app/_models/message.models';
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -14,7 +14,7 @@ import { MessageInfo } from 'src/app/_models/messageInfo.models';
   templateUrl: './chat-user.component.html',
   styleUrls: ['./chat-user.component.css']
 })
-export class ChatUserComponent implements OnInit {
+export class ChatUserComponent implements OnInit ,AfterViewChecked{
 
   users!:User[];
   sender!:User;
@@ -37,7 +37,9 @@ export class ChatUserComponent implements OnInit {
   messages!:Message[];
   messageObj!:Message
   @ViewChild('messageInput') messageElement!: ElementRef;
+  @ViewChild('scrollMe')   private myScrollContainer!: ElementRef;
 
+  // myScrollContainer
   receiverID = 0;
   senderID = parseInt(localStorage.getItem('user_id')!)
   firebaseDatabase!: AngularFireDatabase
@@ -117,7 +119,12 @@ export class ChatUserComponent implements OnInit {
    });
   }
   ngOnInit(): void {
+    this.scrollToBottom();
+
   }
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+}
 
 
   sendMessage(message: string) {
@@ -168,6 +175,11 @@ export class ChatUserComponent implements OnInit {
     this.getChatMessages()
     this.friendUnseenRef.set(0)
   }
+  scrollToBottom(): void {
+    try {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
+}
 }
 
 

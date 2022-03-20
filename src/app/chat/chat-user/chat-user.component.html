@@ -93,7 +93,7 @@
                           <div class="about">
                               <div class="name"  (click)="onChatClick(user)" style="color: #474F2F; font-size: 18px;">{{user.name}}</div>
 
-                              <span class="rounded-pill bg-danger badge" style="padding: 5px; font-size: 15px;" *ngIf="user.unseenCountMessages">
+                              <span class="rounded-pill bg-danger badge" style=" font-size: 15px;" *ngIf="user.unseenCountMessages">
                                 {{user.unseenCountMessages}}
                                 <span class="visually-hidden">New alerts</span>
                               </span>
@@ -112,7 +112,6 @@
                                   <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" alt="avatar">
                               </a>
 
-
                               <div class="chat-about">
                                   <h6 class="m-b-0" style="color: #474F2F; font-weight: bold; font-size: 18px; ">{{receiver.name}}</h6>
                               </div>
@@ -121,7 +120,7 @@
                       </div>
                   </div>
 
-                  <div class="chat-history" style="overflow: auto; height: 70vh;">
+                  <div class="chat-history" #scrollMe style="overflow: auto; height: 70vh;">
                       <ul class="m-b-0" >
                         <div *ngFor="let message of messages" >
 
