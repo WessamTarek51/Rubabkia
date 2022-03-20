@@ -26,6 +26,7 @@ export class FeedbackComponent implements OnInit {
     private httpClient: HttpClient,
     private FormBuilder:FormBuilder,
     private param:ActivatedRoute
+    // private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -85,10 +86,15 @@ export class FeedbackComponent implements OnInit {
 
     
             this.userServer.storefeedData(form.value,this.acceptId).subscribe(res=>{
+              this.router.navigateByUrl('nof/,this.userID');
               console.log(form.value);
     
         })
     
         // this.router.navigateByUrl('profile/this.Product_id');
+      }
+
+      onclick(){
+        this.router.navigateByUrl('nof/,this.userID');
       }
 }

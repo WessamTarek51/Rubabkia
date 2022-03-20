@@ -2,7 +2,7 @@
     <div class="page-header header-filter" data-parallax="true" ></div>
     <div class="main main-raised">
         <div class="profile-content">
-            <div class="container"  >
+            <div class="container"  mb-5>
                 <div class="row">
                
                     <div class="col-12" *ngIf="userData">
@@ -19,11 +19,13 @@
                                 <br>
                               
   
-                                <hr>
+                                
                                 <br>
                             </div>
+                            
                     </div>
                 </div>
+                
             </div>
   
   
@@ -67,12 +69,16 @@
                   <input type="radio" id="star1" name="rate" value="1" />
                   <label for="star1" title="text">1 star</label>
                 </div> -->
+              
                 <form action=""  #productform="ngForm" (ngSubmit)="onSubmit(productform)">
-   
-                    <textarea  id="mybtn"  class="me-2" name="message"  type="search" placeholder="send by name or your limited price" ngModel #message="ngModel"></textarea>
-                    <button class="btn btn-success"   id="search" type="submit">send</button>
-          
+                  <div class="row ">
+                    <div class="mynewform">
+                    <textarea  id="mybtn"  class="form-control me-2 col-md-9" name="message"  type="search" placeholder="please enter your comment" (keyup.enter)="(onSubmit)" ngModel #message="ngModel"></textarea>
+                    <button class="btn bb btn-success col-md-3"   id="search" type="submit">send</button>
+                  </div>
+                  </div>
             </form>
+         
 <br>
 <br>
 <br>
