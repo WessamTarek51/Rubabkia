@@ -5,7 +5,8 @@ import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { FeedbackData ,Feedback} from 'src/app/_models/feedback.model';
+import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,16 +17,19 @@ user!:User;
 data!:UserData;
 result:any;
 showSppiner:boolean = true;
+max=5;
+dataa!:Feedback[];
+isReadonly=true;
 userID = parseInt(localStorage.getItem('user_id')!)
-
-
+sum:any=0;
+avg!:number;
 token=localStorage.getItem('token');
   constructor(private router: Router,private service:UserServicesService,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     // this.user=this.service.user;
     this.getuser();
-
+    this.allfeedbacks();
 }
   btnClick() {
     this.router.navigateByUrl('/add');
@@ -77,5 +81,19 @@ verify(){
   })
 }
 
+allfeedbacks(){
 
+  this.service.gerallfeedData(this.userID).subscribe(res=>{
+    this.dataa = res.data
+  //   for( var i = 0; i < this.dataa.length; i++ ){
+  //     this.sum += parseInt(, 10 ); //don't forget to add the base
+  // }
+  
+  // var avg = this.sum/this.dataa.length;
+  //   console.log(this.data)
+   this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
+ this.avg = (this.sum / this.dataa.length) || 0;
+ console.log(this.avg)
+  });
+  }
 }

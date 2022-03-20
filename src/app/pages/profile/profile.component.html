@@ -6,18 +6,20 @@
         <div class="profile-content">
             <div class="container"  >
                 <div class="row">
-                    <div class="col-12" *ngIf="user" >
+                    <div class="col-12" *ngIf="user"  >
                        <div class="profile">
                             <div class="avatar">
             <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
 
-                            <div class="name">
+                            <div class="name" >
 
 
 
                                 <h3 class="title">{{user.username}}</h3>
+                                <rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+                                </rating>
                                 <h6 class="title">{{user.phoneNumber}}-{{user.address}}</h6>
 
 

@@ -16,6 +16,8 @@ export class UserProfileComponent implements OnInit {
   userData!:User;
   data!:Feedback[];
   max=5;
+  sum:any=0;
+  avg!:number;
   isReadonly:boolean=true;
   constructor(private param:ActivatedRoute,private service:UserServicesService,private productServices:ProductServiceService) { }
 
@@ -67,7 +69,10 @@ this.allfeedbacks();
 
         this.service.gerallfeedData(this.userID).subscribe(res=>{
           this.data = res.data
-          console.log(this.data)
+          
+          this.sum = this.data.reduce((a, b) => a + b.rate, 0);
+ this.avg = (this.sum / this.data.length) || 0;
+ console.log(this.avg)
         });
         }
    

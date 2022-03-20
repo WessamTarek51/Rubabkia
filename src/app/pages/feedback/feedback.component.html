@@ -12,6 +12,8 @@
                             </div>
                             <div class="name">
                                 <h3 class="title"> {{userData.username}}    </h3>
+                                <rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+                                </rating>
                                 <h6 class="title"> {{userData.phoneNumber}} - {{userData.address}}</h6>
                               <button type="button" class="bb btn" [routerLink]="['/chat/',userData.id]" > Message</button>
   

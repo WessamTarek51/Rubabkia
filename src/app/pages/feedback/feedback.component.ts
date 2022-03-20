@@ -4,6 +4,7 @@ import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from 'src/app/services/product-service.service';
 import { UserServicesService } from 'src/app/services/user-services.service';
+import { Feedback } from 'src/app/_models/feedback.model';
 import { Product } from './../../_models/product.models';
 import { User } from './../../_models/user.models';
 
@@ -18,6 +19,10 @@ export class FeedbackComponent implements OnInit {
   userID =this.param.snapshot.params['id'];
   userData!:User;
   acceptId:any;
+  data!:Feedback[];
+  sum:any=0;
+  avg!:number;
+  isReadonly=true;
   constructor(
     private productService:ProductServiceService ,
     private userServer:UserServicesService,
@@ -34,6 +39,7 @@ export class FeedbackComponent implements OnInit {
       this.acceptId=param['accept']
       console.log(this.acceptId)
       })
+      this.allfeedbacks();
   }
 
   getSenderById(){
@@ -91,4 +97,14 @@ export class FeedbackComponent implements OnInit {
     
         // this.router.navigateByUrl('profile/this.Product_id');
       }
+      allfeedbacks(){
+
+        this.userServer.gerallfeedData(this.userID).subscribe(res=>{
+          this.data = res.data
+          
+          this.sum = this.data.reduce((a, b) => a + b.rate, 0);
+          this.avg = (this.sum / this.data.length) || 0;
+          console.log(this.avg)
+        });
+        }
 }
