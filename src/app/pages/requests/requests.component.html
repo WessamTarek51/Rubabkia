@@ -1,10 +1,12 @@
 <div style="min-height: 100vh; position: relative; ">
+
     <div class="container">
+      <div *ngIf="notifi!=null && acceptedres!=null && rejectedres!=null">
 
     <div class="container-fluid"  *ngFor="let item of notifi" >
-    
+
         <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
-    
+
     <div class="col-12 px-5  pt-3 pb-3"   >
     <div class="d-flex align-items-center">
       <div class="flex-shrink-0">
@@ -12,17 +14,99 @@
       </div>
       <div class="flex-grow-1 ms-3" >
         <strong class="me-auto" style="padding-right: 10px;">{{item.buyer_name}}</strong>
-        <button type="button" class="bb btn" [routerLink]="['/user/',item.user_id]" > Profile</button>
+        <button type="button" class="bb btn" [routerLink]="['/user/',item.buyer_id]" > Profile</button>
         <br>
         Asked to buy your {{item.name}}
       </div>
       <div class="float-end">
         <button type="button" class="btn btn-primary btn-md" (click)="accept(item,seller)" style="background-color:  #464E2E; border-color: #464E2E ; margin-right: 20px;"><i class="fa fa-check" aria-hidden="true"></i>Accept</button>
-        <button type="button" class="btn btn-danger btn-md" (click)="reject(item.id_not,seller)"> <i class="fa fa-ban"></i>Reject </button>
+        <button type="button" class="btn btn-danger btn-md" (click)="reject(item,item.id_not,seller)"> <i class="fa fa-ban"></i>Reject </button>
+      </div>
       </div>
     </div>
     </div>
     </div>
     </div>
+
+
+
+
+      <div class="container-fluid"  *ngFor="let res of acceptedres " >
+
+        <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
+
+    <div class="col-12 px-5  pt-3 pb-3"   >
+    <div class="d-flex align-items-center">
+      <div class="flex-shrink-0">
+        <img src="http://127.0.0.1:8000/public/products/{{res.productimage}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+      </div>
+      <div class="flex-grow-1 ms-3" >
+        <strong class="me-auto" style="padding-right: 10px;">{{res.seller_name}}</strong>
+        <button class="bb btn"
+        [routerLink]="['/feedbacks/',res.seller_id]"
+        [queryParams]="{ accept: res.id}"
+      >
+        write your feedback
+        </button>
+        <!-- <button type="button" class="bb btn" [routerLink]="['/user/',item.buyer_id]"  >
+
+          Profile</button> -->
+        <br>
+       {{res.message}}
+      </div>
+      <div class="float-end">
+        <button type="button" class="btn btn-primary btn-md" (click)="ok(res.id)"  style="background-color:  #464E2E; border-color: #464E2E ; margin-right: 20px;"><i class="fa fa-check" aria-hidden="true"></i>OK</button>
+
+      </div>
     </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="container-fluid"  *ngFor="let response of rejectedres " >
+
+      <div class="row mt-5 mx-3 mb-3 me-auto " style="background-color:#ACB992">
+
+  <div class="col-12 px-5  pt-3 pb-3"   >
+  <div class="d-flex align-items-center">
+    <div class="flex-shrink-0">
+      <img src="http://127.0.0.1:8000/public/products/{{response.productimage}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+    </div>
+    <div class="flex-grow-1 ms-3" >
+      <strong class="me-auto" style="padding-right: 10px;">{{response.seller_name}}</strong>
+      <!-- <button type="button" class="bb btn" [routerLink]="['/user/',item.buyer_id]" > Profile</button> -->
+      <br>
+     {{response.message}}
+    </div>
+    <div class="float-end">
+      <button type="button" class="btn btn-danger btn-md" (click)="okay(response.id)"  style=" margin-right: 20px;"><i class="fa fa-check" aria-hidden="true"></i>OK</button>
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+  </div>
+  <div *ngIf="notifi.length==0 && acceptedres.length==0 &&rejectedres.length==0">
+    <div class="row">
+      <p style="color: #3f4b26; text-align: center;" >User Has No Notification</p>
+    </div>
+    </div>
+
+
+<!-- for accepted response -->
+    <!-- <div class="container">
+
+
+      </div> -->
+
+
+    <!-- for rejectedresponses -->
+      <!-- <div class="container">
+
+
+        </div> -->
     </div>

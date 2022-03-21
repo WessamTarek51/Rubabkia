@@ -9,7 +9,7 @@
     width: 75%;
 }
 #mybtn:focus{
-    border: 0.1rem solid #3f4b26;
+    /* border: 0.1rem solid #3f4b26; */
 }
 #search{
     width: 23%;
@@ -51,6 +51,7 @@ background-color: #474F2F !important;}
 .overlay-iconss i{
     /* color: #000; */
     color: #474F2F;
+    padding: 0 2px;
 
 }
 .pri-ic{
@@ -108,7 +109,14 @@ background-color: #474F2F !important;}
     color: var(--blue);
 } */
 
-
+.bb{
+    display: inline-block;
+    background-color: #474F2F;
+    color: #fff;
+    padding: 8px 35px;
+    border-radius: 10px;
+    /* margin-right: 20px; */
+    }
 
 /* .page-item{
     height: 50%;

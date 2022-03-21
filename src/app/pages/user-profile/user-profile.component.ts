@@ -4,6 +4,7 @@ import { User } from './../../_models/user.models';
 import { UserServicesService } from './../../services/user-services.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FeedbackData ,Feedback} from 'src/app/_models/feedback.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,16 +14,27 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
   userID =this.param.snapshot.params['id'];
   userData!:User;
+  data!:Feedback[];
+  showSppiner:boolean = true;
+
+  max=5;
+  sum:any=0;
+  avg!:number;
+  isReadonly:boolean=true;
   constructor(private param:ActivatedRoute,private service:UserServicesService,private productServices:ProductServiceService) { }
 
   ngOnInit(): void {
 this.getSenderById();
+this.allfeedbacks();
   }
   getSenderById(){
     this.service.getSenderById(this.userID).subscribe(res=>{
         console.log(res);
          this.userData=res.data;
+         this.showSppiner=false;
+
     });
+
   }
   changFav(product:Product){
     console.log(product.id);
@@ -57,7 +69,18 @@ this.getSenderById();
       this.service.buyProduct(product).subscribe(res=>{
       });
       }
-    
+
+      allfeedbacks(){
+
+        this.service.gerallfeedData(this.userID).subscribe(res=>{
+          this.data = res.data
+
+          this.sum = this.data.reduce((a, b) => a + b.rate, 0);
+ this.avg = (this.sum / this.data.length) || 0;
+ console.log(this.avg)
+console.log(this.data)
+        });
+        }
 
 
 }

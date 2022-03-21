@@ -105,7 +105,7 @@ AddPurchases(product:Product):Observable<Product[]>{
     console.log("done");
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id);
+    return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id,{headers});
 
     }
     addFavProduct(product:Product){

@@ -10,6 +10,7 @@ export interface Product{
     userid:number;
     price: string;
     image: string;
+    category_name: string;
     description:string;
     category:Category;
     user:User;
@@ -30,4 +31,6 @@ export interface proData{
   }
 
 
-
+  export interface prooData{
+    data:[];
+  }

@@ -1,31 +1,32 @@
 <app-loading *ngIf="showSppiner" ></app-loading>
-
 <div class="profile-page">
     <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
     <div class="main main-raised">
         <div class="profile-content">
             <div class="container"  >
                 <div class="row">
-                    <div class="col-12" *ngIf="user" >
+                    <div class="col-12" *ngIf="user"  >
                        <div class="profile">
                             <div class="avatar">
             <img src="http://127.0.0.1:8000/public/images/{{user.image}}" style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
-                            <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
 
-                            <div class="name">
+                            <div class="name" >
 
 
 
                                 <h3 class="title">{{user.username}}</h3>
+                                <rating *ngIf="avg"  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+                                </rating>
                                 <h6 class="title">{{user.phoneNumber}}-{{user.address}}</h6>
+                                <span> <a type="button" class="redirect float-start"  (click)="verify()" >VerifyEmail?</a></span>
+
 
 
                                 <button type="button" class="colorButton" [routerLink]="['/editprofile']"> <i class="bi bi-pencil-fill icon-padding" ></i>Edit Profile</button>
-                                <button type="button" class="colorButton"  (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add Product</button>
+                                <button type="button" class="colorButton"  (click)="btnClick();"> <i class="bi bi-plus icon-padding"></i>add to my Product</button>
                                 <button type="button" class="colorButton" (click)="btnClickFav();" > <i class="fa fa-heart-o icon-padding" ></i>Fav Product</button>
-                                <button type="button" class="colorButton" routerLink="/message"> <i class="bi bi-chat-left-text-fill icon-padding"></i>Messages</button>
-                                <button type="button" class="colorButton" > <i class="bi bi-bell-fill"></i></button>
+                                <button type="button" class="colorButton" routerLink="/chat"> <i class="bi bi-chat-left-text-fill icon-padding"></i>Messages</button>
 
 
                                 <br>
@@ -40,35 +41,44 @@
     </div>
     <div class="products">
         <div class="small-container">
-          <h2><i class="bi bi-file-person-fill"></i>MyProducts</h2>
+          <h2><i class="bi bi-file-person-fill padding-5"></i>MyProducts</h2>
         <br>
          <br>
-         <div *ngIf="user">
-          <div class="row" *ngIf="user.products">
+      <div *ngIf="user">
+        <div *ngIf="user.products!=null">
+          <div class="row"  >
             <div class="col-md-3 col-sm-6"   *ngFor="let product of user.products" >
             <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
                 <div class="overlay-iconss">
-                  <a (click)="deleteProduct(product)" style="--i:1"><i class="bi bi-trash-fill"></i></a>
+                  <a (click)="deleteProduct(product)" style="--i:1" style="padding-right: 6px;"><i class="bi bi-trash-fill"></i></a>
                    <a  [routerLink]="['/edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i> </a>
                </div>
                </div>
               </div>
+              </div>
             </div>
-        </div>
+            <div *ngIf="user.products?.length==0">
+              <div class="row">
+                <p style="color: #3f4b26; text-align: center;" >User Has No Products</p>
+              </div>
+              </div>
+            </div>
         <hr>
         <br>
 </div>
 </div>
+
 <div class="products">
   <div class="small-container">
-    <h2><i class="bi bi-bag-check-fill"></i>My Purchases</h2>
+    <h2><i class="bi bi-bag-check-fill padding-5"></i>My Purchases</h2>
   <br>
    <br>
    <div *ngIf="user">
-    <div class="row" *ngIf="user.products">
+    <div *ngIf="user.purchases!=null">
+    <div class="row" >
       <div class="col-md-3 col-sm-6"   *ngFor="let purchase of user.purchases" >
       <img src="http://127.0.0.1:8000/public/products/{{purchase.image}}" style="height:250px!important;width:100%!important;" />
         <h4>{{purchase.name}}</h4>
@@ -78,13 +88,25 @@
         </div>
       </div>
   </div>
+  </div>
+
+  <div *ngIf="user.purchases?.length==0">
+    <div class="row">
+      <p style="color: #3f4b26; text-align: center;" >User Has No Purchases</p>
+    </div>
+    </div>
+
+
+  <hr>
 </div>
 </div>
+
 <div class="products">
   <div class="small-container">
-    <h2><i class="fas fa-coins"></i>My Sold products</h2>
+    <h2><i class="fa fa-coins padding-5"></i>My Sold Products</h2>
   <br>
    <br>
+   <div *ngIf="user.sales!=null">
    <div *ngIf="user">
     <div class="row" *ngIf="user.products">
       <div class="col-md-3 col-sm-6"   *ngFor="let sales of  user.sales" >
@@ -94,8 +116,72 @@
           <p>{{sales.price}}</p>
          </div>
         </div>
+        </div>
       </div>
   </div>
+  <div *ngIf="user.sales?.length==0">
+    <div class="row">
+      <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
+    </div>
+    </div>
+
+<br>
+</div>
+</div>
+<div class="products">
+  <div class="small-container">
+    <hr>
+    <br>
+    <h2><i class="bi bi-chat-right-fill padding-5"></i>Comments</h2>
+  <br>
+
+<div style=" position: relative; ">
+  <!-- for requests -->
+ <div *ngIf="dataa!=null" >
+    <div class="container-fluid "  *ngFor="let ress of dataa"   >
+
+        <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
+
+    <div class="col-12 px-5  pt-3 pb-3"  >
+    <div class="d-flex align-items-center">
+      <div class="flex-shrink-0">
+        <img src="http://127.0.0.1:8000/storage/images/{{ress.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+      </div>
+      <div class="flex-grow-1 ms-3" >
+        <strong class="me-auto" style="padding-right: 10px;">{{ress.buyer_name}}</strong>
+        <button type="button" class="bb btn" [routerLink]="['/user',ress.buyer_id]" > Profile</button>
+        <br>
+        Give rate:<rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="ress.rate" ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+        </rating>
+        <br>
+        comminted {{ress.message}}
+      </div>
+
+      <br>
+    </div>
+    </div>
+  </div>
+    </div>
+    </div>
+    <div *ngIf="dataa?.length==0">
+      <div class="row">
+        <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+    </div>
 </div>
 </div>
 </div>

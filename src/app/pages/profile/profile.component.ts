@@ -5,7 +5,8 @@ import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { FeedbackData ,Feedback} from 'src/app/_models/feedback.model';
+import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,17 +15,21 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileComponent implements OnInit {
 user!:User;
 data!:UserData;
+dataa!:Feedback[];
 result:any;
 showSppiner:boolean = true;
+max=5;
+isReadonly=true;
 userID = parseInt(localStorage.getItem('user_id')!)
-
-
+sum:any=0;
+avg!:number;
 token=localStorage.getItem('token');
   constructor(private router: Router,private service:UserServicesService,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     // this.user=this.service.user;
     this.getuser();
+    this.allfeedbacks();
 
 }
   btnClick() {
@@ -52,7 +57,10 @@ getuser(){
        this.user=res.data;
        this.showSppiner=false;
       //  console.log(this.user.products?.length)
+      console.log(this.user.products)
+
   });
+
 }
 verify(){
   this.service.verifyemail(this.token).subscribe(res=>{
@@ -76,6 +84,18 @@ verify(){
 
   })
 }
+
+allfeedbacks(){
+
+  this.service.gerallfeedData(this.userID).subscribe(res=>{
+    this.dataa = res.data
+
+    this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
+this.avg = (this.sum / this.dataa.length) || 0;
+console.log(this.avg)
+console.log(this.data)
+  });
+  }
 
 
 }

@@ -44,6 +44,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 
 
 import { GetstartedComponent } from './pages/getstarted/getstarted.component';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 
 const appRoutes: Routes=[
@@ -57,7 +58,9 @@ import * as firebase from 'firebase/app';
 import { LoadingComponent } from './pages/loading/loading.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-
+import { FeedbackComponent } from './pages/feedback/feedback.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -88,6 +91,8 @@ firebase.initializeApp(environment.firebaseConfig);
      EditprofileComponent,
      RequestsComponent,
      UserProfileComponent,
+     FeedbackComponent,
+     NotfoundComponent,
 
 
 
@@ -99,7 +104,7 @@ firebase.initializeApp(environment.firebaseConfig);
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-
+    RatingModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     BrowserAnimationsModule ,
@@ -107,6 +112,7 @@ firebase.initializeApp(environment.firebaseConfig);
   RouterModule.forRoot(appRoutes,{scrollPositionRestoration: 'top'}),
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
     CommonModule,
+    NgxScrollTopModule,
 
 
   ],

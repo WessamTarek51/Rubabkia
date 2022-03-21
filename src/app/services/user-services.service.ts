@@ -11,7 +11,11 @@ import { environment } from 'src/environments/environment';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { NotificationData } from '../_models/nof.models';
 import { Notifi } from '../_models/notiication.models';
-
+import { AcceptedmessageData } from '../_models/acceptedmessage.models';
+import { Acceptedmessage } from '../_models/acceptedmessage.models';
+import { Feedback ,FeedbackData} from '../_models/feedback.model';
+import { RejectedmessageData } from '../_models/rejectedmessage.models';
+import { Rejectedmessage } from '../_models/rejectedmessage.models';
 
 
 
@@ -189,7 +193,88 @@ authToken: any;
     }
 
 
+    acceptmessage(nof:Notifi):Observable<AcceptedmessageData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+      const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
+
+      return this.http.post<AcceptedmessageData>(environment.apiUrl+'/api/accept/'+nof.id_not,body,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
 
 
+
+    }
+    acceptedmessages():Observable<AcceptedmessageData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+      return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmessages',{headers})
+    }
+
+    // for acceptresponse
+    ok(id:number):Observable<Acceptedmessage[]>{
+      const headers=new HttpHeaders({
+        'content-type' : 'application/json',
+        // 'Content-Type':'multipart/form-data',
+        'Access-Control-Allow-Origin' : '*',
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+
+      return this.http.delete<Acceptedmessage[]>(environment.apiUrl+'/api/acceptedmessages/'+id,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
+
+    }
+
+    storefeedData(formData:any,id:any):Observable<Feedback[]>{
+      const headers=new HttpHeaders({
+        'Authorization':'Bearer '+localStorage.getItem('token')
+      });
+      return this.http.post<Feedback[]>('http://127.0.0.1:8000/api/feedbacks/'+id,formData,{
+        headers:headers
+      });
+    }
+    gerallfeedData(id:any):Observable<FeedbackData>{
+
+      return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id);
+    }
+
+
+
+
+  rejectmessage(nof:Notifi):Observable<RejectedmessageData>{
+   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+   const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
+
+      return this.http.post<RejectedmessageData>(environment.apiUrl+'/api/reject/'+nof.id_not,body,{headers}).pipe(
+        tap(()=>{
+          this._refreshNeeded.next()
+        })
+      )
+ }
+ rejectedmessages():Observable<RejectedmessageData>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.get<RejectedmessageData>(environment.apiUrl+'/api/rejectedmessages',{headers})
+}
+// for rejectresponse
+okay(id:number):Observable<Rejectedmessage[]>{
+  const headers=new HttpHeaders({
+    'content-type' : 'application/json',
+    // 'Content-Type':'multipart/form-data',
+    'Access-Control-Allow-Origin' : '*',
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+
+  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers}).pipe(
+    tap(()=>{
+      this._refreshNeeded.next()
+    })
+  )
 
 }
+}
+
