@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
 import { UserServicesService } from './../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import { Governorate } from 'src/app/_models/governorate.models';
 
 @Component({
   selector: 'app-editprofile',
@@ -21,12 +22,21 @@ export class EditprofileComponent implements OnInit {
   phonenumber:any;
   gender:any;
   image:any;
+  governorate:any;
+  governorates!:Governorate[];
   userid=localStorage.getItem('user_id')
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
   ngOnInit(): void {
     this.createform();
+    this.userservice.getAllgovernorates().subscribe(
+      (res:any)=>{
+        this.governorates = res
+        console.log(res)
+
+      }
+      )
     
   }
   createform(){
@@ -37,7 +47,8 @@ export class EditprofileComponent implements OnInit {
     phone_number:new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{11}$")]),
     confirmpassword:new FormControl('',Validators.required),
     address:new FormControl('',Validators.required),
-    image:new FormControl('',Validators.required)
+    image:new FormControl('',Validators.required),
+    governorate_id:new FormControl('',Validators.required)
    
   })
   this.form.setValidators(this.MustMatch('password','confirmpassword'))
@@ -49,15 +60,18 @@ export class EditprofileComponent implements OnInit {
       this.address=res['data'].address;
       this.phonenumber=res['data'].phoneNumber;
       this.image=res['data'].image
-      
+      this.governorate=res['data'].governorate_name
+     
       this.form.patchValue({
         name: this.username,
         email:this.email,
         phone_number:this.phonenumber,
         address:this.address,
+        governorate:this.governorate
+        
        });
      console.log(this.username)
-      
+      console.log(this.image)
     
   });
 }

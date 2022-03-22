@@ -3,6 +3,7 @@ import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
 import { UserServicesService } from './../../services/user-services.service';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router'
+import { Governorate } from 'src/app/_models/governorate.models';
 
 @Component({
   selector: 'app-register',
@@ -15,11 +16,19 @@ export class RegisterComponent implements OnInit {
   submitted=false;
   data:any;
   show:boolean=false;
+  governorates!:Governorate[];
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
   ngOnInit(): void {
     this.createform();
+    this.userservice.getAllgovernorates().subscribe(
+      (res:any)=>{
+        this.governorates = res
+        console.log(res)
+
+      }
+      )
   }
   createform(){
     this.form=new FormGroup({
@@ -29,7 +38,8 @@ export class RegisterComponent implements OnInit {
     phone_number:new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{11}$")]),
     confirmpassword:new FormControl('',Validators.required),
     address:new FormControl('',Validators.required),
-    image:new FormControl('',Validators.required)
+    image:new FormControl('',Validators.required),
+    governorate_id:new FormControl('',Validators.required)
    
   })
   this.form.setValidators(this.MustMatch('password','confirmpassword'))
@@ -64,7 +74,7 @@ export class RegisterComponent implements OnInit {
     formdata.append("address",this.form.get('address')?.value)
     formdata.append("email",this.form.get('email')?.value)
     formdata.append("password",this.form.get('password')?.value)
-   
+    formdata.append("governorate_id",this.form.get('governorate_id')?.value)
     formdata.append("phone_number",this.form.get('phone_number')?.value)
     formdata.append('image',this.file,this.file.name)
     console.log(formdata)

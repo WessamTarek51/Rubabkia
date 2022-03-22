@@ -16,6 +16,7 @@ import { Acceptedmessage } from '../_models/acceptedmessage.models';
 import { Feedback ,FeedbackData} from '../_models/feedback.model';
 import { RejectedmessageData } from '../_models/rejectedmessage.models';
 import { Rejectedmessage } from '../_models/rejectedmessage.models';
+import { Governorate } from '../_models/governorate.models';
 
 
 
@@ -274,6 +275,10 @@ okay(id:number):Observable<Rejectedmessage[]>{
       this._refreshNeeded.next()
     })
   )
+
+}
+getAllgovernorates():Observable<Governorate[]>{
+  return this.http.get<Governorate[]>('http://127.0.0.1:8000/api/governorates');
 
 }
 }
