@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   data:any;
   show:boolean=false;
   governorates!:Governorate[];
+  gender:any;
   constructor(private formbuilder:FormBuilder,private userservice:UserServicesService
     ,private toaster:ToastrService,private router:Router ) { }
 
@@ -39,7 +40,9 @@ export class RegisterComponent implements OnInit {
     confirmpassword:new FormControl('',Validators.required),
     address:new FormControl('',Validators.required),
     image:new FormControl('',Validators.required),
-    governorate_id:new FormControl('',Validators.required)
+    governorate_id:new FormControl('',Validators.required),
+    gender:new FormControl('',Validators.required)
+
    
   })
   this.form.setValidators(this.MustMatch('password','confirmpassword'))
@@ -76,6 +79,7 @@ export class RegisterComponent implements OnInit {
     formdata.append("password",this.form.get('password')?.value)
     formdata.append("governorate_id",this.form.get('governorate_id')?.value)
     formdata.append("phone_number",this.form.get('phone_number')?.value)
+    formdata.append("gender",this.gender)
     formdata.append('image',this.file,this.file.name)
     console.log(formdata)
     this.userservice.registeruser(formdata).subscribe(res=>{
@@ -116,6 +120,10 @@ export class RegisterComponent implements OnInit {
   
   showpass(){
     this.show=!this.show
+  }
+  changeGender(e:any) {
+    console.log(e.target.value);
+    this.gender=e.target.value
   }
 
 }

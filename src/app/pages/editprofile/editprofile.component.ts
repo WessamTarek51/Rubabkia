@@ -60,16 +60,17 @@ export class EditprofileComponent implements OnInit {
       this.address=res['data'].address;
       this.phonenumber=res['data'].phoneNumber;
       this.image=res['data'].image
-      this.governorate=res['data'].governorate_name
+      this.governorate=res['data'].governorate_id
+      this.gender=res['data'].gender
      
       this.form.patchValue({
         name: this.username,
         email:this.email,
         phone_number:this.phonenumber,
         address:this.address,
-        governorate:this.governorate
-        
-       });
+        governorate_id:this.governorate,
+        gender:this.gender
+        });
      console.log(this.username)
       console.log(this.image)
     
@@ -104,7 +105,8 @@ export class EditprofileComponent implements OnInit {
     formdata.append("address",this.form.get('address')?.value)
     formdata.append("email",this.form.get('email')?.value)
     formdata.append("password",this.form.get('password')?.value)
-   
+    formdata.append("gender",this.gender)
+    formdata.append("governorate_id",this.form.get('governorate_id')?.value)
     formdata.append("phone_number",this.form.get('phone_number')?.value)
     formdata.append('image',this.file,this.file.name)
     console.log(formdata)
@@ -140,6 +142,10 @@ export class EditprofileComponent implements OnInit {
  showpass(){
    this.show=!this.show
  }
+ changeGender(e:any) {
+  console.log(e.target.value);
+  this.gender=e.target.value
+}
 
 
 }

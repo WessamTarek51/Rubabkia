@@ -19,6 +19,8 @@ export interface User{
     sales?:Sales[];
     unseenCountMessages?:number;
     governorate_name:string;
+    governorate_id:number;
+    gender:string;
 
     // email:string;
     // phone_number:number;
