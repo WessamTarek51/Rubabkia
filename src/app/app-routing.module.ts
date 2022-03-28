@@ -21,6 +21,11 @@ import { RequestsComponent } from './pages/requests/requests.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AdminComponent } from './AdminDash/admin/admin.component';
+import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-categories.component';
+import { AdminUsersComponent } from './AdminDash/admin-users/admin-users.component';
+import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
+import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
@@ -32,6 +37,11 @@ const routes: Routes = [
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
   {path:'product',component:ProductListingComponent },
+  {path:'admin',component:AdminComponent },
+  {path:'admin-categories',component:AdminCategoriesComponent },
+  {path:'admin-users',component:AdminUsersComponent },
+  {path:'admin-products',component:AdminProductsComponent },
+  {path:'admin-messages',component:AdminMessagesComponent },
 
 
 
