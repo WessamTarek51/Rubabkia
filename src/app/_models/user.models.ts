@@ -17,7 +17,10 @@ export interface User{
     products?:Product[];
     purchases?:Purchase[];
     sales?:Sales[];
-    unseenCountMessages?:number
+    unseenCountMessages?:number;
+    governorate_name:string;
+    governorate_id:number;
+    gender:string;
 
     // email:string;
     // phone_number:number;

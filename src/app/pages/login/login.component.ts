@@ -45,6 +45,7 @@ token:any;
        this.token=this.data.access_token
        localStorage.setItem('token',this.token)
        localStorage.setItem('user_id',this.data.id)
+       localStorage.setItem('is_admin',this.data.is_admin)
 
        this.router.navigate([''])
 
