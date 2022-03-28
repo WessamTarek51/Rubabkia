@@ -101,7 +101,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">image</label>
-                    <input class="form-control" type="file" (change)="imageupload($event)" formControlName="image"  name="image" id="formFile" required>
+                    <input class="form-control" type="file" (change)="imageupload($event)" formControlName="image" [ngClass]="{'is-invalid':submitted && f['image'].errors}"  name="image" id="formFile" required>
                     <div class="invalid-feedback" *ngIf="submitted && f['image'].errors ">
                        <div *ngIf=" f['image'].errors['required']">
                           Please choose your image

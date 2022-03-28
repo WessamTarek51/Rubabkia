@@ -73,8 +73,15 @@ export class EditprofileComponent implements OnInit {
         });
      console.log(this.username)
       console.log(this.image)
+      if(res['data'].gender=="female"){
+    document.getElementById('female')?.setAttribute('checked',"checked")
+      }
+      else if (res['data'].gender=="male"){
+        document.getElementById('male')?.setAttribute('checked',"checked")
+      }
     
   });
+  
 }
   public MustMatch(controlName:string,matchingControlName:string):any{
     return (formgroup:FormGroup)=>{
