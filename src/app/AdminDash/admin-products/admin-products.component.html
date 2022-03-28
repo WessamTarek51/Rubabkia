@@ -1,1 +1,28 @@
-<div style="min-height: 100vh; position: relative; ">hello</div>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr >
+        <th scope="col">Product id</th>
+        <th scope="col">product image</th>
+        <th scope="col">product Name</th>
+        <th scope="col">product Description</th>
+        <th scope="col">product price</th>
+        <!-- <th scope="col"> User Name</th> -->
+        <th scope="col">product Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let product of productData">
+        <th scope="row" >{{product.id}}</th>
+        <td> <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:150px!important;width:150px!important;" /></td>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+         <!-- <td>{{product.username}}</td> -->
+        <td > <a (click)="deleteProduct(product)"><i class="bi bi-trash-fill">Delete</i></a></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+

@@ -61,6 +61,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -83,7 +84,7 @@ firebase.initializeApp(environment.firebaseConfig);
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
-
+    AdminProductsComponent,
     GetstartedComponent,
 
     ListchatComponent,
