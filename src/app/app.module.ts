@@ -20,7 +20,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RequestsComponent } from './pages/requests/requests.component';
-
+import {AdminUsersComponent } from  './AdminDash/admin-users/admin-users.component';
 
 
 import { RouterModule,Routes } from '@angular/router';
@@ -93,7 +93,7 @@ firebase.initializeApp(environment.firebaseConfig);
      UserProfileComponent,
      FeedbackComponent,
      NotfoundComponent,
-
+     AdminUsersComponent 
 
 
   ],

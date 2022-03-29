@@ -21,12 +21,17 @@ export interface User{
     governorate_name:string;
     governorate_id:number;
     gender:string;
-
+    avg:number;
     // email:string;
     // phone_number:number;
     // address:string;
     // password:string;
 
 
+}
+
+export interface UsersData{
+  data:User[];
+  productData:Product;
 }
 

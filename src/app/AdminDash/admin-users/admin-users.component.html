@@ -1,1 +1,29 @@
-<div style="min-height: 100vh; position: relative; ">hello</div>
+<div style="min-height: 100vh; position: relative; ">
+<div class="container-fluid mt-3">
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>UserName</th>
+        <th>UserProfile</th>
+        <th>UserImage</th>
+       <th>UserEmail</th>
+        <th>UserRate</th> 
+     </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let item of data" >
+        <td>{{ item.username}}  </td>
+        <td><button type="button" class="bb btn" [routerLink]="['/user/',item.id]" > Profile</button></td>
+        <td> <img src="http://127.0.0.1:8000/storage/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="..."></td>
+        <td>{{item.email}}</td>
+        <td >
+            <rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="item.avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
+        </rating>
+    </td>
+    <td><button class="btn btn-danger" (click)="deleteuser(item.id)">delete <i class="fa fa-trash"> </i></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+

@@ -4,7 +4,7 @@ import { UserData } from './../_models/data.model';
 
 // import { Product } from './../_models/product.models';
 
-import { User } from './../_models/user.models';
+import { User, UsersData } from './../_models/user.models';
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
@@ -243,7 +243,14 @@ authToken: any;
       return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id);
     }
 
+    // getallfeedbacks():Observable<FeedbackData>{
 
+    //   return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata');
+    // }
+    getallusers():Observable<UsersData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+      return this.http.get<UsersData>('http://127.0.0.1:8000/api/users',{headers});
+    }
 
 
   rejectmessage(nof:Notifi):Observable<RejectedmessageData>{
@@ -270,7 +277,8 @@ okay(id:number):Observable<Rejectedmessage[]>{
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
 
-  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers}).pipe(
+  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers})
+  .pipe(
     tap(()=>{
       this._refreshNeeded.next()
     })
@@ -280,6 +288,11 @@ okay(id:number):Observable<Rejectedmessage[]>{
 getAllgovernorates():Observable<Governorate[]>{
   return this.http.get<Governorate[]>('http://127.0.0.1:8000/api/governorates');
 
+}
+deleteUser(userid:number){
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.delete('http://127.0.0.1:8000/api/users/'+userid,{headers});
 }
 }
 

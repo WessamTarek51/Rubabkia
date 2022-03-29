@@ -64,6 +64,8 @@ logout(){
 loggedin(){
   return localStorage.getItem('token')
 }
-
+adminloggedin(){
+  return localStorage.getItem('is_admin')
+ }
 
 }
