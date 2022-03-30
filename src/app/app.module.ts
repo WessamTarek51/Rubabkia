@@ -20,6 +20,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RequestsComponent } from './pages/requests/requests.component';
+import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-categories.component';
 
 
 
@@ -61,6 +62,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AdminComponent } from './AdminDash/admin/admin.component';
+import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
+// import { BrowserModule } from '@angular/platform-browser';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -93,7 +97,9 @@ firebase.initializeApp(environment.firebaseConfig);
      UserProfileComponent,
      FeedbackComponent,
      NotfoundComponent,
-
+     AdminCategoriesComponent,
+     AdminComponent,
+     AddEditCategoryComponent,
 
 
   ],
@@ -113,6 +119,7 @@ firebase.initializeApp(environment.firebaseConfig);
   AngularFireModule.initializeApp(environment.firebaseConfig, 'rubibkia'),
     CommonModule,
     NgxScrollTopModule,
+    BrowserModule,
 
 
   ],

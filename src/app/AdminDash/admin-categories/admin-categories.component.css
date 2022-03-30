@@ -1,0 +1,33 @@
+i{
+    padding: 0 5px;
+}
+/* 
+.bb{
+    background-color: #926ec28f;
+    color: #fff;
+    padding: 8px 35px;
+    border-radius: 10px;
+    } */
+
+
+    button{
+        width: 35%;
+        font-size: 12px;
+        height: 7vh;
+        background-color: black;
+        color: #fff;
+        margin: 0 10px;
+        padding-bottom: 10px;
+        border-radius: 5%;
+    }
+
+    button i{
+        /* width: 35%; */
+        font-size: 18px;
+        /* height: 7vh; */
+        /* background-color: black; */
+        color: #fff;
+        /* margin: 0 10px; */
+        /* padding-bottom: 10px; */
+        /* border-radius: 5%; */
+    }

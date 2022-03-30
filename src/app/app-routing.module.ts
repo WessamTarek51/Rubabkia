@@ -26,6 +26,7 @@ import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-cat
 import { AdminUsersComponent } from './AdminDash/admin-users/admin-users.component';
 import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
 import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
+import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path:'admin-users',component:AdminUsersComponent },
   {path:'admin-products',component:AdminProductsComponent },
   {path:'admin-messages',component:AdminMessagesComponent },
-
+  {path:'add-edit-cat',component:AddEditCategoryComponent },
+  {path:'editcat/:id',component:AddEditCategoryComponent },
 
 
 

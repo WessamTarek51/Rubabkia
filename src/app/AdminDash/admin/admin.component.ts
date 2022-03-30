@@ -18,7 +18,6 @@ export class AdminComponent implements OnInit {
 
 
   user() {this.router.navigateByUrl('/admin-users'); };
-
 category() {this.router.navigateByUrl('/admin-categories'); };
 products() {this.router.navigateByUrl('/admin-products'); };
 message() {this.router.navigateByUrl('/admin-messages'); };

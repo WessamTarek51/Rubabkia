@@ -1,1 +1,32 @@
-<div style="min-height: 100vh; position: relative; ">hello</div>
+<div style="min-height: 100vh; position: relative; ">
+
+<div class="container-fluid"  >
+  
+  <table class="table" >
+    <thead class="thead-light" >
+        <button style="padding-top: 5px; margin-top: 5px;" (click)="addEdit()"><i class="fa fa-plus"></i>Add category</button>
+
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr   *ngFor="let category of category" >
+        <th scope="row">{{category.id}}</th>
+        <td>{{category.name}}</td>
+        <td><img src="../../../assets/img/{{category.image}}" style="height:100px!important;width: 100px!important;"/>
+        </td>
+        <td>
+            <button [routerLink]="['/editcat',category.id]"><i class="fa fa-edit bb btn"></i></button>
+            <button (click)="del(category)"><i class="fa fa-trash bb btn" style=""></i></button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+</div>
