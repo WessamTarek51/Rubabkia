@@ -27,6 +27,7 @@ import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-cat
 import { AdminUsersComponent } from './AdminDash/admin-users/admin-users.component';
 import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
 import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
@@ -43,7 +44,7 @@ const routes: Routes = [
   {path:'admin-users',component:AdminUsersComponent,canActivate:[AdminAuthGuard] },
   {path:'admin-products',component:AdminProductsComponent,canActivate:[AdminAuthGuard] },
   {path:'admin-messages',component:AdminMessagesComponent,canActivate:[AdminAuthGuard]},
-
+  {path:'contactus',component:ContactusComponent ,canActivate:[AuthGuard]},
 
 
 

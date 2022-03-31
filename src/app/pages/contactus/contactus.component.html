@@ -1,0 +1,27 @@
+<div style="min-height: 100vh; position: relative; ">
+<div class="container">
+    <div class="row" style="height: 10vh;"></div>
+    <div class="row mt-5 d-flex justify-content-center px-5">
+        
+      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-10 col-10" style="background-color:#ACB992;color:#464E2E;border-radius:10px;padding: 20px;" >
+        <h5 class="mb-5 mt-3">to get help please email us through form below</h5>
+        
+           
+            <form #adminform="ngForm" (ngSubmit)="onSubmit(adminform)">
+                <div class="mb-5 col-md-12 input-group">
+                 
+                    <input placeholder="Your name" required   class="form-control" name="name" ngModel #name="ngModel" >
+                </div>
+                <div class="mb-5 input-group">
+                    <textarea  id="mybtn"  class="form-control me-2 col-md-9" cols="7" rows="7" name="message" required  type="search" placeholder="please enter your message" (keyup.enter)="(onSubmit)" ngModel #message="ngModel"></textarea>
+                    
+                  
+                </div>
+                <button class="btn bb btn-success col-md-3" style="background-color: #464E2E;color: white;"   id="search" type="submit">send</button>
+                 <!-- <button type="submit" style="background-color: #464E2E;color: white;" class="btn  float-end"><i class="bi bi-box-arrow-in-right"></i> Sign in</button> -->
+              </form>
+    </div>
+
+    </div>
+</div>
+</div>

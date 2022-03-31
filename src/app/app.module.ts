@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import {AdminUsersComponent } from  './AdminDash/admin-users/admin-users.component';
+import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
 
 
 import { RouterModule,Routes } from '@angular/router';
@@ -61,6 +62,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -93,8 +95,9 @@ firebase.initializeApp(environment.firebaseConfig);
      UserProfileComponent,
      FeedbackComponent,
      NotfoundComponent,
-     AdminUsersComponent 
-
+     AdminUsersComponent,
+     ContactusComponent, 
+    AdminMessagesComponent
 
   ],
   imports: [

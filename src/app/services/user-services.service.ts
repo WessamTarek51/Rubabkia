@@ -17,6 +17,8 @@ import { Feedback ,FeedbackData} from '../_models/feedback.model';
 import { RejectedmessageData } from '../_models/rejectedmessage.models';
 import { Rejectedmessage } from '../_models/rejectedmessage.models';
 import { Governorate } from '../_models/governorate.models';
+import { Usermessage, UsermessageData } from '../_models/usermessage.models';
+import { Adminmessage } from '../_models/adminmessage.models';
 
 
 
@@ -293,6 +295,26 @@ deleteUser(userid:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
   return this.http.delete('http://127.0.0.1:8000/api/users/'+userid,{headers});
+}
+ storeusermessage(formdata:any):Observable<Usermessage[]>{
+  const headers=new HttpHeaders({
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+  return this.http.post<Usermessage[]>('http://127.0.0.1:8000/api/usermessages',formdata,{
+    headers:headers
+  });
+}
+getallusermessages():Observable<UsermessageData>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+  return this.http.get<UsermessageData>('http://127.0.0.1:8000/api/usermessages',{headers});
+}
+storeadminmessage(formdata:any,id:number):Observable<Adminmessage[]>{
+  const headers=new HttpHeaders({
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+  return this.http.post<Adminmessage[]>('http://127.0.0.1:8000/api/adminmessages/'+id,formdata,{
+    headers:headers
+  });
 }
 }
 
