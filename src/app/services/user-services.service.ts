@@ -281,5 +281,22 @@ getAllgovernorates():Observable<Governorate[]>{
   return this.http.get<Governorate[]>('http://127.0.0.1:8000/api/governorates');
 
 }
+
+
+getAlluserssad():Observable<User[]>{
+  return this.http.get<User[]>('http://127.0.0.1:8000/api/users');
+
+}
+
+getAllfeeds():Observable<Feedback[]>{
+  return this.http.get<Feedback[]>('http://127.0.0.1:8000/api/feedbacks');
+
+}
+delete(feedback:Feedback){
+  // console.log("done");
+  return this.http.delete('http://127.0.0.1:8000/api/feedbacks/'+feedback.id)
+ 
+}
+
 }
 

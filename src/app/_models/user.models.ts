@@ -30,3 +30,13 @@ export interface User{
 
 }
 
+
+export interface Userr{
+
+
+    id: number;
+    name:string;
+    image?: string;
+
+
+}

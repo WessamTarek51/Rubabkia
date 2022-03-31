@@ -64,6 +64,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AdminComponent } from './AdminDash/admin/admin.component';
 import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
+import { FeedbacksAdminComponent } from './AdminDash/feedbacks-admin/feedbacks-admin.component';
 // import { BrowserModule } from '@angular/platform-browser';
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -100,6 +101,7 @@ firebase.initializeApp(environment.firebaseConfig);
      AdminCategoriesComponent,
      AdminComponent,
      AddEditCategoryComponent,
+     FeedbacksAdminComponent,
 
 
   ],

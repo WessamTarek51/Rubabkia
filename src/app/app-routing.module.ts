@@ -27,6 +27,7 @@ import { AdminUsersComponent } from './AdminDash/admin-users/admin-users.compone
 import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
 import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
 import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
+import { FeedbacksAdminComponent } from './AdminDash/feedbacks-admin/feedbacks-admin.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'show/:id',component:ProductDetailsComponent},
@@ -45,8 +46,9 @@ const routes: Routes = [
   {path:'admin-messages',component:AdminMessagesComponent },
   {path:'add-edit-cat',component:AddEditCategoryComponent },
   {path:'editcat/:id',component:AddEditCategoryComponent },
+  {path:'feedbacks',component:FeedbacksAdminComponent },
 
-
+  
 
   {path:'getstarted',component:GetstartedComponent ,canActivate:[AuthGuard]},
 
