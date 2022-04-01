@@ -53,6 +53,13 @@ export class AdminProductsComponent implements OnInit {
   deleteProduct(product:Product){
     this.service.deleteProductOfUser(product).subscribe(res=>{
     });
+    this.productService.getAllProducts().subscribe(
+      (res)=>{
+        this.productData = res.data;
+        console.log(this.productData);
+      },
+
+    )
   }
 }
 
