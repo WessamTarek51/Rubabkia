@@ -5,6 +5,7 @@ import { UserServicesService } from 'src/app/services/user-services.service';
 import { Notifi } from 'src/app/_models/notiication.models';
 import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
 import { Rejectedmessage } from 'src/app/_models/rejectedmessage.models';
+import { Adminmessage } from 'src/app/_models/adminmessage.models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   acceptedres!:Acceptedmessage[];
   counter!:number;
   rejectedres!:Rejectedmessage[];
+  adminmessages!:Adminmessage[];
   private updateSubscription!: Subscription;
   constructor(private router:Router,private service:UserServicesService) { }
    token:any
@@ -42,7 +44,11 @@ export class HeaderComponent implements OnInit {
       })
       this.service.acceptedmessages().subscribe(res=>{
         this.acceptedres=res.data
-        this.counter=this.notifi.length+this.acceptedres.length+this.rejectedres.length
+        
+     })
+     this.service.getalladminmessages().subscribe(res=>{
+      this.adminmessages=res.data
+      this.counter=this.notifi.length+this.acceptedres.length+this.rejectedres.length+this.adminmessages.length
      })
 
      },)
@@ -64,6 +70,8 @@ logout(){
 loggedin(){
   return localStorage.getItem('token')
 }
-
+adminloggedin(){
+  return localStorage.getItem('is_admin')
+ }
 
 }

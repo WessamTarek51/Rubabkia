@@ -4,7 +4,7 @@ import { UserData } from './../_models/data.model';
 
 // import { Product } from './../_models/product.models';
 
-import { User } from './../_models/user.models';
+import { User, UsersData } from './../_models/user.models';
 import { Injectable } from '@angular/core';
 import { Product } from '../_models/product.models';
 import { environment } from 'src/environments/environment';
@@ -17,6 +17,8 @@ import { Feedback ,FeedbackData} from '../_models/feedback.model';
 import { RejectedmessageData } from '../_models/rejectedmessage.models';
 import { Rejectedmessage } from '../_models/rejectedmessage.models';
 import { Governorate } from '../_models/governorate.models';
+import { Usermessage, UsermessageData } from '../_models/usermessage.models';
+import { Adminmessage,AdminmessageData } from '../_models/adminmessage.models';
 
 
 
@@ -243,7 +245,14 @@ authToken: any;
       return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id);
     }
 
+    // getallfeedbacks():Observable<FeedbackData>{
 
+    //   return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata');
+    // }
+    getallusers():Observable<UsersData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+      return this.http.get<UsersData>('http://127.0.0.1:8000/api/users',{headers});
+    }
 
 
   rejectmessage(nof:Notifi):Observable<RejectedmessageData>{
@@ -270,7 +279,8 @@ okay(id:number):Observable<Rejectedmessage[]>{
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
 
-  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers}).pipe(
+  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers})
+  .pipe(
     tap(()=>{
       this._refreshNeeded.next()
     })
@@ -280,6 +290,45 @@ okay(id:number):Observable<Rejectedmessage[]>{
 getAllgovernorates():Observable<Governorate[]>{
   return this.http.get<Governorate[]>('http://127.0.0.1:8000/api/governorates');
 
+}
+deleteUser(userid:number){
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.delete('http://127.0.0.1:8000/api/users/'+userid,{headers});
+}
+ storeusermessage(formdata:any):Observable<Usermessage[]>{
+  const headers=new HttpHeaders({
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+  return this.http.post<Usermessage[]>('http://127.0.0.1:8000/api/usermessages',formdata,{
+    headers:headers
+  });
+}
+getallusermessages():Observable<UsermessageData>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+  return this.http.get<UsermessageData>('http://127.0.0.1:8000/api/usermessages',{headers});
+}
+storeadminmessage(formdata:any,id:number):Observable<Adminmessage[]>{
+  const headers=new HttpHeaders({
+    'Authorization':'Bearer '+localStorage.getItem('token')
+  });
+  return this.http.post<Adminmessage[]>('http://127.0.0.1:8000/api/adminmessages/'+id,formdata,{
+    headers:headers
+  });
+}
+getalladminmessages():Observable<AdminmessageData>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+  return this.http.get<AdminmessageData>('http://127.0.0.1:8000/api/adminmessages',{headers});
+}
+deleteadminmessage(id:number){
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.delete('http://127.0.0.1:8000/api/adminmessages/'+id,{headers});
+}
+deleteusermessage(id:number){
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+
+  return this.http.delete('http://127.0.0.1:8000/api/usermessages/'+id,{headers});
 }
 }
 
