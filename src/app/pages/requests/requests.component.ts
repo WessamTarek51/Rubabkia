@@ -19,6 +19,15 @@ export class RequestsComponent implements OnInit {
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
+
+    // allfeedbacks(){
+
+    //   this.service.gerallfeedData(this.userID).subscribe(res=>{
+    //     this.data = res.data
+
+    //   });
+      // }
+
     this.service.refreshNeeded.subscribe(()=>{
       this.requset(this.seller)
       

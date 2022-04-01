@@ -4,13 +4,13 @@
   
   <table class="table" >
     <thead class="thead-light" >
-        <button style="padding-top: 5px; margin-top: 5px;" (click)="addEdit()"><i class="fa fa-plus"></i>Add category</button>
+        <button style="padding-top: 5px; margin-top: 5px;" (click)="addEdit()"><i class="fa fa-plus mm"></i>Add category</button>
 
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Image</th>
-        <th scope="col">Edit</th>
+        <th scope="col" >Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
@@ -21,9 +21,11 @@
         <td><img src="../../../assets/img/{{category.image}}" style="height:100px!important;width: 100px!important;"/>
         </td>
         <td>
-            <button [routerLink]="['/editcat',category.id]"><i class="fa fa-edit bb btn"></i></button>
-            <button (click)="del(category)"><i class="fa fa-trash bb btn" style=""></i></button>
+            <button [routerLink]="['/editcat',category.id]" class="bn"><i class="fa fa-edit bb btn"></i></button>
         </td>
+        <td>
+          <button (click)="del(category)" class="bn"><i class="fa fa-trash bb btn" ></i></button>
+      </td>
       </tr>
 
     </tbody>
