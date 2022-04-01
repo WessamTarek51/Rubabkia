@@ -1,0 +1,35 @@
+<div style="min-height: 100vh; position: relative; ">
+
+    <div class="container-fluid"  >
+        <form class="form"    #categoryform="ngForm" (ngSubmit)="onsubmit(categoryform)">
+  
+        <table class="table" >
+          <thead class="thead-light" >
+      
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Image</th>
+              <!-- <th scope="col">-</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="padding-top: 5px;" >
+              <th scope="row"><input type="number" ngModel class="form-control"  name="id" [(ngModel)]="category.id"></th>
+              <td><input  ngModel class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="category.name"></td>
+              <td><input  ngModel class="form-control" type="text" name="image" [(ngModel)]="category.image"></td>
+              <!-- <button style="padding-top: 5px; margin-top: 5px;" type="submit" ><i class="fa fa-plus"></i></button> -->
+              <button   type="submit"  class=" btn"  >{{editMode?'Edit':'Add'}}</button>
+           
+            </tr>
+      
+          </tbody>
+        </table> 
+        </form>
+        </div>
+
+
+
+
+
+    </div>

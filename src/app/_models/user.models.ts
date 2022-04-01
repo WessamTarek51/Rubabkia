@@ -35,3 +35,13 @@ export interface UsersData{
   productData:Product;
 }
 
+
+export interface Userr{
+
+
+    id: number;
+    name:string;
+    image?: string;
+
+
+}

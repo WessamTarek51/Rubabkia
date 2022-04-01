@@ -1,0 +1,21 @@
+button{
+    width: 35%;
+    font-size: 16px;
+    height: 7vh;
+    background-color: black;
+    color: #fff !important;
+    margin: 0 10px;
+    padding-bottom: 10px;
+    border-radius: 5%;
+}
+
+button i{
+    /* width: 35%; */
+    font-size: 18px;
+    /* height: 7vh; */
+    /* background-color: black; */
+    color: #fff;
+    /* margin: 0 10px; */
+    /* padding-bottom: 10px; */
+    /* border-radius: 5%; */
+}

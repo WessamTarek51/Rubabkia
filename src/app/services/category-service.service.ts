@@ -2,14 +2,17 @@ import { Category,getAllCategoryData } from '../_models/category.models';
 import { Product,getAllProductsData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,Subject,tap } from 'rxjs';
 // 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryServiceService {
-
+  private _refreshNeeded=new Subject<void>();
+  get refreshNeeded(){
+       return this._refreshNeeded
+  }
   constructor(private HttpClient:HttpClient) { }
   categories:Category[]=[];
   // [
@@ -24,10 +27,23 @@ export class CategoryServiceService {
     return this.HttpClient.get<getAllCategoryData>('http://127.0.0.1:8000/api/categories');
 
   }
-  
+  addcategory(data:any):Observable<Category[]>{
+    return this.HttpClient.post<Category[]>('http://127.0.0.1:8000/api/categoriess',data);
+
+  }
+
+  updatecat(id:number,data:any):Observable<Category[]>{
+    console.log(data);
+    return this.HttpClient.post<Category[]>('http://127.0.0.1:8000/api/editcat/'+id,data);
+  }
     getCtId(categoryId:any){
     // console.log("done");
     return this.HttpClient.get('http://127.0.0.1:8000/api/categories/'+categoryId);
+   
+  }
+  delete(category:Category){
+    // console.log("done");
+    return this.HttpClient.delete('http://127.0.0.1:8000/api/categories/'+category.id)
    
   }
 }

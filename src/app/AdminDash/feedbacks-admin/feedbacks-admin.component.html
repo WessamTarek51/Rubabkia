@@ -1,0 +1,46 @@
+<div style="min-height: 100vh; position: relative; ">
+
+    <div class="container-fluid"  >
+        
+  
+        <table class="table" >
+          <thead class="thead-light" >
+      
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Buyer Name</th>
+              <th scope="col">Seller name</th>
+              <th scope="col">Buyer Image</th>
+              <th scope="col">Feedback comment</th>
+              <th scope="col">Delete</th>
+              <!-- <th scope="col">-</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="padding-top: 5px;" *ngFor="let feedback of feedback">
+              <th scope="row"> {{feedback.id}}  </th>
+              <td>{{feedback.buyer_name}} 
+              <button type="button" class="bb btn" [routerLink]="['/user/',feedback.buyer_id]" > Profile</button>
+
+              </td>
+              <td>{{feedback.seller_name}}
+              <button type="button" class="bb btn" [routerLink]="['/user/',feedback.seller_id]" > Profile</button>
+
+              </td>
+              <img src="http://127.0.0.1:8000/storage/images/{{ feedback.image}}" alt="" style="height:100px!important;width: 100px!important;">
+
+              <td>{{feedback.message}}</td>
+              <button   type="submit"  class=" btn" (click)="del(feedback)" ><i class="fa fa-trash"></i></button>
+           
+            </tr>
+      
+          </tbody>
+        </table> 
+   
+        </div>
+
+
+
+
+
+    </div>

@@ -13,6 +13,7 @@ export interface Product{
     category_name: string;
     description:string;
     category:Category;
+    governate:string;
     user:User;
     isFav:boolean;
 }

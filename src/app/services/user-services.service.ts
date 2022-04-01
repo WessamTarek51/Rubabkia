@@ -330,5 +330,23 @@ deleteusermessage(id:number){
 
   return this.http.delete('http://127.0.0.1:8000/api/usermessages/'+id,{headers});
 }
+
+
+getAlluserssad():Observable<User[]>{
+  return this.http.get<User[]>('http://127.0.0.1:8000/api/users');
+
+}
+
+getAllfeeds():Observable<Feedback[]>{
+  return this.http.get<Feedback[]>('http://127.0.0.1:8000/api/feedbacks');
+
+}
+delete(feedback:Feedback){
+  // console.log("done");
+  return this.http.delete('http://127.0.0.1:8000/api/feedbacks/'+feedback.id)
+
+}
+
+>>>>>>> 4adce007a848cebd1dd633c5df599fa7bfce145e
 }
 
