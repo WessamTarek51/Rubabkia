@@ -11,6 +11,7 @@ import { ProductsofcategoryComponent } from './pages/productsofcategory/products
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
+import { AdminAuthGuard } from './adminauth.guard';
 import { ForgetpasswordComponent } from './pages/forgetpassword/forgetpassword.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { EditprofileComponent } from './pages/editprofile/editprofile.component';
@@ -26,6 +27,7 @@ import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-cat
 import { AdminUsersComponent } from './AdminDash/admin-users/admin-users.component';
 import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
 import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
 import { FeedbacksAdminComponent } from './AdminDash/feedbacks-admin/feedbacks-admin.component';
 const routes: Routes = [
@@ -39,16 +41,19 @@ const routes: Routes = [
   {path:'forgetpassword',component:ForgetpasswordComponent},
   {path:'reset-password',component:ResetPasswordComponent },
   {path:'product',component:ProductListingComponent },
-  {path:'admin',component:AdminComponent },
-  {path:'admin-categories',component:AdminCategoriesComponent },
-  {path:'admin-users',component:AdminUsersComponent },
-  {path:'admin-products',component:AdminProductsComponent },
-  {path:'admin-messages',component:AdminMessagesComponent },
+  {path:'admin',component:AdminComponent,canActivate:[AdminAuthGuard] },
+  {path:'admin-categories',component:AdminCategoriesComponent,canActivate:[AdminAuthGuard] },
+  {path:'admin-users',component:AdminUsersComponent,canActivate:[AdminAuthGuard] },
+  {path:'admin-products',component:AdminProductsComponent,canActivate:[AdminAuthGuard] },
+  {path:'admin-messages',component:AdminMessagesComponent,canActivate:[AdminAuthGuard]},
+  {path:'contactus',component:ContactusComponent ,canActivate:[AuthGuard]},
   {path:'add-edit-cat',component:AddEditCategoryComponent },
   {path:'editcat/:id',component:AddEditCategoryComponent },
   {path:'feedbacks',component:FeedbacksAdminComponent },
 
-  
+
+
+
 
   {path:'getstarted',component:GetstartedComponent ,canActivate:[AuthGuard]},
 

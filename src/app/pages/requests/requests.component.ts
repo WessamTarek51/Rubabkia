@@ -4,6 +4,7 @@ import { NotificationData } from 'src/app/_models/nof.models';
 import { Notifi } from 'src/app/_models/notiication.models';
 import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
 import { Rejectedmessage } from 'src/app/_models/rejectedmessage.models';
+import { Adminmessage } from 'src/app/_models/adminmessage.models';
 
 @Component({
   selector: 'app-requests',
@@ -16,6 +17,7 @@ export class RequestsComponent implements OnInit {
   notifi!:Notifi[];
   acceptedres!:Acceptedmessage[];
   rejectedres!:Rejectedmessage[];
+  adminmessages!:Adminmessage[];
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
@@ -30,11 +32,18 @@ export class RequestsComponent implements OnInit {
 
     this.service.refreshNeeded.subscribe(()=>{
       this.requset(this.seller)
-      
+
     })
+    // this.service.refreshNeeded.subscribe(()=>{
+    //   this.requset(this.seller)
+
+    // })
   this.requset(this.seller)
    this.acceptresponse()
    this.rejectresponse()
+   this.service.getalladminmessages().subscribe(res=>{
+    this.adminmessages=res.data
+   })
   }
   // requests
   requset(seller:any){
@@ -74,7 +83,7 @@ export class RequestsComponent implements OnInit {
     //   (res)=>{
     //   },)
       this.requset(seller);
-    
+
   }
 
   rejectresponse(){
@@ -98,6 +107,15 @@ export class RequestsComponent implements OnInit {
       this.rejectresponse();
 
   }
+  deleteadmin(id:number){
+    this.service.deleteadminmessage(id).subscribe(res=>{
+
+    })
+    this.service.getalladminmessages().subscribe(res=>{
+      this.adminmessages=res.data
+     })
+  }
+
   }
 
 

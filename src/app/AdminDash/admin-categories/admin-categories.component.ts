@@ -32,13 +32,20 @@ export class AdminCategoriesComponent implements OnInit {
     this.categoryService.getAllcategories().subscribe(
       (res)=>{
         this.category = res.data},)
-    
+
+        this.categoryService.getAllcategories().subscribe(
+          (res:any)=>{
+            this.category = res.data
+
+          },
+        )
+
   }
   addEdit(){
     this.router.navigateByUrl('/add-edit-cat');
 
   }
   onsubmit(){
-    
+
   }
 }

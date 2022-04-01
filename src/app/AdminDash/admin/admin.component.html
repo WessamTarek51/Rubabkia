@@ -5,15 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
     </head>
     <body>
         <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Admin</div>
                 <div class="list-group list-group-flush">
@@ -21,40 +16,35 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"  (click)="category()">Categories</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"  (click)="user()">Users</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="products()">Products</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="message()">Messages</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="message()">Messages
+                        <span class="rounded-pill bg-danger badge" style=" font-size: 15px;"  >
+                            {{counter}}
+                            <span class="visually-hidden">New alerts</span>
+                          </span>
+                    </a>
+
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="feedbk()">feedbacks</a>
-                    <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a> -->
                 </div>
             </div>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
-                <!-- Top navigation -->
-                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav> -->
+
                 <!-- Page content-->
+                <div class="container-fluid">
+                    <h1 class="mt-4" style="color:#3f4b26 ;">Welcome {{userr.username}}</h1>
+                    <!-- <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                    <p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                    </p> -->
+                </div>
 
                 <!doctype html>
                 <html lang="en">
-                
+
                 <head>
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,13 +57,13 @@
                 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
                 <body>
                     <div class="app-container app-theme-white body-tabs-shadow ">
-                           
+
                          <div class="ui-theme-settings">
                             <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
                                 <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
                             </button>
-                        
-                        </div>       
+
+                        </div>
                          <div class="app-main" >
                                   <div class="app-main__outer">
                                     <div class="app-main__inner" *ngFor="let categorys of categorys">
@@ -83,7 +73,7 @@
                                                     <div class="widget-content-wrapper text-white">
                                                         <div class="widget-content-left" >
                                                             <div class="widget-heading">category</div>
-                                                            <div class="widget-subheading">{{counter}} </div>
+                                                            <div class="widget-subheading">{{counterr}} </div>
                                                         </div>
                                                         <div class="widget-content-right">
                                                             <div class="widget-numbers text-white"><span>Robabikya</span></div>
@@ -91,7 +81,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-xl-4" ngFor="let userr of userr">
+                                            <div class="col-md-6 col-xl-4" ngFor="let userr of users">
                                                 <div class="card mb-3 widget-content bg-arielle-smile">
                                                     <div class="widget-content-wrapper text-white">
                                                         <div class="widget-content-left">
@@ -279,7 +269,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                          
+
                                         </div>
 
                                         <!-- ////// total orders -->
@@ -579,7 +569,7 @@
                     </div>
                 <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script></body>
                 </html>
-                
+
             </div>
         </div>
         <!-- Bootstrap core JS-->
@@ -591,9 +581,9 @@
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
 */
-// 
+//
 // Scripts
-// 
+//
 
 window.addEventListener('DOMContentLoaded', event => {
 

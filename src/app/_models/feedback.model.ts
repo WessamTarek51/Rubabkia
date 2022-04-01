@@ -3,6 +3,7 @@ import { User } from 'src/app/_models/user.models';
 export interface Feedback{
 id:number;
 seller_name:string;
+seller_image:string;
 buyer_name:string;
 seller_id:number;
 buyer_id:number;

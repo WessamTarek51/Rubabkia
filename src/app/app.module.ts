@@ -20,7 +20,8 @@ import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsofcategoryComponent } from './pages/productsofcategory/productsofcategory.component';
 import { RequestsComponent } from './pages/requests/requests.component';
-import { AdminCategoriesComponent } from './AdminDash/admin-categories/admin-categories.component';
+import {AdminUsersComponent } from  './AdminDash/admin-users/admin-users.component';
+import { AdminMessagesComponent } from './AdminDash/admin-messages/admin-messages.component';
 
 
 
@@ -62,9 +63,12 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AdminProductsComponent } from './AdminDash/admin-products/admin-products.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 import { AdminComponent } from './AdminDash/admin/admin.component';
 import { AddEditCategoryComponent } from './AdminDash/add-edit-category/add-edit-category.component';
 import { FeedbacksAdminComponent } from './AdminDash/feedbacks-admin/feedbacks-admin.component';
+import {AdminCategoriesComponent} from './AdminDash/admin-categories/admin-categories.component';
 // import { BrowserModule } from '@angular/platform-browser';
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -88,7 +92,7 @@ firebase.initializeApp(environment.firebaseConfig);
     LoginComponent,
     ForgetpasswordComponent,
     ResetPasswordComponent,
-
+    AdminProductsComponent,
     GetstartedComponent,
 
     ListchatComponent,
@@ -98,6 +102,9 @@ firebase.initializeApp(environment.firebaseConfig);
      UserProfileComponent,
      FeedbackComponent,
      NotfoundComponent,
+     AdminUsersComponent,
+     ContactusComponent,
+    AdminMessagesComponent,
      AdminCategoriesComponent,
      AdminComponent,
      AddEditCategoryComponent,

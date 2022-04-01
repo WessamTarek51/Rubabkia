@@ -45,8 +45,13 @@ token:any;
        this.token=this.data.access_token
        localStorage.setItem('token',this.token)
        localStorage.setItem('user_id',this.data.id)
-       localStorage.setItem('is_admin',this.data.is_admin)
-
+       if(this.data.is_admin==1){
+        localStorage.setItem('is_admin',this.data.is_admin)
+       }
+       else{
+        localStorage.removeItem('is_admin')
+        
+       }
        this.router.navigate([''])
 
        this.toaster.success(JSON.stringify(this.data.message),JSON.stringify(this.data.code),{
