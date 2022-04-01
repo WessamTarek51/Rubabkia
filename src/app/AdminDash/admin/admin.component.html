@@ -21,7 +21,13 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"  (click)="category()">Categories</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"  (click)="user()">Users</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="products()">Products</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="message()">Messages</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" (click)="message()">Messages
+                        <span class="rounded-pill bg-danger badge" style=" font-size: 15px;"  >
+                            {{counter}}
+                            <span class="visually-hidden">New alerts</span>
+                          </span>
+                    </a>
+
                     <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a> -->
                 </div>
             </div>

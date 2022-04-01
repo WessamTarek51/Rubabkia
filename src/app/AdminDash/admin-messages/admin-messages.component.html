@@ -5,10 +5,11 @@
 
         <div class="container-fluid"  *ngFor="let item of data" >
 
-            <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992">
+            <div class="row mt-5 mx-3 mb-3 me-auto" style="background-color:#ACB992;position:relative;">
     
         <div class="col-12 px-5  pt-3 pb-3"   >
         <div class="d-flex align-items-center">
+            <button type="button" class="btn-close" id="close" (click)="deleteuser(item.id)" aria-label="Close"></button>
           <div class="flex-shrink-0">
             <img src="http://127.0.0.1:8000/storage/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
           </div>

@@ -6,3 +6,8 @@
     border-radius: 10px;
     
     }
+    #close{
+        position:absolute;
+        right:2%;
+        top:5%;
+    }

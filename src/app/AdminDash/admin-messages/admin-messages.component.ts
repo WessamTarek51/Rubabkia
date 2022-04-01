@@ -31,5 +31,13 @@ export class AdminMessagesComponent implements OnInit {
 
        
       }
+      deleteuser(id:number){
+        this.service.deleteusermessage(id).subscribe(res=>{
+    
+        })
+        this.service.getallusermessages().subscribe(res=>{
+          this.data=res.data
+           })
+      }
 
 }

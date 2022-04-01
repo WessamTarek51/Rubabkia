@@ -60,7 +60,7 @@
         </li>
        
         <li class="nav-item nav-icon " >
-          <a class="nav-link active home-color" aria-current="page" routerLink="contactus">ContactUS</a>
+          <a class="nav-link active home-color" aria-current="page" *ngIf="loggedin()&&!adminloggedin()" routerLink="contactus">ContactUS</a>
         </li>
       </ul>
 
