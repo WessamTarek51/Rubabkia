@@ -11,6 +11,7 @@ import { Category } from 'src/app/_models/category.models';
 import { Product } from 'src/app/_models/product.models';
 import { User, Userr } from 'src/app/_models/user.models';
 import { AdminCategoriesComponent } from '../admin-categories/admin-categories.component';
+import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
 
 
 @Component({
@@ -30,13 +31,15 @@ private updateSubscription!: Subscription;
     //  this.service.getalladminmessages().subscribe(res=>{
     //   this.adminmessages=res.data
     //  })
-
+  accepted!:Acceptedmessage[];
   categorys!:Category[]
   users!:User[]
   product!:Product[]
+  productt!:Product[]
   counterr!:number
   counterusers!:number
   counterproductss!:number
+  counterproductssss!:number
   constructor(private  router:Router ,private productService:ProductServiceService , private categoryService:CategoryServiceService,private userservice:UserServicesService) { }
 
 
@@ -54,8 +57,10 @@ private updateSubscription!: Subscription;
      }
   )
 
-
-
+  this.userservice.acceptedmess().subscribe(res=>{
+    this.accepted=res.data
+   })
+     
     this.userservice.getAlluserssad().subscribe(
       (res:any)=>{
         this.users = res.data
@@ -81,6 +86,16 @@ private updateSubscription!: Subscription;
         // this.productData = res.data;
 
       },)
+
+      this.productService.salesall().subscribe(
+        (res)=>{
+  
+          this.productt= res.data
+          this.counterproductssss=this.productt.length
+          console.log(this.counterproductssss)
+          // this.productData = res.data;
+  
+        },)
 
   }
 

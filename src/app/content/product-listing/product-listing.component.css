@@ -8,9 +8,7 @@
 #mybtn{
     width: 75%;
 }
-#mybtn:focus{
-    /* border: 0.1rem solid #3f4b26; */
-}
+
 #search{
     width: 23%;
 }
@@ -43,15 +41,15 @@ background-color: #474F2F !important;}
     /* align-items: flex-start; */
     text-align: right;
     justify-content: right;
-    font-size: 15px;
+    font-size: 13px;
     color: #000;
-    padding-left: 140px;
+    padding-left: 100px;
 
 }
 .overlay-iconss i{
     /* color: #000; */
     color: #474F2F;
-    padding: 0 2px;
+    padding: 0 1px;
 
 }
 .pri-ic{
