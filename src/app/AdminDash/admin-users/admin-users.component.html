@@ -16,7 +16,7 @@
         <td>{{item.id}}</td>
         <td>{{ item.username}}  </td>
         <td><button type="button" class="bb btn" [routerLink]="['/user/',item.id]" > Profile</button></td>
-        <td> <img src="http://127.0.0.1:8000/storage/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="..."></td>
+        <td> <img src="https://rubabikia-project.herokuapp.com/public/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="..."></td>
         <td>{{item.email}}</td>
         <td >
             <rating  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="item.avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">

@@ -27,7 +27,7 @@
               <button type="button" class="bb btn" [routerLink]="['/user/',feedback.seller_id]" > Profile</button>
 
               </td>
-              <img src="http://127.0.0.1:8000/storage/images/{{ feedback.image}}" alt="" style="height:100px!important;width: 100px!important;">
+              <img src="https://rubabikia-project.herokuapp.com/public/images/{{ feedback.image}}" alt="" style="height:100px!important;width: 100px!important;">
 
               <td>{{feedback.message}}</td>
               <button   type="submit"  class=" btn" (click)="del(feedback)" ><i class="fa fa-trash"></i></button>
