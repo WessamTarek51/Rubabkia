@@ -14,6 +14,8 @@ import { Feedback, FeedbackData } from 'src/app/_models/feedback.model';
 })
 export class RequestsComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
+userID = parseInt(localStorage.getItem('user_id')!)
+
   data!:NotificationData;
   notifi!:Notifi[];
   acceptedres!:Acceptedmessage[];
@@ -21,9 +23,26 @@ export class RequestsComponent implements OnInit {
   rejectedres!:Rejectedmessage[];
   adminmessages!:Adminmessage[];
   replays!:Feedback[];
+dataa!:Feedback[];
+
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
+
+
+    // allfeedbacks(){
+
+      this.service.gerallfeedData(this.userID).subscribe(res=>{
+        this.dataa = res.data
+        console.log(res.data)
+    
+    //     this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
+    // this.avg = (this.sum / this.dataa.length) || 0;
+    // console.log(this.avg)
+    // console.log(this.data)
+      });
+      // }
+  
 
     this.service.replayus(this.seller).subscribe(
       (res)=>{
