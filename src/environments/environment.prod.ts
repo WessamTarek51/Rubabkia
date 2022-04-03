@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl:'https://rubabikia-project.herokuapp.com/',
+  apiUrl:'https://rubabikia-project.herokuapp.com/',
    firebaseConfig :{
     apiKey: "AIzaSyCfJ47euW0qRaNu5D8eG30JzGQFeDzj5t8",
     authDomain: "rubabkia-5b4a2.firebaseapp.com",

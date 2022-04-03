@@ -7,7 +7,7 @@
                   <div class="col-12" *ngIf="userData" >
                      <div class="profile">
                           <div class="avatar">
-          <img src="http://127.0.0.1:8000/public/images/{{userData.image}}" style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
+          <img src="https://rubabikia-project.herokuapp.com/public/images/{{userData.image}}" style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
                           </div>
                           <div class="name">
                               <h3 class="title">  {{userData.username}}    </h3>
@@ -43,7 +43,7 @@
               <div class="row" *ngIf="userData">
 
             <div class="col-md-3 col-sm-6"   *ngFor="let product of userData.products" >
-            <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
+            <img src="https://rubabikia-project.herokuapp.com/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
                 <p>{{product.price}}</p>
@@ -99,7 +99,7 @@
                   <div class="col-12 px-5  pt-3 pb-3"  >
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
-                      <img src="http://127.0.0.1:8000/storage/images/{{ress.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+                      <img src="https://rubabikia-project.herokuapp.com/public/images/{{ress.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
                     </div>
                     <div class="flex-grow-1 ms-3" >
                       <strong class="me-auto" style="padding-right: 10px;">{{ress.buyer_name}}</strong>

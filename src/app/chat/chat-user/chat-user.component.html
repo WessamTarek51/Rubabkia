@@ -89,7 +89,7 @@
                   <ul class="list-unstyled chat-list mt-2 mb-0" >
 
                       <li class="clearfix" *ngFor="let user of users">
-                          <img src="http://127.0.0.1:8000/storage/images/{{user.image}}" alt="avatar">
+                          <img src="https://rubabikia-project.herokuapp.com/storage/images/{{user.image}}" alt="avatar">
                           <div class="about">
                               <div class="name"  (click)="onChatClick(user)" style="color: #474F2F; font-size: 18px;">{{user.name}}</div>
 
@@ -109,7 +109,7 @@
                       <div class="row" >
                           <div class="col-lg-6" >
                               <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                  <img src="http://127.0.0.1:8000/storage/images/{{receiver.image}}" alt="avatar">
+                                  <img src="https://rubabikia-project.herokuapp.com/public/images/{{receiver.image}}" alt="avatar">
                               </a>
 
                               <div class="chat-about">
