@@ -6,7 +6,7 @@ export const environment = {
 
   production: false,
 
-  apiUrl:'http://127.0.0.1:8000',
+  apiUrl:'https://rubabikia-project.herokuapp.com',
   firebaseConfig :{
     apiKey: "AIzaSyCfJ47euW0qRaNu5D8eG30JzGQFeDzj5t8",
     authDomain: "rubabkia-5b4a2.firebaseapp.com",

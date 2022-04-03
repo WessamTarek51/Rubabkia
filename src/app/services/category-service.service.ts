@@ -3,7 +3,8 @@ import { Product,getAllProductsData } from '../_models/product.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable,Subject,tap } from 'rxjs';
-// 
+import { environment } from 'src/environments/environment';
+//
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CategoryServiceService {
   get refreshNeeded(){
        return this._refreshNeeded
   }
-  constructor(private HttpClient:HttpClient) { }
+  constructor(private http:HttpClient) { }
   categories:Category[]=[];
   // [
   //   {id:1,name:"food",image:"https://source.unsplash.com/random/200x200?sig=1"},
@@ -24,26 +25,26 @@ export class CategoryServiceService {
   //   {id:6,name:"home",image:"https://source.unsplash.com/random/200x200?sig=6"},
   // ]
   getAllcategories():Observable<getAllCategoryData>{
-    return this.HttpClient.get<getAllCategoryData>('http://127.0.0.1:8000/api/categories');
+    return this.http.get<getAllCategoryData>(environment.apiUrl+'/api/categories');
 
   }
   addcategory(data:any):Observable<Category[]>{
-    return this.HttpClient.post<Category[]>('http://127.0.0.1:8000/api/categoriess',data);
+    return this.http.post<Category[]>(environment.apiUrl+'/api/categoriess',data);
 
   }
 
   updatecat(id:number,data:any):Observable<Category[]>{
     console.log(data);
-    return this.HttpClient.post<Category[]>('http://127.0.0.1:8000/api/editcat/'+id,data);
+    return this.http.post<Category[]>(environment.apiUrl+'/api/editcat/'+id,data);
   }
     getCtId(categoryId:any){
     // console.log("done");
-    return this.HttpClient.get('http://127.0.0.1:8000/api/categories/'+categoryId);
-   
+    return this.http.get(environment.apiUrl+'/api/categories/'+categoryId);
+
   }
   delete(category:Category){
     // console.log("done");
-    return this.HttpClient.delete('http://127.0.0.1:8000/api/categories/'+category.id)
-   
+    return this.http.delete(environment.apiUrl+'/api/categories/'+category.id)
+
   }
 }

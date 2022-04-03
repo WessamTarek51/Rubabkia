@@ -62,7 +62,7 @@ export class UserServicesService {
   deleteProductOfUser(product:Product){
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.http.delete('http://127.0.0.1:8000/api/deleteproduct/'+product.id,{headers});
+    return this.http.delete(environment.apiUrl+'/api/deleteproduct/'+product.id,{headers});
   }
 //  addedprudect(product:Product){
 //     console.log(product.name);
@@ -73,7 +73,7 @@ authToken: any;
     // this.loadToken();
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.http.get<UserData>('http://127.0.0.1:8000/api/profile',{ headers});
+    return this.http.get<UserData>(environment.apiUrl+'/api/profile',{ headers});
   }
 
   // public loadToken() {
@@ -87,8 +87,7 @@ authToken: any;
     const headers=new HttpHeaders()
   return this.http.post(environment.apiUrl+'/api/register',data,{
     headers:headers
-     }
-  );
+     });
     }
     loginuser(data:any){
       return this.http.post(environment.apiUrl+'/api/login',data)
@@ -132,14 +131,14 @@ authToken: any;
       const body = { 'id':userIDs};
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.post<User[]>('http://127.0.0.1:8000/api/userbyId',body,{headers});
+      return this.http.post<User[]>(environment.apiUrl+'/api/userbyId',body,{headers});
     }
     getSenderById(senderID:Number){
-      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+senderID);
+      return this.http.get<UserData>(environment.apiUrl+'/api/user/'+senderID);
 
     }
     getReciverById(receiverID:Number){
-      return this.http.get<UserData>('http://127.0.0.1:8000/api/user/'+receiverID);
+      return this.http.get<UserData>(environment.apiUrl+'/api/user/'+receiverID);
 
     }
 
@@ -236,13 +235,13 @@ authToken: any;
       const headers=new HttpHeaders({
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
-      return this.http.post<Feedback[]>('http://127.0.0.1:8000/api/feedbacks/'+id,formData,{
+      return this.http.post<Feedback[]>(environment.apiUrl+'/api/feedbacks/'+id,formData,{
         headers:headers
       });
     }
     gerallfeedData(id:any):Observable<FeedbackData>{
 
-      return this.http.get<FeedbackData>('http://127.0.0.1:8000/api/feedbacksdata/'+id);
+      return this.http.get<FeedbackData>(environment.apiUrl+'api/feedbacksdata/'+id);
     }
 
     // getallfeedbacks():Observable<FeedbackData>{
@@ -251,7 +250,7 @@ authToken: any;
     // }
     getallusers():Observable<UsersData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-      return this.http.get<UsersData>('http://127.0.0.1:8000/api/users',{headers});
+      return this.http.get<UsersData>(environment.apiUrl+'/api/users',{headers});
     }
 
 
@@ -288,62 +287,62 @@ okay(id:number):Observable<Rejectedmessage[]>{
 
 }
 getAllgovernorates():Observable<Governorate[]>{
-  return this.http.get<Governorate[]>('http://127.0.0.1:8000/api/governorates');
+  return this.http.get<Governorate[]>(environment.apiUrl+'/api/governorates');
 
 }
 deleteUser(userid:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete('http://127.0.0.1:8000/api/users/'+userid,{headers});
+  return this.http.delete(environment.apiUrl+'/api/users/'+userid,{headers});
 }
  storeusermessage(formdata:any):Observable<Usermessage[]>{
   const headers=new HttpHeaders({
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.http.post<Usermessage[]>('http://127.0.0.1:8000/api/usermessages',formdata,{
+  return this.http.post<Usermessage[]>(environment.apiUrl+'/api/usermessages',formdata,{
     headers:headers
   });
 }
 getallusermessages():Observable<UsermessageData>{
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-  return this.http.get<UsermessageData>('http://127.0.0.1:8000/api/usermessages',{headers});
+  return this.http.get<UsermessageData>(environment.apiUrl+'/api/usermessages',{headers});
 }
 storeadminmessage(formdata:any,id:number):Observable<Adminmessage[]>{
   const headers=new HttpHeaders({
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.http.post<Adminmessage[]>('http://127.0.0.1:8000/api/adminmessages/'+id,formdata,{
+  return this.http.post<Adminmessage[]>(environment.apiUrl+'/api/adminmessages/'+id,formdata,{
     headers:headers
   });
 }
 getalladminmessages():Observable<AdminmessageData>{
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-  return this.http.get<AdminmessageData>('http://127.0.0.1:8000/api/adminmessages',{headers});
+  return this.http.get<AdminmessageData>(environment.apiUrl+'/api/adminmessages',{headers});
 }
 deleteadminmessage(id:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete('http://127.0.0.1:8000/api/adminmessages/'+id,{headers});
+  return this.http.delete(environment.apiUrl+'/api/adminmessages/'+id,{headers});
 }
 deleteusermessage(id:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete('http://127.0.0.1:8000/api/usermessages/'+id,{headers});
+  return this.http.delete(environment.apiUrl+'/api/usermessages/'+id,{headers});
 }
 
 
 getAlluserssad():Observable<User[]>{
-  return this.http.get<User[]>('http://127.0.0.1:8000/api/users');
+  return this.http.get<User[]>(environment.apiUrl+'/api/users');
 
 }
 
 getAllfeeds():Observable<Feedback[]>{
-  return this.http.get<Feedback[]>('http://127.0.0.1:8000/api/feedbacks');
+  return this.http.get<Feedback[]>(environment.apiUrl+'/api/feedbacks');
 
 }
 delete(feedback:Feedback){
   // console.log("done");
-  return this.http.delete('http://127.0.0.1:8000/api/feedbacks/'+feedback.id)
+  return this.http.delete(environment.apiUrl+'/api/feedbacks/'+feedback.id)
 
 }
 

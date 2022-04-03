@@ -42,17 +42,17 @@ export class ProductServiceService {
 
   getData(){
     // console.log("done");
-    return this.HttpClient.get('http://127.0.0.1:8000/api/products');
+    return this.HttpClient.get(environment.apiUrl+'/api/products');
 
   }
 
   getAllProducts():Observable<getAllProductsData> {
          const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 if(localStorage.getItem('token')!=null){
-  return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/products',{headers});
+  return this.HttpClient.get<getAllProductsData>(environment.apiUrl+'/api/products',{headers});
 
 }else{
-    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/productsWithOutLogin');
+    return this.HttpClient.get<getAllProductsData>(environment.apiUrl+'/api/productsWithOutLogin');
   }}
 
 
@@ -61,7 +61,7 @@ if(localStorage.getItem('token')!=null){
     const headers=new HttpHeaders({
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
-    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/products',data,{
+    return this.HttpClient.post<Product[]>(environment.apiUrl+'/api/products',data,{
       headers:headers
     });
   }
@@ -74,19 +74,19 @@ AddPurchases(product:Product):Observable<Product[]>{
     'Access-Control-Allow-Origin' : '*',
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/purchases/'+product.id,product,{
+  return this.HttpClient.post<Product[]>(environment.apiUrl+'/api/purchases/'+product.id,product,{
     headers:headers
   });
 }
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
-    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
+    return this.HttpClient.get<getAllProductsData>(environment.apiUrl+'/api/product/'+category_id);
   }
 
 
 
 
   geteditData(id:number){
-   return this.HttpClient.get('http://127.0.0.1:8000/api/products/'+id);
+   return this.HttpClient.get(environment.apiUrl+'/api/products/'+id);
 
  }
 
@@ -96,7 +96,7 @@ AddPurchases(product:Product):Observable<Product[]>{
     const headers=new HttpHeaders({
       'Authorization':'Bearer '+localStorage.getItem('token')
     });
-    return this.HttpClient.post<Product[]>('http://127.0.0.1:8000/api/image/'+id,data,{
+    return this.HttpClient.post<Product[]>(environment.apiUrl+'/api/image/'+id,data,{
       headers:headers
     });
   }
@@ -105,7 +105,7 @@ AddPurchases(product:Product):Observable<Product[]>{
     console.log("done");
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.HttpClient.get('http://127.0.0.1:8000/api/productid/'+id,{headers});
+    return this.HttpClient.get(environment.apiUrl+'/api/productid/'+id,{headers});
 
     }
     addFavProduct(product:Product){
@@ -113,19 +113,19 @@ AddPurchases(product:Product):Observable<Product[]>{
 
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.HttpClient.get('http://127.0.0.1:8000/api/like/'+product.id,{headers});
+      return this.HttpClient.get(environment.apiUrl+'/api/like/'+product.id,{headers});
 
     }
     getDataFav(id:any):Observable<getAllProductsData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/showlike/'+id,{headers});
+      return this.HttpClient.get<getAllProductsData>(environment.apiUrl+'/api/showlike/'+id,{headers});
 
     }
     deleteFavOfUser(product:Product){
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.HttpClient.delete('http://127.0.0.1:8000/api/favdelete/'+product.id,{headers});
+      return this.HttpClient.delete(environment.apiUrl+'/api/favdelete/'+product.id,{headers});
     }
 
 

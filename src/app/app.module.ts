@@ -131,6 +131,7 @@ firebase.initializeApp(environment.firebaseConfig);
     BrowserModule,
 
 
+
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]
