@@ -25,26 +25,26 @@ export class CategoryServiceService {
   //   {id:6,name:"home",image:"https://source.unsplash.com/random/200x200?sig=6"},
   // ]
   getAllcategories():Observable<getAllCategoryData>{
-    return this.http.get<getAllCategoryData>(environment.apiUrl+'/api/categories');
+    return this.http.get<getAllCategoryData>('https://rubabikia-project.herokuapp.com/api/categories');
 
   }
   addcategory(data:any):Observable<Category[]>{
-    return this.http.post<Category[]>(environment.apiUrl+'/api/categoriess',data);
+    return this.http.post<Category[]>('https://rubabikia-project.herokuapp.com/api/categoriess',data);
 
   }
 
   updatecat(id:number,data:any):Observable<Category[]>{
     console.log(data);
-    return this.http.post<Category[]>(environment.apiUrl+'/api/editcat/'+id,data);
+    return this.http.post<Category[]>('https://rubabikia-project.herokuapp.com/api/editcat/'+id,data);
   }
     getCtId(categoryId:any){
     // console.log("done");
-    return this.http.get(environment.apiUrl+'/api/categories/'+categoryId);
+    return this.http.get('https://rubabikia-project.herokuapp.com/api/categories/'+categoryId);
 
   }
   delete(category:Category){
     // console.log("done");
-    return this.http.delete(environment.apiUrl+'/api/categories/'+category.id)
+    return this.http.delete('https://rubabikia-project.herokuapp.com/api/categories/'+category.id)
 
   }
 }

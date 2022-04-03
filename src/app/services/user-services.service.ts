@@ -63,7 +63,7 @@ export class UserServicesService {
   deleteProductOfUser(product:Product){
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.http.delete(environment.apiUrl+'/api/deleteproduct/'+product.id,{headers});
+    return this.http.delete('https://rubabikia-project.herokuapp.com/api/deleteproduct/'+product.id,{headers});
   }
 //  addedprudect(product:Product){
 //     console.log(product.name);
@@ -74,7 +74,7 @@ authToken: any;
     // this.loadToken();
     const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-    return this.http.get<UserData>(environment.apiUrl+'/api/profile',{ headers});
+    return this.http.get<UserData>('https://rubabikia-project.herokuapp.com/api/profile',{ headers});
   }
 
   // public loadToken() {
@@ -86,15 +86,15 @@ authToken: any;
 
     registeruser(data:any){
     const headers=new HttpHeaders()
-  return this.http.post(environment.apiUrl+'/api/register',data,{
+  return this.http.post('https://rubabikia-project.herokuapp.com/api/register',data,{
     headers:headers
      });
     }
     loginuser(data:any){
-      return this.http.post(environment.apiUrl+'/api/login',data)
+      return this.http.post('https://rubabikia-project.herokuapp.com/api/login',data)
         }
     forgetpass(email:string){
-      return this.http.post(environment.apiUrl+'/api/forget',{email:email})
+      return this.http.post('https://rubabikia-project.herokuapp.com/api/forget',{email:email})
     }
     resetpass(token:any,password:string,confirmpass:string){
       const data={
@@ -103,23 +103,23 @@ authToken: any;
         confirmpassword:confirmpass
       }
 
-      return this.http.post(environment.apiUrl+'/api/reset',data)
+      return this.http.post('https://rubabikia-project.herokuapp.com/api/reset',data)
     }
 
     verifyemail(token:any):Observable<any>{
      const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
-      return this.http.post(environment.apiUrl+'/api/email/verification-notification',null,{headers:header})
+      return this.http.post('https://rubabikia-project.herokuapp.com/api/email/verification-notification',null,{headers:header})
     }
     completeverify(token:any,id:any,hash:any):Observable<any>{
       const header = new HttpHeaders({'Content-Type':'application/json','Authorization': 'Bearer ' + token})
 
-       return this.http.get(environment.apiUrl+'/api/verify-email/'+id+'/'+hash,{headers:header})
+       return this.http.get('https://rubabikia-project.herokuapp.com/api/verify-email/'+id+'/'+hash,{headers:header})
      }
 
      edit(data:any):Observable<UserData>{
       const headers = new HttpHeaders({'Authorization': 'Bearer ' +localStorage.getItem('token')})
 
-       return this.http.post<UserData>(environment.apiUrl+'/api/editProfile',data,{headers})
+       return this.http.post<UserData>('https://rubabikia-project.herokuapp.com/api/editProfile',data,{headers})
      }
 
 //  addedprudect(product:Product){
@@ -132,14 +132,14 @@ authToken: any;
       const body = { 'id':userIDs};
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.post<User[]>(environment.apiUrl+'/api/userbyId',body,{headers});
+      return this.http.post<User[]>('https://rubabikia-project.herokuapp.com/api/userbyId',body,{headers});
     }
     getSenderById(senderID:Number){
-      return this.http.get<UserData>(environment.apiUrl+'/api/user/'+senderID);
+      return this.http.get<UserData>('https://rubabikia-project.herokuapp.com/api/user/'+senderID);
 
     }
     getReciverById(receiverID:Number){
-      return this.http.get<UserData>(environment.apiUrl+'/api/user/'+receiverID);
+      return this.http.get<UserData>('https://rubabikia-project.herokuapp.com/api/user/'+receiverID);
 
     }
 
@@ -148,7 +148,7 @@ authToken: any;
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
       const body = { 'product_id':product.id,'seller_id':product.userid};
 
-      return this.http.post<NotificationData>(environment.apiUrl+'/api/buy/'+product.id,body,{headers}).pipe(
+      return this.http.post<NotificationData>('https://rubabikia-project.herokuapp.com/api/buy/'+product.id,body,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -160,7 +160,7 @@ authToken: any;
     request(id:number):Observable<NotificationData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.get<NotificationData>(environment.apiUrl+'/api/notification/'+id,{headers})
+      return this.http.get<NotificationData>('https://rubabikia-project.herokuapp.com/api/notification/'+id,{headers})
     }
 
     accept(nof:Notifi):Observable<Notifi[]>{
@@ -172,7 +172,7 @@ authToken: any;
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
 
-      return this.http.post<Notifi[]>(environment.apiUrl+'/api/purchases/'+nof.id_not,nof,{headers}).pipe(
+      return this.http.post<Notifi[]>('https://rubabikia-project.herokuapp.com/api/purchases/'+nof.id_not,nof,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -187,7 +187,7 @@ authToken: any;
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
 
-      return this.http.delete<Notifi[]>(environment.apiUrl+'/api/nof/'+id,{headers}).pipe(
+      return this.http.delete<Notifi[]>('https://rubabikia-project.herokuapp.com/api/nof/'+id,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -200,7 +200,7 @@ authToken: any;
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
       const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
 
-      return this.http.post<AcceptedmessageData>(environment.apiUrl+'/api/accept/'+nof.id_not,body,{headers}).pipe(
+      return this.http.post<AcceptedmessageData>('https://rubabikia-project.herokuapp.com/api/accept/'+nof.id_not,body,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -212,7 +212,7 @@ authToken: any;
     acceptedmessages():Observable<AcceptedmessageData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-      return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmessages',{headers})
+      return this.http.get<AcceptedmessageData>('https://rubabikia-project.herokuapp.com/api/acceptedmessages',{headers})
     }
 
     // for acceptresponse
@@ -224,7 +224,7 @@ authToken: any;
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
 
-      return this.http.delete<Acceptedmessage[]>(environment.apiUrl+'/api/acceptedmessages/'+id,{headers}).pipe(
+      return this.http.delete<Acceptedmessage[]>('https://rubabikia-project.herokuapp.com/api/acceptedmessages/'+id,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -236,13 +236,13 @@ authToken: any;
       const headers=new HttpHeaders({
         'Authorization':'Bearer '+localStorage.getItem('token')
       });
-      return this.http.post<Feedback[]>(environment.apiUrl+'/api/feedbacks/'+id,formData,{
+      return this.http.post<Feedback[]>('https://rubabikia-project.herokuapp.com/api/feedbacks/'+id,formData,{
         headers:headers
       });
     }
     gerallfeedData(id:any):Observable<FeedbackData>{
 
-      return this.http.get<FeedbackData>(environment.apiUrl+'api/feedbacksdata/'+id);
+      return this.http.get<FeedbackData>('https://rubabikia-project.herokuapp.com/api/feedbacksdata/'+id);
     }
 
     // getallfeedbacks():Observable<FeedbackData>{
@@ -251,7 +251,7 @@ authToken: any;
     // }
     getallusers():Observable<UsersData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-      return this.http.get<UsersData>(environment.apiUrl+'/api/users',{headers});
+      return this.http.get<UsersData>('https://rubabikia-project.herokuapp.com/api/users',{headers});
     }
 
 
@@ -259,7 +259,7 @@ authToken: any;
    const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
    const body = { 'productname':nof.name,'productimage':nof.image,'buyer_id':nof.buyer_id};
 
-      return this.http.post<RejectedmessageData>(environment.apiUrl+'/api/reject/'+nof.id_not,body,{headers}).pipe(
+      return this.http.post<RejectedmessageData>('https://rubabikia-project.herokuapp.com/api/reject/'+nof.id_not,body,{headers}).pipe(
         tap(()=>{
           this._refreshNeeded.next()
         })
@@ -268,7 +268,7 @@ authToken: any;
  rejectedmessages():Observable<RejectedmessageData>{
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.get<RejectedmessageData>(environment.apiUrl+'/api/rejectedmessages',{headers})
+  return this.http.get<RejectedmessageData>('https://rubabikia-project.herokuapp.com/api/rejectedmessages',{headers})
 }
 // for rejectresponse
 okay(id:number):Observable<Rejectedmessage[]>{
@@ -279,7 +279,7 @@ okay(id:number):Observable<Rejectedmessage[]>{
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
 
-  return this.http.delete<Rejectedmessage[]>(environment.apiUrl+'/api/rejectedmessages/'+id,{headers})
+  return this.http.delete<Rejectedmessage[]>('https://rubabikia-project.herokuapp.com/api/rejectedmessages/'+id,{headers})
   .pipe(
     tap(()=>{
       this._refreshNeeded.next()
@@ -288,62 +288,62 @@ okay(id:number):Observable<Rejectedmessage[]>{
 
 }
 getAllgovernorates():Observable<Governorate[]>{
-  return this.http.get<Governorate[]>(environment.apiUrl+'/api/governorates');
+  return this.http.get<Governorate[]>('https://rubabikia-project.herokuapp.com/api/governorates');
 
 }
 deleteUser(userid:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete(environment.apiUrl+'/api/users/'+userid,{headers});
+  return this.http.delete('https://rubabikia-project.herokuapp.com/api/users/'+userid,{headers});
 }
  storeusermessage(formdata:any):Observable<Usermessage[]>{
   const headers=new HttpHeaders({
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.http.post<Usermessage[]>(environment.apiUrl+'/api/usermessages',formdata,{
+  return this.http.post<Usermessage[]>('https://rubabikia-project.herokuapp.com/api/usermessages',formdata,{
     headers:headers
   });
 }
 getallusermessages():Observable<UsermessageData>{
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-  return this.http.get<UsermessageData>(environment.apiUrl+'/api/usermessages',{headers});
+  return this.http.get<UsermessageData>('https://rubabikia-project.herokuapp.com/api/usermessages',{headers});
 }
 storeadminmessage(formdata:any,id:number):Observable<Adminmessage[]>{
   const headers=new HttpHeaders({
     'Authorization':'Bearer '+localStorage.getItem('token')
   });
-  return this.http.post<Adminmessage[]>(environment.apiUrl+'/api/adminmessages/'+id,formdata,{
+  return this.http.post<Adminmessage[]>('https://rubabikia-project.herokuapp.com/api/adminmessages/'+id,formdata,{
     headers:headers
   });
 }
 getalladminmessages():Observable<AdminmessageData>{
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-  return this.http.get<AdminmessageData>(environment.apiUrl+'/api/adminmessages',{headers});
+  return this.http.get<AdminmessageData>('https://rubabikia-project.herokuapp.com/api/adminmessages',{headers});
 }
 deleteadminmessage(id:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete(environment.apiUrl+'/api/adminmessages/'+id,{headers});
+  return this.http.delete('https://rubabikia-project.herokuapp.com/api/adminmessages/'+id,{headers});
 }
 deleteusermessage(id:number){
   const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
-  return this.http.delete(environment.apiUrl+'/api/usermessages/'+id,{headers});
+  return this.http.delete('https://rubabikia-project.herokuapp.com/api/usermessages/'+id,{headers});
 }
 
 
 getAlluserssad():Observable<User[]>{
-  return this.http.get<User[]>(environment.apiUrl+'/api/users');
+  return this.http.get<User[]>('https://rubabikia-project.herokuapp.com/api/users');
 
 }
 
 getAllfeeds():Observable<Feedback[]>{
-  return this.http.get<Feedback[]>(environment.apiUrl+'/api/feedbacks');
+  return this.http.get<Feedback[]>('https://rubabikia-project.herokuapp.com/api/feedbacks');
 
 }
 delete(feedback:Feedback){
   // console.log("done");
-  return this.http.delete(environment.apiUrl+'/api/feedbacks/'+feedback.id)
+  return this.http.delete('https://rubabikia-project.herokuapp.com/api/feedbacks/'+feedback.id)
 
 }
 
