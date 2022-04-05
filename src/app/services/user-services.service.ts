@@ -213,7 +213,11 @@ authToken: any;
 
       return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmessages',{headers})
     }
+    acceptedmess():Observable<AcceptedmessageData>{
+      const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
 
+      return this.http.get<AcceptedmessageData>(environment.apiUrl+'/api/acceptedmes',{headers})
+    }
     // for acceptresponse
     ok(id:number):Observable<Acceptedmessage[]>{
       const headers=new HttpHeaders({
@@ -345,6 +349,16 @@ delete(feedback:Feedback){
   return this.http.delete(environment.apiUrl+'/api/feedbacks/'+feedback.id)
 
 }
+
+replayus(id:number):Observable<FeedbackData>{
+
+  const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
+  return this.http.get<FeedbackData>(environment.apiUrl+'/api/replayss/'+id,{headers})
+}
+
+
+
+
 
 }
 

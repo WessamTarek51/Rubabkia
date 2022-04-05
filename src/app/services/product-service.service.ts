@@ -130,7 +130,10 @@ AddPurchases(product:Product):Observable<Product[]>{
 
 
 
-
+    salesall():Observable<getAllProductsData>{
+      return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/sales');
+    
+    }
 
 }
 

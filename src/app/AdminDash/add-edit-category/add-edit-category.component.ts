@@ -65,7 +65,7 @@ this.CategoryService.getCtId(this.cat_id).subscribe(
           
           const formms=new FormData();
         
-          formms.append('id',form.value.id);
+          // formms.append('id',form.value.id);
           formms.append('name',form.value.name);
           formms.append('image',form.value.image);
 

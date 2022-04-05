@@ -51,7 +51,7 @@
             <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:250px!important;width:100%!important;" />
               <h4>{{product.name}}</h4>
               <div class="pri-ic">
-                <p>{{product.price}}</p>
+                <p>{{product.price | currency:'EGP'}}</p>
                 <div class="overlay-iconss">
                   <a (click)="deleteProduct(product)" style="--i:1" style="padding-right: 6px;"><i class="bi bi-trash-fill"></i></a>
                    <a  [routerLink]="['/edit',product.id]" style="--i:3"><i class="bi bi-pencil-fill"></i> </a>
@@ -83,7 +83,7 @@
       <img src="http://127.0.0.1:8000/public/products/{{purchase.image}}" style="height:250px!important;width:100%!important;" />
         <h4>{{purchase.name}}</h4>
         <div class="pri-ic">
-          <p>{{purchase.price}}</p>
+          <p>{{purchase.price | currency:'EGP'}}</p>
          </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <img src="http://127.0.0.1:8000/public/products/{{sales.image}}" style="height:250px!important;width:100%!important;" />
         <h4>{{sales.name}}</h4>
         <div class="pri-ic">
-          <p>{{sales.price}}</p>
+          <p>{{sales.price | currency:'EGP'}}</p>
          </div>
         </div>
         </div>
@@ -165,7 +165,7 @@
     </div>
     <div *ngIf="dataa?.length==0">
       <div class="row">
-        <p style="color: #3f4b26; text-align: center;" >User Has No Sold Products</p>
+        <p style="color: #3f4b26; text-align: center;" >User Has No Comments</p>
       </div>
       </div>
 

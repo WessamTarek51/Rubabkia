@@ -13,7 +13,7 @@
           <img src="http://127.0.0.1:8000/public/products/{{product.image}}"  style="height:250px!important;width:100%!important;" />
           <h4>{{product.name}}</h4>
           <div class="pri-ic">
-            <p>{{product.price}}</p>
+            <p>{{product.price | currency:'EGP'}}</p>
             <div class="overlay-iconss">
               <a [routerLink]="['/show',product.id]" style="--i:1"><i class="fa fa-eye"></i></a>
               <a style="--i:3" ><i   [ngClass]="{'bi bi-suit-heart-fill':product.isFav,'bi bi-suit-heart':!product.isFav}" (click)="changFav(product)"></i> </a>

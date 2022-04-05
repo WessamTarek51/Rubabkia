@@ -5,6 +5,7 @@ import { Notifi } from 'src/app/_models/notiication.models';
 import { Acceptedmessage } from 'src/app/_models/acceptedmessage.models';
 import { Rejectedmessage } from 'src/app/_models/rejectedmessage.models';
 import { Adminmessage } from 'src/app/_models/adminmessage.models';
+import { Feedback, FeedbackData } from 'src/app/_models/feedback.model';
 
 @Component({
   selector: 'app-requests',
@@ -13,28 +14,61 @@ import { Adminmessage } from 'src/app/_models/adminmessage.models';
 })
 export class RequestsComponent implements OnInit {
   seller=parseInt(localStorage.getItem('user_id')!);
+userID = parseInt(localStorage.getItem('user_id')!)
+
   data!:NotificationData;
   notifi!:Notifi[];
   acceptedres!:Acceptedmessage[];
+  accepted!:Acceptedmessage[];
   rejectedres!:Rejectedmessage[];
   adminmessages!:Adminmessage[];
+  replays!:Feedback[];
+dataa!:Feedback[];
+
   constructor(private service:UserServicesService ) { }
 
   ngOnInit(): void {
+
+
+    // allfeedbacks(){
+
+      this.service.gerallfeedData(this.userID).subscribe(res=>{
+        this.dataa = res.data
+        console.log(res.data)
+    
+    //     this.sum = this.dataa.reduce((a, b) => a + b.rate, 0);
+    // this.avg = (this.sum / this.dataa.length) || 0;
+    // console.log(this.avg)
+    // console.log(this.data)
+      });
+      // }
+  
+
+    this.service.replayus(this.seller).subscribe(
+      (res)=>{
+        console.log(res.data)        
+        this.replays = res.data
+        console.log(this.replays[0].message)
+        // console.log(this.replays)
+      },)
+
     this.service.refreshNeeded.subscribe(()=>{
       this.requset(this.seller)
 
     })
-    // this.service.refreshNeeded.subscribe(()=>{
-    //   this.requset(this.seller)
 
-    // })
   this.requset(this.seller)
    this.acceptresponse()
+   
    this.rejectresponse()
+  //  this.replayback()
+
+   
    this.service.getalladminmessages().subscribe(res=>{
     this.adminmessages=res.data
    })
+
+
   }
   // requests
   requset(seller:any){
@@ -42,24 +76,20 @@ export class RequestsComponent implements OnInit {
       (res)=>{
 
       this.notifi=res.data
-      // console.log(res.data)
-      // console.log(this.notifi)
-      // console.log(this.notifi[0].id)
-      // console.log
       },)
   }
-  // acceptedresponse
+
   acceptresponse(){
     this.service.acceptedmessages().subscribe(res=>{
        this.acceptedres=res.data
-       console.log(this.acceptedres)
+      //  console.log(this.acceptedres)
     })
   }
   accept(nof:Notifi,seller:number){
 
     this.service.accept(nof).subscribe(
       (res)=>{
-        console.log(res)
+        // console.log(res)
       },)
       this.requset(seller);
       // this.service.acceptmessage(nof).subscribe(res=>{
@@ -68,7 +98,7 @@ export class RequestsComponent implements OnInit {
   }
   reject(nof:Notifi,id:number,seller:number){
     this.service.rejectmessage(nof).subscribe(res=>{
-      console.log(res)
+      // console.log(res)
     })
     // this.service.reject(id).subscribe(
     //   (res)=>{
@@ -80,7 +110,7 @@ export class RequestsComponent implements OnInit {
   rejectresponse(){
     this.service.rejectedmessages().subscribe(res=>{
        this.rejectedres=res.data
-       console.log(this.rejectedres)
+      //  console.log(this.rejectedres)
     })
   }
 
@@ -98,6 +128,7 @@ export class RequestsComponent implements OnInit {
       this.rejectresponse();
 
   }
+  
   deleteadmin(id:number){
     this.service.deleteadminmessage(id).subscribe(res=>{
 
@@ -106,6 +137,8 @@ export class RequestsComponent implements OnInit {
       this.adminmessages=res.data
      })
   }
+
+
 
   }
 
