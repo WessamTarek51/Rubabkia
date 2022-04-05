@@ -29,7 +29,7 @@
                 <input  required   class="form-control" name="message" ngModel #message="ngModel" >
             </div>
            
-            <button class="btn bb btn-success col-md-3" style="background-color: #464E2E;color: white;"   id="search" type="submit">Reply</button>
+            <button class="btn bb btn-success col-md-3" [disabled]="!adminform.valid" style="background-color: #464E2E;color: white;"   id="search" type="submit">Reply</button>
           </form>
           
           </div>
