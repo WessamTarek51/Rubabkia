@@ -8,7 +8,7 @@
                     <div class="col-12" *ngIf="userData">
                        <div class="profile">
                             <div class="avatar">
-            <img src="http://127.0.0.1:8000/storage/images/{{userData.image}}"  style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
+            <img src="https://rubabikia-project.herokuapp.com/public/images/{{userData.image}}"  style="height:180px!important;width:100%!important;"  alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
                                 <h3 class="title"> {{userData.username}}    </h3>
@@ -39,7 +39,7 @@
            <br>
             <div class="row" *ngIf="userData">
               <div class="col-md-3 col-sm-6"    *ngFor="let product of userData.products" >
-              <img src="http://127.0.0.1:8000/public/products/{{product.image}}" style="height:180px!important;width:100%!important;"  />
+              <img src="https://rubabikia-project.herokuapp.com/public/products/{{product.image}}" style="height:180px!important;width:100%!important;"  />
                 <h4>{{product.name}}</h4>
                 <div class="pri-ic">
                   <p>{{product.price}}</p>
@@ -81,7 +81,7 @@
                   <div class="row ">
                     <div class="mynewform">
                     <textarea  id="mybtn"  class="form-control me-2 col-md-9" name="message"  type="search" placeholder="please enter your comment" (keyup.enter)="(onSubmit)" ngModel #message="ngModel"></textarea>
-                    <button class="btn bb btn-success col-md-3"   id="search" type="submit">send</button>
+                    <button class="btn bb btn-success col-md-3" [disabled]="!productform.valid"  id="search" type="submit">send</button>
                   </div>
                   </div>
             </form>

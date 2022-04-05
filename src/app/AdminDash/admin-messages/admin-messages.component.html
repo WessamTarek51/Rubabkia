@@ -11,7 +11,7 @@
         <div class="d-flex align-items-center">
             <button type="button" class="btn-close" id="close" (click)="deleteuser(item.id)" aria-label="Close"></button>
           <div class="flex-shrink-0">
-            <img src="http://127.0.0.1:8000/storage/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
+            <img src="https://rubabikia-project.herokuapp.com/public/images/{{item.image}}" width="100px" height="100px" class="rounded-circle me-2" alt="...">
           </div>
           <div class="flex-grow-1 ms-3" >
             <strong class="me-auto" style="padding-right: 10px;">{{ item.name}}</strong>
@@ -29,7 +29,7 @@
                 <input  required   class="form-control" name="message" ngModel #message="ngModel" >
             </div>
            
-            <button class="btn bb btn-success col-md-3" style="background-color: #464E2E;color: white;"   id="search" type="submit">Reply</button>
+            <button class="btn bb btn-success col-md-3" [disabled]="!adminform.valid" style="background-color: #464E2E;color: white;"   id="search" type="submit">Reply</button>
           </form>
           
           </div>
