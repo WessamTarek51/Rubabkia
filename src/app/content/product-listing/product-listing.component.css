@@ -115,7 +115,24 @@ background-color: #474F2F !important;}
     border-radius: 10px;
     /* margin-right: 20px; */
     }
-
+    @media only screen and (max-width: 600px){
+        .row{
+            text-align: center;
+        }
+        .mynewform{
+            flex-basis: 100%;
+        }
+        .hi{
+            flex-basis: 100%;
+        }
+        .bb{
+            flex-basis: 100%;
+        }
+        .hi:placeholder-shown{
+            flex-basis: 100%;
+        }
+    }
+    
 /* .page-item{
     height: 50%;
 } */

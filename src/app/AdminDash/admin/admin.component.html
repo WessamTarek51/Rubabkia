@@ -10,7 +10,7 @@
     <body>
         <div class="d-flex" id="wrapper">
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Admin</div>
+                <!-- <div class="sidebar-heading border-bottom bg-light">Admin</div> -->
                 <div class="list-group list-group-flush">
                     <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a> -->
                     <a class="list-group-item list-group-item-action list-group-item-light p-3"  (click)="category()">Categories</a>
@@ -32,141 +32,144 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <h1 class="mt-4" style="color:#3f4b26 ;">Welcome {{userr.username}}</h1>
+
+                    <!doctype html>
+                    <html lang="en">
+    
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta http-equiv="Content-Language" content="en">
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                        <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+                        <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+                        <meta name="msapplication-tap-highlight" content="no">
+                    <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
+                    <body>
+                        <div class="app-container app-theme-white body-tabs-shadow ">
+    
+                             <div class="ui-theme-settings">
+                                <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+                                    <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+                                </button>
+    
+                            </div>
+                             <div class="app-main" >
+                                      <div class="app-main__outer">
+                                        <div class="app-main__inner" >
+                                                       <div class="row" >
+                                                <div class="col-md-6 col-xl-4"  >
+                                                    <div class="card mb-3 widget-content bg-midnight-bloom" >
+                                                        <div class="widget-content-wrapper text-white" >
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading" >category</div>
+                                                                <div class="widget-subheading">{{counterr}} </div>
+                                                            </div>
+                                                            <div class="widget-content-right">
+                                                                <div class="widget-numbers text-white"><span>Rubabikya</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xl-4" ngFor="let userr of users">
+                                                    <div class="card mb-3 widget-content bg-arielle-smile">
+                                                        <div class="widget-content-wrapper text-white">
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading">Users</div>
+                                                                <div class="widget-subheading"> {{counterusers}} </div>
+                                                            </div>
+                                                            <div class="widget-content-right">
+                                                                <div class="widget-numbers text-white"><span> Rubabikya</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xl-4" ngFor="let product of product">
+                                                    <div class="card mb-3 widget-content bg-grow-early">
+                                                        <div class="widget-content-wrapper text-white">
+                                                            <div class="widget-content-left">
+                                                                <div class="widget-heading">Products</div>
+                                                                <div class="widget-subheading">{{counterproductss}}</div>
+                                                            </div>
+                                                            <div class="widget-content-right">
+                                                                <div class="widget-numbers text-white"><span>special & unique</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+    
+                                                <!-- soooold products -->
+                                          
+                                            </div>
+                                            <!-- <div class="row">
+                                                <div class="col-md-12 col-lg-6">
+                                                    <div class="mb-3 card">
+                                                        <div class="card-header-tab card-header-tab-animation card-header">
+                                                            <div class="card-header-title">
+                                                                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                                                Sales Report
+                                                            </div>
+    
+                                                        </div>
+                                                        <div class="row">
+                                                       
+                                                          <div class="col-md-3 col-sm-6" *ngFor="let productt of accepted" >
+                                                            <img src="http://127.0.0.1:8000/public/products/{{productt.productimage}}" style="height:250px!important;width:30%!important;" />
+                                                        
+                                                            <h4>{{productt.productname}}</h4>
+                                                            <div class="pri-ic">
+                                                              <p>{{'seller name: '+productt.seller_name}}</p>
+                                                            </div>
+    
+                                                            <div class="pri-ic">
+                                                                <p>{{'buyer name: '+productt.buyer_name}}</p>
+                                                              </div>
+                                                            <div>
+                                                                
+    
+                                                            </div>
+    
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                            </div> -->
+    
+                                            <!-- ////// total orders -->
+                                            <div class="row" >
+                                                <div class="col-md-6 col-xl-4" >
+                                                    <div class="card mb-3 widget-content" style="background-color: cornflowerblue; color: #fff;">
+                                                        <div class="widget-content-outer">
+                                                            <div class="widget-content-wrapper">
+                                                                <div class="widget-content-left">
+                                                                    <div class="widget-heading" >Products Sold</div>
+                                                                    <div class="widget-subheading">{{counterproductssss}}</div>
+                                                                </div>
+                                                                <div class="widget-content-right">
+                                                                    <div class="widget-numbers text-white"><span>special & unique</span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                       
+                                          
+                                            </div>
+                                       
+                                   
+                                        </div>
+                                    </div>
+                                    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+                            </div>
+                        </div>
+                    <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script></body>
+                    </html>
                 </div>
 
-                <!doctype html>
-                <html lang="en">
-
-                <head>
-                    <meta charset="utf-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta http-equiv="Content-Language" content="en">
-                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-                    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-                    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
-                    <meta name="msapplication-tap-highlight" content="no">
-                <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
-                <body>
-                    <div class="app-container app-theme-white body-tabs-shadow ">
-
-                         <div class="ui-theme-settings">
-                            <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
-                                <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
-                            </button>
-
-                        </div>
-                         <div class="app-main" >
-                                  <div class="app-main__outer">
-                                    <div class="app-main__inner" >
-                                                   <div class="row" >
-                                            <div class="col-md-6 col-xl-4"  >
-                                                <div class="card mb-3 widget-content bg-midnight-bloom" >
-                                                    <div class="widget-content-wrapper text-white" >
-                                                        <div class="widget-content-left">
-                                                            <div class="widget-heading" >category</div>
-                                                            <div class="widget-subheading">{{counterr}} </div>
-                                                        </div>
-                                                        <div class="widget-content-right">
-                                                            <div class="widget-numbers text-white"><span>Robabikya</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xl-4" ngFor="let userr of users">
-                                                <div class="card mb-3 widget-content bg-arielle-smile">
-                                                    <div class="widget-content-wrapper text-white">
-                                                        <div class="widget-content-left">
-                                                            <div class="widget-heading">Users</div>
-                                                            <div class="widget-subheading"> {{counterusers}} </div>
-                                                        </div>
-                                                        <div class="widget-content-right">
-                                                            <div class="widget-numbers text-white"><span> of Robabikya</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xl-4" ngFor="let product of product">
-                                                <div class="card mb-3 widget-content bg-grow-early">
-                                                    <div class="widget-content-wrapper text-white">
-                                                        <div class="widget-content-left">
-                                                            <div class="widget-heading">Products</div>
-                                                            <div class="widget-subheading">{{counterproductss}}</div>
-                                                        </div>
-                                                        <div class="widget-content-right">
-                                                            <div class="widget-numbers text-white"><span>special & unique</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- soooold products -->
-                                      
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-6">
-                                                <div class="mb-3 card">
-                                                    <div class="card-header-tab card-header-tab-animation card-header">
-                                                        <div class="card-header-title">
-                                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                                            Sales Report
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row">
-                                                   
-                                                      <div class="col-md-3 col-sm-6" *ngFor="let productt of accepted" >
-                                                        <img src="http://127.0.0.1:8000/public/products/{{productt.productimage}}" style="height:250px!important;width:30%!important;" />
-                                                    
-                                                        <h4>{{productt.productname}}</h4>
-                                                        <!-- <p>category: {{product.category_name}}</p> -->
-                                                        <div class="pri-ic">
-                                                          <p>{{'seller name: '+productt.seller_name}}</p>
-                                                        </div>
-
-                                                        <div class="pri-ic">
-                                                            <p>{{'buyer name: '+productt.buyer_name}}</p>
-                                                          </div>
-                                                        <div>
-                                                            <!-- <p>{{'seller_name: '+accepted.username}}</p> -->
-
-                                                        </div>
-
-                                                      </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- ////// total orders -->
-                                        <div class="row" >
-                                            <div class="col-md-6 col-xl-4">
-                                                <div class="card mb-3 widget-content">
-                                                    <div class="widget-content-outer">
-                                                        <div class="widget-content-wrapper">
-                                                            <div class="widget-content-left">
-                                                                <div class="widget-heading">Products Sold</div>
-                                                                <div class="widget-subheading">{{counterproductssss}}</div>
-                                                            </div>
-                                                         
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                   
-                                      
-                                        </div>
-                                   
-                               
-                                    </div>
-                                </div>
-                                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-                        </div>
-                    </div>
-                <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script></body>
-                </html>
+              
 
             </div>
         </div>

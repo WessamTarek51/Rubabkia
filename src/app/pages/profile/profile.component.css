@@ -192,3 +192,20 @@ cursor: pointer;
 .padding-5{
   padding-right: 5px;
 }
+@media only screen and (max-width: 600px){
+    .row{
+        text-align: center;
+    }
+    /* .mynewform{
+        flex-basis: 100%;
+    } */
+    .ms-3{
+        flex-basis: 100%;
+        /* font-size: 7px; */
+    }
+    p{
+        flex-basis: 100%;
+        /* font-size: 7px; */
+    }
+
+}

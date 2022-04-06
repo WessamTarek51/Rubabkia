@@ -128,3 +128,13 @@
 .btn1:hover{
     /* background: #2351; */
 }
+
+@media only screen and (max-width: 600px){
+    .row{
+        text-align: center;
+    }
+    .col-6{
+        flex-basis: 100%;
+    }
+}
+
