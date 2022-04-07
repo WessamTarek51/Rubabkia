@@ -39,7 +39,7 @@ search(){
   this.service.getAllProducts().subscribe(
     (res)=>{
 
-      this.productData= res.data.filter(value => value.name.match(this.searchText)  || value.governate.match(this.searchText))
+      this.productData= res.data.filter(value => value.name.match(this.searchText)  || value.governate ==this.searchText)
       // this.productData = res.data;
 
     },)

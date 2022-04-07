@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md navbar-light ">
+<nav class="navbar navbar-expand-md navbar-expand-sm navbar-light ">
   <div class="container-fluid nav-con">
     <div class="logoo">
       <span><img src="../../../assets/img/img.png" id="imgg"></span>
@@ -8,11 +8,11 @@
   </div>
 
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button"  (click)="toggleCollapsed()" >
+      <span class="navbar-toggler-icon" ></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
         <li class="nav-item nav-icon">

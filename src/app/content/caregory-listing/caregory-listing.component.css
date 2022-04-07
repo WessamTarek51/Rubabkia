@@ -44,3 +44,12 @@
 
 
 }
+
+@media only screen and (max-width: 600px){
+    .row{
+        text-align: center;
+    }
+    .col-2{
+        flex-basis: 100%;
+    }
+}
