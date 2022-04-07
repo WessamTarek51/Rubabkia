@@ -47,9 +47,9 @@ const routes: Routes = [
   {path:'admin-products',component:AdminProductsComponent,canActivate:[AdminAuthGuard] },
   {path:'admin-messages',component:AdminMessagesComponent,canActivate:[AdminAuthGuard]},
   {path:'contactus',component:ContactusComponent ,canActivate:[AuthGuard]},
-  {path:'add-edit-cat',component:AddEditCategoryComponent },
-  {path:'editcat/:id',component:AddEditCategoryComponent },
-  {path:'feedbacks',component:FeedbacksAdminComponent },
+  {path:'add-edit-cat',component:AddEditCategoryComponent ,canActivate:[AdminAuthGuard] },
+  {path:'editcat/:id',component:AddEditCategoryComponent ,canActivate:[AdminAuthGuard] },
+  {path:'feedbacks',component:FeedbacksAdminComponent ,canActivate:[AdminAuthGuard] },
 
 
 

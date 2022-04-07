@@ -22,8 +22,11 @@ export class HeaderComponent implements OnInit {
   constructor(private router:Router,private service:UserServicesService) { }
    token:any
    senderID = parseInt(localStorage.getItem('user_id')!)
-
+   collapsed:boolean = true;
+  
   ngOnInit(): void {
+
+    
     // this.service.refreshNeeded.subscribe(()=>{
     //   this.requset(this.seller)
     // })
@@ -73,5 +76,9 @@ loggedin(){
 adminloggedin(){
   return localStorage.getItem('is_admin')
  }
+
+ toggleCollapsed() {
+  this.collapsed = !this.collapsed;
+}
 
 }
