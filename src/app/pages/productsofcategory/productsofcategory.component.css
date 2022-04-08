@@ -31,13 +31,13 @@
       /* align-items: flex-start; */
       text-align: right;
       justify-content: right;
-      font-size: 15px;
+      font-size: 13px;
       color: #000;
       padding-left: 100px;
 
   }
   .overlay-iconss a{
-      padding: 2px;
+      padding: 0 1px;
   }
   .overlay-iconss i{
       /* color: #000; */
