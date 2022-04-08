@@ -26,7 +26,7 @@
           <a [routerLink]="['nof',senderID]" class="position-relative" *ngIf="loggedin()"><i class="bi bi-bell-fill user-ii "></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="counter">
               {{counter}}
-              <span class="visually-hidden">New alerts</span>
+              <span class="visually-hidden" *ngIf="loggedin() && !adminloggedin()">New alerts</span>
             </span></a>
         </li>
 
