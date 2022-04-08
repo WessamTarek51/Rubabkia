@@ -23,15 +23,15 @@ export class HeaderComponent implements OnInit {
    token:any
    senderID = parseInt(localStorage.getItem('user_id')!)
    collapsed:boolean = true;
-  
+
   ngOnInit(): void {
 
-    
+
     // this.service.refreshNeeded.subscribe(()=>{
     //   this.requset(this.seller)
     // })
-    this.updateSubscription = interval(3000).subscribe(
-      (val) => { this.requset(this.seller)});
+    // this.updateSubscription = interval(3000).subscribe(
+      // (val) => { this.requset(this.seller)});
     this.requset(this.seller)
   }
   requset(seller:number){
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
       })
       this.service.acceptedmessages().subscribe(res=>{
         this.acceptedres=res.data
-        
+
      })
      this.service.getalladminmessages().subscribe(res=>{
       this.adminmessages=res.data

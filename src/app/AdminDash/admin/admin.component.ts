@@ -45,12 +45,12 @@ private updateSubscription!: Subscription;
 
   ngOnInit(): void {
     this.getuser();
-    this.updateSubscription = interval(3000).subscribe(
-      (val) => {  this.userservice.getallusermessages().subscribe(res=>{
-        this.usermessages=res.data
-        this.counter=this.usermessages.length;
-       }
-    )});
+    // this.updateSubscription = interval(3000).subscribe(
+    //   (val) => {  this.userservice.getallusermessages().subscribe(res=>{
+    //     this.usermessages=res.data
+    //     this.counter=this.usermessages.length;
+    //    }
+    // )});
     this.userservice.getallusermessages().subscribe(res=>{
       this.usermessages=res.data
       this.counter=this.usermessages.length;
@@ -60,7 +60,7 @@ private updateSubscription!: Subscription;
   this.userservice.acceptedmess().subscribe(res=>{
     this.accepted=res.data
    })
-     
+
     this.userservice.getAlluserssad().subscribe(
       (res:any)=>{
         this.users = res.data
@@ -89,12 +89,12 @@ private updateSubscription!: Subscription;
 
       this.productService.salesall().subscribe(
         (res)=>{
-  
+
           this.productt= res.data
           this.counterproductssss=this.productt.length
           console.log(this.counterproductssss)
           // this.productData = res.data;
-  
+
         },)
 
   }
