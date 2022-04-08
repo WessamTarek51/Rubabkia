@@ -79,7 +79,15 @@ AddPurchases(product:Product):Observable<Product[]>{
   });
 }
   getAllProductsiid(category_id:any):Observable<getAllProductsData> {
-    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id);
+    const headers=new HttpHeaders({
+      'Authorization':'Bearer '+localStorage.getItem('token')
+    });
+    if(localStorage.getItem('token')!=null){
+    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/product/'+category_id,{headers});
+    }else{
+    return this.HttpClient.get<getAllProductsData>('http://127.0.0.1:8000/api/productt/'+category_id,{headers});
+      
+    }
   }
 
 

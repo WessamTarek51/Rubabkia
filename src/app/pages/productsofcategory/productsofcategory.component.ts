@@ -21,7 +21,7 @@ export class ProductsofcategoryComponent implements OnInit {
   categories:Category[]=[];
   filteredproducts!:Product[]
   // dataCat:any;
-  // proCat:any;
+  prot!:Product[]
 
 
   constructor(private categoryservice:CategoryServiceService,private productservice:ProductServiceService,
@@ -37,9 +37,9 @@ export class ProductsofcategoryComponent implements OnInit {
     if(this.categoryId){
       this.productservice.getAllProductsiid(this.categoryId).subscribe(
         (res )=>{
-
+            
             this.filteredproducts=res.data
-
+         
           // console.log(res.data)
 
           // console.log(this.categoryId)
@@ -97,6 +97,13 @@ export class ProductsofcategoryComponent implements OnInit {
       });
     });
   }
+    }
+
+    hhh(){
+      this.productservice.getAllProducts().subscribe(
+        (res)=>{
+       this.prot=res.data
+        })
     }
   }
   // categories.forEach(item => {
