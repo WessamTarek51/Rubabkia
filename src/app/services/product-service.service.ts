@@ -85,7 +85,7 @@ AddPurchases(product:Product):Observable<Product[]>{
     if(localStorage.getItem('token')!=null){
     return this.HttpClient.get<getAllProductsData>('https://rubabikia-project.herokuapp.com/api/product/'+category_id,{headers});
     }else{
-    return this.HttpClient.get<getAllProductsData>('https://rubabikia-project.herokuapp.com/api/productt/'+category_id);
+    return this.HttpClient.get<getAllProductsData>('https://rubabikia-project.herokuapp.com/api/product/'+category_id);
 
     }
   }
