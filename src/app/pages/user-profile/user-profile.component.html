@@ -13,7 +13,7 @@
                               <h3 class="title">  {{userData.username}}    </h3>
                               <rating *ngIf="avg"  style="color: #f0c60a;font-size: 40px;" name="rate" [(ngModel)]="avg"  ngModel #rate="ngModel" [max]="max" [readonly]="isReadonly">
                               </rating>
-                              <h6 class="title"> {{userData.phoneNumber}} - {{userData.address}}</h6>
+                              <h6 class="title"> {{userData.phoneNumber}} - {{userData.governorate_name}}</h6>
                               <button type="button" class="bb btn" [routerLink]="['/message/',userData.id]" > Message</button>
 
                               <br>
