@@ -255,7 +255,7 @@ authToken: any;
     // }
     getallusers():Observable<UsersData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-      return this.http.get<UsersData>('http://127.0.0.1:8000/api/users',{headers});
+      return this.http.get<UsersData>('http://127.0.0.1:8000/api/usersss',{headers});
     }
 
 
