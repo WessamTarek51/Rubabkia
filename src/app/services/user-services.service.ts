@@ -255,7 +255,7 @@ authToken: any;
     // }
     getallusers():Observable<UsersData>{
       const headers = new HttpHeaders({'Content-Type': 'application/json','Authorization':'Bearer '+localStorage.getItem('token')})
-      return this.http.get<UsersData>('https://rubabikia-project.herokuapp.com/api/usersss',{headers});
+      return this.http.get<UsersData>('https://rubabikia-project.herokuapp.com/api/users',{headers});
 
     }
 
